@@ -5,17 +5,17 @@
   
 
   
-  <title>Http 权威指南 第三章 HTTP报文 笔记 | 追求真实</title>
+  <title>Http 权威指南 第四章 连接管理 笔记 | 追求真实</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="报文流报文（请求报文、响应报文）是流动的，因此有上游、下游，报文流入源端服务器，并流回到客户端 起始行请求报文: 方法 url 版本响应报文: 版本 状态码 原因短语  方法GET&#x2F;HEAD&#x2F;POST&#x2F;PUT&#x2F;DELETE&#x2F;TRACE&#x2F;OPTIONS 状态码分类: 100 ~ 101 信息提示 200 ~ 299 成功 300 ~ 399 表示资源已经被移走，重定向 400 ~ 499 表示客户端">
+  <meta name="description" content="1HTTP over TCP over IP (HTTPS -&gt; TLS&#x2F;SSL -&gt; TCP -&gt; IP)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Http 权威指南 第三章 HTTP报文 笔记">
-<meta property="og:url" content="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="Http 权威指南 第四章 连接管理 笔记">
+<meta property="og:url" content="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="追求真实">
-<meta property="og:description" content="报文流报文（请求报文、响应报文）是流动的，因此有上游、下游，报文流入源端服务器，并流回到客户端 起始行请求报文: 方法 url 版本响应报文: 版本 状态码 原因短语  方法GET&#x2F;HEAD&#x2F;POST&#x2F;PUT&#x2F;DELETE&#x2F;TRACE&#x2F;OPTIONS 状态码分类: 100 ~ 101 信息提示 200 ~ 299 成功 300 ~ 399 表示资源已经被移走，重定向 400 ~ 499 表示客户端">
+<meta property="og:description" content="1HTTP over TCP over IP (HTTPS -&gt; TLS&#x2F;SSL -&gt; TCP -&gt; IP)">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-02T07:21:42.000Z">
-<meta property="article:modified_time" content="2020-06-02T09:33:12.122Z">
+<meta property="article:published_time" content="2020-06-02T09:33:08.000Z">
+<meta property="article:modified_time" content="2020-06-02T09:53:56.505Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
   
@@ -70,10 +70,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Http-权威指南-第三章-HTTP报文-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Http-权威指南-第四章-连接管理-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-02T07:21:42.000Z" itemprop="datePublished">2020-06-02</time>
+    <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-02T09:33:08.000Z" itemprop="datePublished">2020-06-02</time>
 </a>
     
   </div>
@@ -84,7 +84,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Http 权威指南 第三章 HTTP报文 笔记
+      Http 权威指南 第四章 连接管理 笔记
     </h1>
   
 
@@ -92,25 +92,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="报文流"><a href="#报文流" class="headerlink" title="报文流"></a>报文流</h4><p>报文（请求报文、响应报文）是流动的，因此有上游、下游，报文流入源端服务器，并流回到客户端</p>
-<h4 id="起始行"><a href="#起始行" class="headerlink" title="起始行"></a>起始行</h4><p>请求报文: 方法 url 版本<br>响应报文: 版本 状态码 原因短语</p>
-<ul>
-<li><h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5>GET/HEAD/POST/PUT/DELETE/TRACE/OPTIONS</li>
-<li><h5 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h5>分类:<ol>
-<li>100 ~ 101 信息提示</li>
-<li>200 ~ 299 成功</li>
-<li>300 ~ 399 表示资源已经被移走，重定向</li>
-<li>400 ~ 499 表示客户端请求出错了</li>
-<li>500 ~ 599 表示服务器端出错了  </li>
-</ol>
-</li>
-</ul>
-<h4 id="首部"><a href="#首部" class="headerlink" title="首部"></a>首部</h4><p>首部包括: 通用首部、请求首部(如 Accept)、响应首部(如 Server: Golfe2)、实体首部(如 Content-Type)、扩展首部</p>
-
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTTP over TCP over IP (HTTPS -&gt; TLS/SSL -&gt; TCP -&gt; IP)</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckaxqvric0001wmrpapozfhyz" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckaxqvrie0003wmrpaeq35jy1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -119,19 +105,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Http 权威指南 第四章 连接管理 笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Http 权威指南 第二章 URL与资源 笔记</div>
+      <div class="article-nav-title">Http 权威指南 第三章 HTTP报文 笔记</div>
     </a>
   
 </nav>
