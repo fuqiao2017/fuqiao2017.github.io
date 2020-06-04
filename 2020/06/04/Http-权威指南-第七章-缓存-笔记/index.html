@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Http 权威指南 第七章 缓存 笔记 | 追求真实</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关键词 : Modem  缓存命中  新鲜度检测  文档命中率  字节命中率Modem(调制解调器，猫)缓存命中(cache hit&#x2F;miss)新鲜度检测 : 缓存通过特殊请求检测内容是否最新，称为 Http 再验证 (revalidation)如果新鲜度检测发现对象已经被删除，则服务器返回404，缓存也会将对应副本删除客户端判断响应是否来自缓存: 可以通过首部 Via、Date、Age  缓存的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Http 权威指南 第七章 缓存 笔记">
+<meta property="og:url" content="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="追求真实">
+<meta property="og:description" content="关键词 : Modem  缓存命中  新鲜度检测  文档命中率  字节命中率Modem(调制解调器，猫)缓存命中(cache hit&#x2F;miss)新鲜度检测 : 缓存通过特殊请求检测内容是否最新，称为 Http 再验证 (revalidation)如果新鲜度检测发现对象已经被删除，则服务器返回404，缓存也会将对应副本删除客户端判断响应是否来自缓存: 可以通过首部 Via、Date、Age  缓存的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fuqiao2017.github.io/images/%E5%A4%84%E7%90%86%E4%B8%80%E4%B8%AA%E6%96%B0%E9%B2%9C%E7%9A%84%E7%BC%93%E5%AD%98%E5%91%BD%E4%B8%AD.jpeg">
+<meta property="article:published_time" content="2020-06-04T01:11:13.000Z">
+<meta property="article:modified_time" content="2020-06-04T06:35:06.695Z">
+<meta property="article:author" content="Zhang qijie">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fuqiao2017.github.io/images/%E5%A4%84%E7%90%86%E4%B8%80%E4%B8%AA%E6%96%B0%E9%B2%9C%E7%9A%84%E7%BC%93%E5%AD%98%E5%91%BD%E4%B8%AD.jpeg">
+  
+    <link rel="alternate" href="/atom.xml" title="追求真实" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">追求真实</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">我爱大自然</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://fuqiao2017.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Http-权威指南-第七章-缓存-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-04T01:11:13.000Z" itemprop="datePublished">2020-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Http 权威指南 第七章 缓存 笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>关键词</em></strong> : Modem  缓存命中  新鲜度检测  文档命中率  字节命中率<br>Modem(调制解调器，猫)<br>缓存命中(cache hit/miss)<br><strong><em>新鲜度检测</em></strong> : 缓存通过特殊请求检测内容是否最新，称为 <strong><em>Http 再验证</em></strong> (revalidation)<br>如果新鲜度检测发现对象已经被删除，则服务器返回404，缓存也会将对应副本删除<br>客户端判断响应是否来自缓存: 可以通过首部 Via、Date、Age</p>
+<p><img src="/images/%E5%A4%84%E7%90%86%E4%B8%80%E4%B8%AA%E6%96%B0%E9%B2%9C%E7%9A%84%E7%BC%93%E5%AD%98%E5%91%BD%E4%B8%AD.jpeg" alt=""></p>
+<h4 id="缓存的拓扑结构"><a href="#缓存的拓扑结构" class="headerlink" title="缓存的拓扑结构"></a>缓存的拓扑结构</h4><p><strong><em>私有缓存</em></strong> : 浏览器本地的缓存<br>本地缓存可能存在内存、本地磁盘、甚至附近的另一台计算机中<br><strong><em>共有缓存</em></strong> : 缓存代理服务器(caching proxy server)<br><strong><em>层次化(hierarchy)的代理缓存</em></strong> : 父缓存，会增加性能损耗<br><strong><em>网状缓存、内容路由以及对等缓存</em></strong> : 网状的代理缓存之间会以更加复杂的方式进行对话，做出动态的缓存通信决策</p>
+<h4 id="保持副本的新鲜"><a href="#保持副本的新鲜" class="headerlink" title="保持副本的新鲜"></a>保持副本的新鲜</h4><ul>
+<li>两种机制<ol>
+<li>文档过期(document expiration)</li>
+<li>服务器再验证(server revalidation)<br>首部 Cache-control、Expires</li>
+</ol>
+</li>
+</ul>
+<p><strong><em>用条件方法进行再验证</em></strong> :</p>
+<ul>
+<li>对缓存再验证最有用的两个 Htttp 条件首部: <ol>
+<li>If-Modified-Since: Date 再验证</li>
+<li>If-None-Match: 实体标签再验证，实体标签(ETag)可能包含文档的序列号或者版本号</li>
+</ol>
+</li>
+</ul>
+<p><strong><em>控制缓存的能力</em></strong> :</p>
+<ul>
+<li>服务器可以通过 HTTP 定义的几种方式来指定在文档过期之前可以将其缓存多长时间<br>按照优先级递减的顺序，服务器可以附加一个:<ol>
+<li>Cache-control: no-store  禁止缓存</li>
+<li>Cache-control: no-cache  缓存可以存在本地缓存区中，并且提供缓存之前必须进行新鲜度验证</li>
+<li>Cache-control: must-revalidate  通过验证只提供新鲜的副本</li>
+<li>Cache-control: max-age  处于新鲜状态的秒数</li>
+<li>Expires: Date</li>
+<li>不附加，让缓存确定自己的过期日期</li>
+</ol>
+</li>
+</ul>
+<p><strong><em>缓存和公告</em></strong> :<br>缓存有好几种方式可以告诉源服务器它们拦截了多少次命中，比如:</p>
+<ol>
+<li>每次访问都进行验证</li>
+<li>日志迁移</li>
+<li>命中技术和使用限制: 命中次数首部 Meter</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7x80000rvrpdvzn2h7z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Http 权威指南 第六章 代理 笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/">Http 权威指南 第七章 缓存 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/">Http 权威指南 第六章 代理 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/">Http 权威指南 第五章 Web服务器 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/">Http 权威指南 第四章 连接管理 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/">Http 权威指南 第三章 HTTP报文 笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Zhang qijie<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

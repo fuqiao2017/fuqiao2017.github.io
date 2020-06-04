@@ -68,6 +68,78 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Http-权威指南-第七章-缓存-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-04T01:11:13.000Z" itemprop="datePublished">2020-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/">Http 权威指南 第七章 缓存 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>关键词</em></strong> : Modem  缓存命中  新鲜度检测  文档命中率  字节命中率<br>Modem(调制解调器，猫)<br>缓存命中(cache hit/miss)<br><strong><em>新鲜度检测</em></strong> : 缓存通过特殊请求检测内容是否最新，称为 <strong><em>Http 再验证</em></strong> (revalidation)<br>如果新鲜度检测发现对象已经被删除，则服务器返回404，缓存也会将对应副本删除<br>客户端判断响应是否来自缓存: 可以通过首部 Via、Date、Age</p>
+<p><img src="/images/%E5%A4%84%E7%90%86%E4%B8%80%E4%B8%AA%E6%96%B0%E9%B2%9C%E7%9A%84%E7%BC%93%E5%AD%98%E5%91%BD%E4%B8%AD.jpeg" alt=""></p>
+<h4 id="缓存的拓扑结构"><a href="#缓存的拓扑结构" class="headerlink" title="缓存的拓扑结构"></a>缓存的拓扑结构</h4><p><strong><em>私有缓存</em></strong> : 浏览器本地的缓存<br>本地缓存可能存在内存、本地磁盘、甚至附近的另一台计算机中<br><strong><em>共有缓存</em></strong> : 缓存代理服务器(caching proxy server)<br><strong><em>层次化(hierarchy)的代理缓存</em></strong> : 父缓存，会增加性能损耗<br><strong><em>网状缓存、内容路由以及对等缓存</em></strong> : 网状的代理缓存之间会以更加复杂的方式进行对话，做出动态的缓存通信决策</p>
+<h4 id="保持副本的新鲜"><a href="#保持副本的新鲜" class="headerlink" title="保持副本的新鲜"></a>保持副本的新鲜</h4><ul>
+<li>两种机制<ol>
+<li>文档过期(document expiration)</li>
+<li>服务器再验证(server revalidation)<br>首部 Cache-control、Expires</li>
+</ol>
+</li>
+</ul>
+<p><strong><em>用条件方法进行再验证</em></strong> :</p>
+<ul>
+<li>对缓存再验证最有用的两个 Htttp 条件首部: <ol>
+<li>If-Modified-Since: Date 再验证</li>
+<li>If-None-Match: 实体标签再验证，实体标签(ETag)可能包含文档的序列号或者版本号</li>
+</ol>
+</li>
+</ul>
+<p><strong><em>控制缓存的能力</em></strong> :</p>
+<ul>
+<li>服务器可以通过 HTTP 定义的几种方式来指定在文档过期之前可以将其缓存多长时间<br>按照优先级递减的顺序，服务器可以附加一个:<ol>
+<li>Cache-control: no-store  禁止缓存</li>
+<li>Cache-control: no-cache  缓存可以存在本地缓存区中，并且提供缓存之前必须进行新鲜度验证</li>
+<li>Cache-control: must-revalidate  通过验证只提供新鲜的副本</li>
+<li>Cache-control: max-age  处于新鲜状态的秒数</li>
+<li>Expires: Date</li>
+<li>不附加，让缓存确定自己的过期日期</li>
+</ol>
+</li>
+</ul>
+<p><strong><em>缓存和公告</em></strong> :<br>缓存有好几种方式可以告诉源服务器它们拦截了多少次命中，比如:</p>
+<ol>
+<li>每次访问都进行验证</li>
+<li>日志迁移</li>
+<li>命中技术和使用限制: 命中次数首部 Meter</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7x80000rvrpdvzn2h7z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Http-权威指南-第六章-代理-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -108,11 +180,34 @@
 </li>
 </ul>
 <p><strong><em>TRACE方法</em></strong> : 通过 HTTP/1.1 的 TRACE 方法，观察请求报文经过了哪些代理，以及这些代理是如何修改报文的<br><strong><em>Max-Forwards</em></strong> : 剩余最大转发次数，限制 TRACE 和 OPTIONS 请求所经过的跳数<br><strong><em>OPTIONS</em></strong> : Allow 首部(服务器或指定资源支持的功能或方法)</p>
-<h4 id="代理服务器的部署"><a href="#代理服务器的部署" class="headerlink" title="代理服务器的部署"></a>代理服务器的部署</h4><h4 id="代理是如何获取流量的？"><a href="#代理是如何获取流量的？" class="headerlink" title="代理是如何获取流量的？"></a>代理是如何获取流量的？</h4><h4 id="客户端的代理设置"><a href="#客户端的代理设置" class="headerlink" title="客户端的代理设置"></a>客户端的代理设置</h4>
+<h4 id="代理服务器的部署"><a href="#代理服务器的部署" class="headerlink" title="代理服务器的部署"></a>代理服务器的部署</h4><ul>
+<li>部署代理服务器的几种方式:<ol>
+<li>出口代理</li>
+<li>访问(入口)代理</li>
+<li>反向代理</li>
+<li>网络交换代理<h4 id="代理是如何获取流量的？"><a href="#代理是如何获取流量的？" class="headerlink" title="代理是如何获取流量的？"></a>代理是如何获取流量的？</h4></li>
+</ol>
+</li>
+<li>四种常见方式可以使客户端流量流向代理:<ol>
+<li>修改客户端: 浏览器手工和自动的代理配置</li>
+<li>修改网络: 网络基础设施对流量进行拦截并导入代理</li>
+<li>修改 DNS 的命名空间: 替代物假扮Web服务器的名字和IP地址</li>
+<li>修改 Web服务器: 让 Web服务器 返回一条 Http重定向 命令(状态码 305)，将客户端请求重定向到一个代理上去<h4 id="客户端的代理设置"><a href="#客户端的代理设置" class="headerlink" title="客户端的代理设置"></a>客户端的代理设置</h4></li>
+</ol>
+</li>
+<li>Web浏览器都允许用户对代理的使用进行配置，包括以下几种方式:<ol>
+<li>手工配置</li>
+<li>预先配置浏览器</li>
+<li>代理的自动配置(Proxy Auto-Configuration, PAC)</li>
+<li>WPAD(Web 代理自动发现协议 Web Proxy Autodiscovery Protocol) 的代理发现</li>
+</ol>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckaz6h30p00045wrphyi13t5n" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7xe0001rvrp8z4qee01" class="article-share-link">Share</a>
       
       
     </footer>
@@ -162,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckaz6h30o00035wrpclsw20lt" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7y50007rvrpgqiobi9s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -212,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckaz6h30r00065wrp767yfv4a" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7y30006rvrpbbuo253m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -262,7 +357,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckaz6h30m00015wrp341l9owk" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7xf0002rvrp9sk3a1rn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -311,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" data-id="ckaz6h30n00025wrp0mnkflzn" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7xh0003rvrphqpo4k0e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -364,7 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/" data-id="ckaz6h30i00005wrpeahvddu4" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7xo0005rvrpg2q153gf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -413,7 +508,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/01/hello-world/" data-id="ckaz6h30q00055wrp5nhl8e8p" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/01/hello-world/" data-id="ckb0eo7xi0004rvrph02ceoj3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -454,6 +549,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/">Http 权威指南 第七章 缓存 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/">Http 权威指南 第六章 代理 笔记</a>
           </li>
         
@@ -467,10 +566,6 @@
         
           <li>
             <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/">Http 权威指南 第三章 HTTP报文 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/">Http 权威指南 第二章 URL与资源 笔记</a>
           </li>
         
       </ul>
