@@ -5,17 +5,17 @@
   
 
   
-  <title>Http 权威指南 第二章 URL与资源 笔记 | 追求真实</title>
+  <title>Http 权威指南 第八章 集成点 笔记 | 追求真实</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="URL与资源绝对URL 与 相对URL 相对URL转换为绝对URL算法 浏览器自动扩展URL: 主机名扩展taobao -&gt; www.taobao.com 历史扩展匹配历史记录      URL字符集特点: 完整性、可移植性通过转义表示法来表示不安全的字符以及扩展URL字符集 方案的世界 HTTPS: https 使用了网景的 SSL (Secure Sockets Layer 安全套接字协">
+  <meta name="description" content="集成点: 网关、隧道及中继概要 :  在 HTTP 和其他协议及应用程序之间起到接口作用的 网关 允许不同类型的 Web 应用程序互相通信的 应用程序接口 允许用户在 HTTP 连接上发送非 HTTP 流量的 隧道 作为一种简化的 HTTP 代理，一次将数据转发一跳的 中继    网关 (gateway)网关的出现是为了解决在 Web 上发布更复杂资源的需求；网关抽象出了一种能够到达资源的方法网关">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Http 权威指南 第二章 URL与资源 笔记">
-<meta property="og:url" content="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="Http 权威指南 第八章 集成点 笔记">
+<meta property="og:url" content="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="追求真实">
-<meta property="og:description" content="URL与资源绝对URL 与 相对URL 相对URL转换为绝对URL算法 浏览器自动扩展URL: 主机名扩展taobao -&gt; www.taobao.com 历史扩展匹配历史记录      URL字符集特点: 完整性、可移植性通过转义表示法来表示不安全的字符以及扩展URL字符集 方案的世界 HTTPS: https 使用了网景的 SSL (Secure Sockets Layer 安全套接字协">
+<meta property="og:description" content="集成点: 网关、隧道及中继概要 :  在 HTTP 和其他协议及应用程序之间起到接口作用的 网关 允许不同类型的 Web 应用程序互相通信的 应用程序接口 允许用户在 HTTP 连接上发送非 HTTP 流量的 隧道 作为一种简化的 HTTP 代理，一次将数据转发一跳的 中继    网关 (gateway)网关的出现是为了解决在 Web 上发布更复杂资源的需求；网关抽象出了一种能够到达资源的方法网关">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-02T06:09:10.000Z">
-<meta property="article:modified_time" content="2020-06-02T09:49:27.281Z">
+<meta property="article:published_time" content="2020-06-04T06:42:24.000Z">
+<meta property="article:modified_time" content="2020-06-04T09:25:47.365Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
   
@@ -70,10 +70,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Http-权威指南-第二章-URL与资源-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Http-权威指南-第八章-集成点-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-02T06:09:10.000Z" itemprop="datePublished">2020-06-02</time>
+    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-04T06:42:24.000Z" itemprop="datePublished">2020-06-04</time>
 </a>
     
   </div>
@@ -84,7 +84,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Http 权威指南 第二章 URL与资源 笔记
+      Http 权威指南 第八章 集成点 笔记
     </h1>
   
 
@@ -92,24 +92,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="URL与资源"><a href="#URL与资源" class="headerlink" title="URL与资源"></a>URL与资源</h2><h4 id="绝对URL-与-相对URL"><a href="#绝对URL-与-相对URL" class="headerlink" title="绝对URL 与 相对URL"></a>绝对URL 与 相对URL</h4><ol>
-<li>相对URL转换为绝对URL算法</li>
-<li>浏览器自动扩展URL:<ul>
-<li>主机名扩展<br>taobao -&gt; <a href="http://www.taobao.com" target="_blank" rel="noopener">www.taobao.com</a></li>
-<li>历史扩展<br>匹配历史记录  </li>
+        <h3 id="集成点-网关、隧道及中继"><a href="#集成点-网关、隧道及中继" class="headerlink" title="集成点: 网关、隧道及中继"></a>集成点: 网关、隧道及中继</h3><p><strong><em>概要</em></strong> :</p>
+<ul>
+<li>在 HTTP 和其他协议及应用程序之间起到接口作用的 <strong><em>网关</em></strong></li>
+<li>允许不同类型的 Web 应用程序互相通信的 <strong><em>应用程序接口</em></strong></li>
+<li>允许用户在 HTTP 连接上发送非 HTTP 流量的 <strong><em>隧道</em></strong></li>
+<li>作为一种简化的 HTTP 代理，一次将数据转发一跳的 <strong><em>中继</em></strong>  </li>
 </ul>
-</li>
-</ol>
-<h4 id="URL字符集"><a href="#URL字符集" class="headerlink" title="URL字符集"></a>URL字符集</h4><p>特点: 完整性、可移植性<br>通过转义表示法来表示不安全的字符以及扩展URL字符集</p>
-<h4 id="方案的世界"><a href="#方案的世界" class="headerlink" title="方案的世界"></a>方案的世界</h4><ol>
-<li>HTTPS: https 使用了网景的 SSL (Secure Sockets Layer 安全套接字协议: 为 Http 的连接提供了端到端的加密机制，默认端口 443) 或 TLS (Transport Layer Security 传输层安全协议)</li>
-<li>RTSP, RTSPU: RTSP URL 是可以通过 实时流传输协议 (Real Time Streaming Protocol) 解析的音视频媒体资源的标识符<br>RTSPU 中的 U 表示使用 UDP 协议获取资源</li>
-</ol>
+<h3 id="网关-gateway"><a href="#网关-gateway" class="headerlink" title="网关 (gateway)"></a>网关 (gateway)</h3><p>网关的出现是为了解决在 Web 上发布更复杂资源的需求；网关抽象出了一种能够到达资源的方法<br><strong><em>网关的描述</em></strong> : &lt;客户端协议&gt;/&lt;服务器端协议&gt;<br><strong><em>服务器端网关</em></strong> : HTTP/*<br><strong><em>客户端网关</em></strong> : */HTTP</p>
+<p><strong><em>CGI</em></strong> : cgi 大概是最古老的一种动态网页技术，本身是一种协议，可以由多种语言实现（CGI程序）</p>
+<h3 id="隧道-Web-tunnel"><a href="#隧道-Web-tunnel" class="headerlink" title="隧道 (Web tunnel)"></a>隧道 (Web tunnel)</h3><p>Web 隧道允许用户通过 HTTP 连接发送非 HTTP 流量，这样可以在 HTTP 上捎带其他协议数据<br><strong><em>SSL 隧道</em></strong></p>
+<h3 id="中继-relay"><a href="#中继-relay" class="headerlink" title="中继 (relay)"></a>中继 (relay)</h3><p>HTTP 中继是没有完全遵循 HTTP 规范的简单 HTTP 代理，中继负责处理 HTTP 中建立连接的部分，然后对字节进行盲转发<br>一下简单盲中继无法正确处理 Connectino 首部，会导致 Keep-alive 连接挂起</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" data-id="ckb0kryd50003d6rpdnoabjf5" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckb0kryd70004d6rp9tcbe06t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -118,19 +116,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Http 权威指南 第三章 HTTP报文 笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Http 权威指南 第一章 笔记</div>
+      <div class="article-nav-title">Http 权威指南 第七章 缓存 笔记</div>
     </a>
   
 </nav>

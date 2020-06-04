@@ -68,6 +68,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Http-权威指南-第八章-集成点-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-04T06:42:24.000Z" itemprop="datePublished">2020-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/">Http 权威指南 第八章 集成点 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="集成点-网关、隧道及中继"><a href="#集成点-网关、隧道及中继" class="headerlink" title="集成点: 网关、隧道及中继"></a>集成点: 网关、隧道及中继</h3><p><strong><em>概要</em></strong> :</p>
+<ul>
+<li>在 HTTP 和其他协议及应用程序之间起到接口作用的 <strong><em>网关</em></strong></li>
+<li>允许不同类型的 Web 应用程序互相通信的 <strong><em>应用程序接口</em></strong></li>
+<li>允许用户在 HTTP 连接上发送非 HTTP 流量的 <strong><em>隧道</em></strong></li>
+<li>作为一种简化的 HTTP 代理，一次将数据转发一跳的 <strong><em>中继</em></strong>  </li>
+</ul>
+<h3 id="网关-gateway"><a href="#网关-gateway" class="headerlink" title="网关 (gateway)"></a>网关 (gateway)</h3><p>网关的出现是为了解决在 Web 上发布更复杂资源的需求；网关抽象出了一种能够到达资源的方法<br><strong><em>网关的描述</em></strong> : &lt;客户端协议&gt;/&lt;服务器端协议&gt;<br><strong><em>服务器端网关</em></strong> : HTTP/*<br><strong><em>客户端网关</em></strong> : */HTTP</p>
+<p><strong><em>CGI</em></strong> : cgi 大概是最古老的一种动态网页技术，本身是一种协议，可以由多种语言实现（CGI程序）</p>
+<h3 id="隧道-Web-tunnel"><a href="#隧道-Web-tunnel" class="headerlink" title="隧道 (Web tunnel)"></a>隧道 (Web tunnel)</h3><p>Web 隧道允许用户通过 HTTP 连接发送非 HTTP 流量，这样可以在 HTTP 上捎带其他协议数据<br><strong><em>SSL 隧道</em></strong></p>
+<h3 id="中继-relay"><a href="#中继-relay" class="headerlink" title="中继 (relay)"></a>中继 (relay)</h3><p>HTTP 中继是没有完全遵循 HTTP 规范的简单 HTTP 代理，中继负责处理 HTTP 中建立连接的部分，然后对字节进行盲转发<br>一下简单盲中继无法正确处理 Connectino 首部，会导致 Keep-alive 连接挂起</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckb0kryd70004d6rp9tcbe06t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Http-权威指南-第七章-缓存-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -130,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7x80000rvrpdvzn2h7z" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" data-id="ckb0kryd10001d6rpch6e2u7t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -207,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7xe0001rvrp8z4qee01" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckb0kryda0006d6rp9q6o0l8p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +304,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7y50007rvrpgqiobi9s" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckb0kryd80005d6rpa3jc6eeg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -307,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7y30006rvrpbbuo253m" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckb0krydc0007d6rpdtpu5uzw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -353,11 +400,12 @@
 </li>
 </ul>
 <h4 id="首部"><a href="#首部" class="headerlink" title="首部"></a>首部</h4><p>首部包括: 通用首部、请求首部(如 Accept)、响应首部(如 Server: Golfe2)、实体首部(如 Content-Type)、扩展首部</p>
+<p><strong><em>逐跳首部</em></strong> : 只适用于单条传输链路，是不会沿着链路传输下去的，比如 Connection</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7xf0002rvrp9sk3a1rn" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckb0kryd30002d6rp40ta8369" class="article-share-link">Share</a>
       
       
     </footer>
@@ -406,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7xh0003rvrphqpo4k0e" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" data-id="ckb0kryd50003d6rpdnoabjf5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -459,7 +507,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/" data-id="ckb0eo7xo0005rvrpg2q153gf" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/" data-id="ckb0krycv0000d6rp0tq2avt2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -508,7 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/01/hello-world/" data-id="ckb0eo7xi0004rvrph02ceoj3" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/01/hello-world/" data-id="ckb0krydd0008d6rpclh4h5hc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -549,6 +597,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/">Http 权威指南 第八章 集成点 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/">Http 权威指南 第七章 缓存 笔记</a>
           </li>
         
@@ -562,10 +614,6 @@
         
           <li>
             <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/">Http 权威指南 第四章 连接管理 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/">Http 权威指南 第三章 HTTP报文 笔记</a>
           </li>
         
       </ul>
