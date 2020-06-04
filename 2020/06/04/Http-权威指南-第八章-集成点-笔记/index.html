@@ -15,7 +15,7 @@
 <meta property="og:description" content="集成点: 网关、隧道及中继概要 :  在 HTTP 和其他协议及应用程序之间起到接口作用的 网关 允许不同类型的 Web 应用程序互相通信的 应用程序接口 允许用户在 HTTP 连接上发送非 HTTP 流量的 隧道 作为一种简化的 HTTP 代理，一次将数据转发一跳的 中继    网关 (gateway)网关的出现是为了解决在 Web 上发布更复杂资源的需求；网关抽象出了一种能够到达资源的方法网关">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-04T06:42:24.000Z">
-<meta property="article:modified_time" content="2020-06-04T09:25:47.365Z">
+<meta property="article:modified_time" content="2020-06-04T09:28:20.335Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
   
@@ -102,12 +102,12 @@
 <h3 id="网关-gateway"><a href="#网关-gateway" class="headerlink" title="网关 (gateway)"></a>网关 (gateway)</h3><p>网关的出现是为了解决在 Web 上发布更复杂资源的需求；网关抽象出了一种能够到达资源的方法<br><strong><em>网关的描述</em></strong> : &lt;客户端协议&gt;/&lt;服务器端协议&gt;<br><strong><em>服务器端网关</em></strong> : HTTP/*<br><strong><em>客户端网关</em></strong> : */HTTP</p>
 <p><strong><em>CGI</em></strong> : cgi 大概是最古老的一种动态网页技术，本身是一种协议，可以由多种语言实现（CGI程序）</p>
 <h3 id="隧道-Web-tunnel"><a href="#隧道-Web-tunnel" class="headerlink" title="隧道 (Web tunnel)"></a>隧道 (Web tunnel)</h3><p>Web 隧道允许用户通过 HTTP 连接发送非 HTTP 流量，这样可以在 HTTP 上捎带其他协议数据<br><strong><em>SSL 隧道</em></strong></p>
-<h3 id="中继-relay"><a href="#中继-relay" class="headerlink" title="中继 (relay)"></a>中继 (relay)</h3><p>HTTP 中继是没有完全遵循 HTTP 规范的简单 HTTP 代理，中继负责处理 HTTP 中建立连接的部分，然后对字节进行盲转发<br>一下简单盲中继无法正确处理 Connectino 首部，会导致 Keep-alive 连接挂起</p>
+<h3 id="中继-relay"><a href="#中继-relay" class="headerlink" title="中继 (relay)"></a>中继 (relay)</h3><p>HTTP 中继是没有完全遵循 HTTP 规范的简单 HTTP 代理，中继负责处理 HTTP 中建立连接的部分，然后对字节进行盲转发<br>一些简单盲中继无法正确处理 Connectino 首部，会导致 Keep-alive 连接挂起</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckb0kryd70004d6rp9tcbe06t" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckb0kvd6s0006isrpc4gx1ec7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -115,6 +115,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Http 权威指南 第九章 Web机器人 笔记
+        
+      </div>
+    </a>
   
   
     <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
@@ -156,6 +165,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/">Http 权威指南 第九章 Web机器人 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/">Http 权威指南 第八章 集成点 笔记</a>
           </li>
         
@@ -169,10 +182,6 @@
         
           <li>
             <a href="/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/">Http 权威指南 第五章 Web服务器 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/">Http 权威指南 第四章 连接管理 笔记</a>
           </li>
         
       </ul>
