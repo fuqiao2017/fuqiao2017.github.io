@@ -99,11 +99,23 @@
 <li>经过代理或网关转发的新连接，导致服务器只看到代理的IP地址 (有些代理会添加扩展的         Client-IP\X-Forwarded-For 首部)</li>
 </ol>
 <h5 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h5><p>Http 内建机制: 通过 WWW-Authenticate 首部和 Authorization 首部向 Web 站点传送用户相关信息(服务器回送 401 Login Required 状态码)<br>缺点: 繁琐，体验极差</p>
-<h5 id="胖URL"><a href="#胖URL" class="headerlink" title="胖URL"></a>胖URL</h5>
+<h5 id="胖URL"><a href="#胖URL" class="headerlink" title="胖URL"></a>胖URL</h5><h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><p>实现持久会话的最好方式</p>
+<ul>
+<li>分类:</li>
+</ul>
+<p><strong><em>会话cookie</em></strong> : 用户退出浏览器即删除<br><strong><em>持久cookie</em></strong> : 存储在硬盘上<br>两者唯一的区别就是过期时间，如果设置了 Discard 参数，或者没有设置 Expires 或 Max-Age 参数来说明扩展的过期时间，这个 cookie 就是一个会话 cookie</p>
+<h4 id="cookie-基本思想"><a href="#cookie-基本思想" class="headerlink" title="cookie 基本思想:"></a>cookie 基本思想:</h4><p>让浏览器积累一组服务器特有的信息，每次访问服务器时都将这些信息提供给它。<br>因为浏览器要负责存储 cookie 信息，所以此系统被称为 <strong><em>客户端侧状态(client-side state)</em></strong></p>
+<h4 id="cookie-规范正式名称-HTTP-状态管理机制-HTTP-state-management-mechanism"><a href="#cookie-规范正式名称-HTTP-状态管理机制-HTTP-state-management-mechanism" class="headerlink" title="cookie 规范正式名称: HTTP 状态管理机制(HTTP state management mechanism)"></a>cookie 规范正式名称: HTTP 状态管理机制(HTTP state management mechanism)</h4><h4 id="cookie-版本"><a href="#cookie-版本" class="headerlink" title="cookie 版本"></a>cookie 版本</h4><ul>
+<li>版本0:<br>Set-Cookie 首部:<br>Cookie 首部: 将所有与 域、路径和安全过滤器匹配的未过期 cookie 都发送，且所有 cookie 都被组合到一个 Cookie 首部中</li>
+<li>版本1:<br>Set-Cookie2 首部: 多了一些可用属性，比如 Discard(说明为会话cookie)、Max-Age(相对秒数)、Port<br>Cookie2 首部: 携带更多的信息</li>
+</ul>
+<h4 id="cookie-与会话跟踪"><a href="#cookie-与会话跟踪" class="headerlink" title="cookie 与会话跟踪"></a>cookie 与会话跟踪</h4><h4 id="cookie-与缓存"><a href="#cookie-与缓存" class="headerlink" title="cookie 与缓存"></a>cookie 与缓存</h4><p>私有的内容不可缓存</p>
+<p>构建用户跟踪: 将持久 cookie 与 IP 地址、Referer 结合可以构建相当精确的用户档案和浏览模式信息</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckb8pzsz00006t8rpdq9pgx98" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckb8zsit70007kprp3s8659nd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -140,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" data-id="ckb8pzsyz0005t8rpgkcn2e44" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" data-id="ckb8zsit80008kprp6d3qaq0c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" data-id="ckb8pzsyu0001t8rp6vfad3ew" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" data-id="ckb8zsit20003kprpfvm4cgfy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -253,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckb8pzsz30008t8rp8wva4z2o" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckb8zsit50006kprp9jeh12f8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" data-id="ckb8pzsz4000at8rp7yq7atpk" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" data-id="ckb8zsit10002kprpg3gt4hl3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -402,7 +414,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckb8pzsyx0003t8rpgiyx7z96" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckb8zsita000bkprp4ch8gcd5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -452,7 +464,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckb8pzsyy0004t8rp5n0u4s91" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckb8zsit40005kprp5s2x5xya" class="article-share-link">Share</a>
       
       
     </footer>
@@ -502,7 +514,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckb8pzsz30009t8rpbnvv2lep" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckb8zsit80009kprp0nuv21x6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -553,7 +565,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckb8pzsyp0000t8rp9ufmgh3j" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckb8zsisz0001kprpb61hfr6s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -602,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" data-id="ckb8pzsz20007t8rpet5a97es" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" data-id="ckb8zsit30004kprpf5qn29n0" class="article-share-link">Share</a>
       
       
     </footer>
