@@ -15,7 +15,7 @@
 <meta property="og:description" content="不可靠的识别，一般爬虫可能使用:Http 首部: From、User-Agent、Referer 客户端IP地址: IP 地址会变化 通过网络地址转换(Network Address Transition NAT)可以隐藏真实的 IP 地址 经过代理或网关转发的新连接，导致服务器只看到代理的IP地址 (有些代理会添加扩展的         Client-IP\X-Forwarded-For 首部)">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-10T02:02:23.000Z">
-<meta property="article:modified_time" content="2020-06-10T06:48:27.790Z">
+<meta property="article:modified_time" content="2020-06-11T05:54:09.146Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
   
@@ -110,12 +110,12 @@
 <li>版本1:<br>Set-Cookie2 首部: 多了一些可用属性，比如 Discard(说明为会话cookie)、Max-Age(相对秒数)、Port<br>Cookie2 首部: 携带更多的信息</li>
 </ul>
 <h4 id="cookie-与会话跟踪"><a href="#cookie-与会话跟踪" class="headerlink" title="cookie 与会话跟踪"></a>cookie 与会话跟踪</h4><h4 id="cookie-与缓存"><a href="#cookie-与缓存" class="headerlink" title="cookie 与缓存"></a>cookie 与缓存</h4><p>私有的内容不可缓存</p>
-<p>构建用户跟踪: 将持久 cookie 与 IP 地址、Referer 结合可以构建相当精确的用户档案和浏览模式信息</p>
+<h4 id="cookie-安全问题"><a href="#cookie-安全问题" class="headerlink" title="cookie 安全问题"></a>cookie 安全问题</h4><p>构建用户跟踪: 将持久 cookie 与 IP 地址、Referer 结合可以构建相当精确的用户档案和浏览模式信息</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckb8zsit70007kprp3s8659nd" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbaha3gq0005qdrp5dit5ls6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -123,6 +123,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Http 权威指南 第十二章 基本认证机制 笔记
+        
+      </div>
+    </a>
   
   
     <a href="/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
@@ -164,6 +173,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十二章 基本认证机制 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十一章 客户端识别与Cookie机制 笔记</a>
           </li>
         
@@ -177,10 +190,6 @@
         
           <li>
             <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/">Http 权威指南 第八章 集成点 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/">Http 权威指南 第七章 缓存 笔记</a>
           </li>
         
       </ul>
