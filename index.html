@@ -70,6 +70,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Http-权威指南-第十三章-摘要认证-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-11T07:51:02.000Z" itemprop="datePublished">2020-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十三章 摘要认证 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>关键词</em></strong> : 摘要函数   MD5   随机数令牌</p>
+<p><strong><em>摘要函数</em></strong> : 摘要是对信息主体的浓缩; 摘要是一种单向函数，用户将无限的输入值转换为有限的浓缩输出值</p>
+<ul>
+<li>摘要认证首部:<br>WWW-Authenticate: Digest<br>realm=”安全域”<br>qop=”算法列表”<br>nonce=”服务器随机串令牌66c5e…”<br>Authorization: Digest<br>username=”用户名”<br>realm=”安全域”<br>qop=”选择的算法”<br>uri=””<br>nonce=”服务器随机串令牌66c5e…”<br>cnonce=”客户端随机令牌7fg62…”<br>response=”e483c9…”<br>Authentication-Info: nextnonce=”下个随机数串”<br><img src="/images/%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81%E9%A6%96%E9%83%A8.jpeg" alt=""></li>
+</ul>
+<p><strong><em>MD5 消息摘要算法</em></strong> : 一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），显示为32个十六进制的字符，每个字符四位</p>
+<h5 id="MD5算法无法防止碰撞攻击，因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途"><a href="#MD5算法无法防止碰撞攻击，因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途" class="headerlink" title="MD5算法无法防止碰撞攻击，因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途"></a>MD5算法无法防止碰撞攻击，因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途</h5><p><strong><em>SHA</em></strong> : Secure Hash Algorithm 安全散列算法<br>目前广泛使用的是 SHA-2 系列算法，2015 年发布 SHA-3</p>
+<h4 id="用随机数防止重放攻击"><a href="#用随机数防止重放攻击" class="headerlink" title="用随机数防止重放攻击"></a>用随机数防止重放攻击</h4><h5 id="摘要认证握手机制"><a href="#摘要认证握手机制" class="headerlink" title="摘要认证握手机制"></a>摘要认证握手机制</h5><p><img src="/images/%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81%E6%8F%A1%E6%89%8B%E6%9C%BA%E5%88%B6.jpeg" alt=""></p>
+<h4 id="预授权"><a href="#预授权" class="headerlink" title="预授权"></a>预授权</h4><ol>
+<li>预先生成下一个随机数<br>Authentication-Info: nextnonce=”下个随机数串”</li>
+<li>受限的随机数重用机制<br>服务器允许随机数重用多少次或多少秒</li>
+<li>同步生成随机数<br>客户端和服务器端根据相同的秘钥(种子)生成相同的随机数序列，(大概就是首部中不包含随机数了，随机数由客户端、服务器端自己生成)</li>
+</ol>
+<h5 id="词典攻击"><a href="#词典攻击" class="headerlink" title="词典攻击"></a>词典攻击</h5><p>对某个事务进行窃听，并对 随机数/响应 对 使用标准的密码猜测程序<br>使用预先制作好的清单</p>
+<p><strong><em>真正安全的事务只有通过 SSL 才能实现</em></strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/" data-id="ckbbl0c7x0006oqrpaehggp5i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Http-权威指南-第十二章-基本认证机制-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -92,22 +143,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong><em>关键词</em></strong> : 基本认证    质询/响应</p>
+        <p><strong><em>关键词</em></strong> : 基本认证(Basic)    质询/响应    重放攻击</p>
 <ul>
 <li>Http 认证形式:</li>
 </ul>
 <p><strong><em>基本认证</em></strong> : basic authentication<br><strong><em>摘要认证</em></strong> : digest authentication<br><strong><em>质询/响应</em></strong> : challenge/response<br>请求 -&gt; 质询 -&gt; (用户名:密码)再次请求 -&gt; 响应<br>状态码: 401<br>WWW-Authenticate: Basic realm 指定一个安全域<br>Authorization: Basic base-64-username:password</p>
 <p><strong><em>Base-64 编码</em></strong> : 将一个8位字节序列划分为一些6位的块，用每个6位的块在一个特殊的由64个字符组成的字母表中选择一个字符</p>
-<p><strong><em>代理认证</em></strong> : proxy authentication 通过代理服务器提供对某组织内部资源的统一访问控制<br>Proxy-Authenticate、Proxy-Authorization、Proxy-Authentication-Info</p>
+<p><strong><em>代理认证</em></strong> : proxy authentication 通过代理服务器提供对某组织内部资源的统一访问控制<br>状态码: 407<br>Proxy-Authenticate、Proxy-Authorization、Proxy-Authentication-Info</p>
 <h5 id="基本认证的安全缺陷"><a href="#基本认证的安全缺陷" class="headerlink" title="基本认证的安全缺陷"></a>基本认证的安全缺陷</h5><ol>
 <li>用户名密码属于“明文”传送</li>
-<li>加密后的信息可以被捕获和利用<br>将基本认证与加密数据传输(比如 SSL)配合使用，会使基本认证更安全</li>
+<li>加密后的信息可以被捕获和利用(重放攻击)<br>安全使用基本认证的唯一方式: 将基本认证与加密数据传输(比如 SSL)配合使用</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbaha3gs0008qdrpaibbh3yl" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbbl0c7y0007oqrp0u0t3jo0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -162,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbaha3gq0005qdrp5dit5ls6" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbbl0c7w0005oqrp6h601toq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -199,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" data-id="ckbaha3h50009qdrpe1k6dqqx" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" data-id="ckbbl0c7z0008oqrp71lr5l8j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" data-id="ckbaha3gg0000qdrpd2e51xc7" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" data-id="ckbbl0c7u0003oqrpeo9u6g7j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -312,7 +363,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckbaha3gr0007qdrpb70fgfgp" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckbbl0c8f000aoqrp2wzoeaqd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -384,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" data-id="ckbaha3gp0004qdrp47iico27" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" data-id="ckbbl0c7s0001oqrpa043a1ag" class="article-share-link">Share</a>
       
       
     </footer>
@@ -461,7 +512,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckbaha3h7000aqdrpd3bq4gi8" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckbbl0c7v0004oqrp0ozh797c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -511,7 +562,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckbaha3go0003qdrp2l4qeojf" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckbbl0c8h000boqrp58blep99" class="article-share-link">Share</a>
       
       
     </footer>
@@ -561,58 +612,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckbaha3hb000cqdrphjn995xd" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Http-权威指南-第三章-HTTP报文-笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-02T07:21:42.000Z" itemprop="datePublished">2020-06-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/">Http 权威指南 第三章 HTTP报文 笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="报文流"><a href="#报文流" class="headerlink" title="报文流"></a>报文流</h4><p>报文（请求报文、响应报文）是流动的，因此有上游、下游，报文流入源端服务器，并流回到客户端</p>
-<h4 id="起始行"><a href="#起始行" class="headerlink" title="起始行"></a>起始行</h4><p>请求报文: 方法 url 版本<br>响应报文: 版本 状态码 原因短语</p>
-<ul>
-<li><h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5>GET/HEAD/POST/PUT/DELETE/TRACE/OPTIONS<br><img src="/images/http%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.jpeg" alt=""></li>
-<li><h5 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h5>分类:<ol>
-<li>100 ~ 101 信息提示</li>
-<li>200 ~ 299 成功</li>
-<li>300 ~ 399 表示资源已经被移走，重定向</li>
-<li>400 ~ 499 表示客户端请求出错了</li>
-<li>500 ~ 599 表示服务器端出错了  </li>
-</ol>
-</li>
-</ul>
-<h4 id="首部"><a href="#首部" class="headerlink" title="首部"></a>首部</h4><p>首部包括: 通用首部、请求首部(如 Accept)、响应首部(如 Server: Golfe2)、实体首部(如 Content-Type)、扩展首部</p>
-<p><strong><em>逐跳首部</em></strong> : 只适用于单条传输链路，是不会沿着链路传输下去的，比如 Connection</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckbaha3gn0002qdrp70mwauzf" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckbbl0c8i000coqrp6qrkhysn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -658,6 +658,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十三章 摘要认证 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十二章 基本认证机制 笔记</a>
           </li>
         
@@ -671,10 +675,6 @@
         
           <li>
             <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/">Http 权威指南 第九章 Web机器人 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/">Http 权威指南 第八章 集成点 笔记</a>
           </li>
         
       </ul>
