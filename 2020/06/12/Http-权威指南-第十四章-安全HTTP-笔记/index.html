@@ -7,17 +7,19 @@
   
   <title>Http 权威指南 第十四章 安全HTTP 笔记 | 追求真实</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关键词 : 对称加密   非对称加密   数字密码   CA 数字加密入门内容 密码: 对文本进行编码，使偷窥者无法识别的算法 秘钥: 改变密码行为的数字化参数 对称秘钥加密系统: 编&#x2F;解码使用相同秘钥的算法 非对称秘钥加密系统: 编&#x2F;解码使用不同秘钥的算法 公开秘钥加密系统:  数字签名: 用来验证报文未被伪造或篡改的校验和 数字证书: 由一个可信的组织验证和签发的识别信息   两种登录方式密码">
+  <meta name="description" content="关键词 : 密码学   对称加密   非对称加密   RSA算法   数字密码   CA 数字加密入门内容 密码: 对文本进行编码，使偷窥者无法识别的算法 秘钥: 改变密码行为的数字化参数 对称秘钥加密系统: 编&#x2F;解码使用相同秘钥的算法 非对称秘钥加密系统: 编&#x2F;解码使用不同秘钥的算法 公开秘钥加密系统:  数字签名: 用来验证报文未被伪造或篡改的校验和 数字证书: 由一个可信的组织验证和签发的识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Http 权威指南 第十四章 安全HTTP 笔记">
 <meta property="og:url" content="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="追求真实">
-<meta property="og:description" content="关键词 : 对称加密   非对称加密   数字密码   CA 数字加密入门内容 密码: 对文本进行编码，使偷窥者无法识别的算法 秘钥: 改变密码行为的数字化参数 对称秘钥加密系统: 编&#x2F;解码使用相同秘钥的算法 非对称秘钥加密系统: 编&#x2F;解码使用不同秘钥的算法 公开秘钥加密系统:  数字签名: 用来验证报文未被伪造或篡改的校验和 数字证书: 由一个可信的组织验证和签发的识别信息   两种登录方式密码">
+<meta property="og:description" content="关键词 : 密码学   对称加密   非对称加密   RSA算法   数字密码   CA 数字加密入门内容 密码: 对文本进行编码，使偷窥者无法识别的算法 秘钥: 改变密码行为的数字化参数 对称秘钥加密系统: 编&#x2F;解码使用相同秘钥的算法 非对称秘钥加密系统: 编&#x2F;解码使用不同秘钥的算法 公开秘钥加密系统:  数字签名: 用来验证报文未被伪造或篡改的校验和 数字证书: 由一个可信的组织验证和签发的识">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fuqiao2017.github.io/images/HTTPS%E5%AE%89%E5%85%A8%E5%B1%82.jpeg">
 <meta property="article:published_time" content="2020-06-12T06:32:10.000Z">
-<meta property="article:modified_time" content="2020-06-14T06:12:46.694Z">
+<meta property="article:modified_time" content="2020-06-14T13:54:34.394Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fuqiao2017.github.io/images/HTTPS%E5%AE%89%E5%85%A8%E5%B1%82.jpeg">
   
     <link rel="alternate" href="/atom.xml" title="追求真实" type="application/atom+xml">
   
@@ -92,7 +94,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong><em>关键词</em></strong> : 对称加密   非对称加密   数字密码   CA</p>
+        <p><strong><em>关键词</em></strong> : 密码学   对称加密   非对称加密   RSA算法   数字密码   CA</p>
 <h4 id="数字加密入门内容"><a href="#数字加密入门内容" class="headerlink" title="数字加密入门内容"></a>数字加密入门内容</h4><ul>
 <li>密码: 对文本进行编码，使偷窥者无法识别的算法</li>
 <li>秘钥: 改变密码行为的数字化参数</li>
@@ -101,6 +103,11 @@
 <li>公开秘钥加密系统: </li>
 <li>数字签名: 用来验证报文未被伪造或篡改的校验和</li>
 <li>数字证书: 由一个可信的组织验证和签发的识别信息 </li>
+</ul>
+<h4 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h4><ul>
+<li>位于安全层只上的 HTTP，这个安全层位于 TCP 之上<br><img src="/images/HTTPS%E5%AE%89%E5%85%A8%E5%B1%82.jpeg" alt=""></li>
+<li><strong><em>安全套接层协议</em></strong>（Secure Sockets Layer  SSL），后继者 <strong><em>传输层安全性协议</em></strong>（Transport Layer Security  TLS）</li>
+<li>网景(NetScape)公司首创</li>
 </ul>
 <h5 id="两种登录方式"><a href="#两种登录方式" class="headerlink" title="两种登录方式"></a>两种登录方式</h5><p><strong><em>密码口令登录</em></strong> :</p>
 <ul>
@@ -123,20 +130,23 @@
 </li>
 </ul>
 <h5 id="公私钥密码对"><a href="#公私钥密码对" class="headerlink" title="公私钥密码对"></a>公私钥密码对</h5><p><strong><em>公钥</em></strong> : 发布公钥<br><strong><em>私钥</em></strong> : 私有保密<br>RSA算法的作用:<br><strong><em>加密</em></strong> : 公钥加密私钥解密<br><strong><em>认证</em></strong> : 私钥加密公钥解密(签名)<br>公钥与私钥使用场景:　<br>(1)私钥用来进行解密和签名，是给自己用的<br>(2)公钥由本人公开，用于加密和验证签名，是给别人用的<br>(3)当该用户发送文件时，用私钥签名，别人用他给的公钥验证签名，可以保证该信息是由他发送的。当该用户接受文件时，别人用他的公钥加密，他用私钥解密，可以保证该信息只能由他接收到</p>
-<h5 id="对称加密和非对称加密"><a href="#对称加密和非对称加密" class="headerlink" title="对称加密和非对称加密"></a>对称加密和非对称加密</h5><ol>
+<h5 id="对称加密和非对称加密"><a href="#对称加密和非对称加密" class="headerlink" title="对称加密和非对称加密"></a>对称加密和非对称加密</h5><p><strong><em>对称密钥加密技术</em></strong> : 编码时使用的密钥值和解码时一样<br><strong><em>非对称秘钥加密</em></strong> : <strong><em>公开秘钥加密技术</em></strong> 是非对称的，为编码和解码使用了不同的秘钥<br><strong><em>混合加密系统和会话密钥</em></strong> : </p>
+<ol>
 <li>通常的做法是将对称加密的密钥进行非对称加密，然后传送给需要它的人</li>
-<li>非对称加密很安全，但是和对称加密比起来，它非常的慢<br>混合使用对称和非对称策略:<br>在两节点间通过便捷的公开秘钥加密技术建立起安全通信，然后用那条安全的通道产生并发送临时的随机对称秘钥，通过更快的对称加密技术对其余的数据进行加密<br>(https 连接只在建立连接时，使用服务器的公钥加密，这个阶段是为了交换一个共享密钥。接下来的过程使用的是对称算法)</li>
+<li>非对称加密很安全，但是和对称加密比起来，它非常的慢<br>混合使用对称和非对称策略:<br>在两节点间通过便捷的公开秘钥加密技术建立起安全通信，然后用那条安全的通道产生并发送临时的随机对称秘钥(Session key 一次性会话密钥)，通过更快的对称加密技术对其余的数据进行加密<br>(https 连接只在建立连接时，使用服务器的公钥加密，这个阶段是为了交换一个共享密钥。接下来的过程使用的是对称算法)</li>
 </ol>
-<h5 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h5><h5 id="签名算法特性"><a href="#签名算法特性" class="headerlink" title="签名算法特性"></a>签名算法特性</h5><ol>
+<h5 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h5><p>用私钥对报文摘要进行签名，这种方式可以验证身份以及保证报文的完整性</p>
+<h5 id="签名算法特性"><a href="#签名算法特性" class="headerlink" title="签名算法特性"></a>签名算法特性</h5><ol>
 <li>确认消息的 <strong><em>完整性</em></strong> : 对比摘要是否相等</li>
 <li>确认消息的发布者 <strong><em>不可否认性</em></strong> : 用私钥签名过的摘要，只能用同对的公钥解码</li>
 <li>确认公钥的发布者 <strong><em>认证</em></strong> :</li>
 </ol>
-
+<p><strong><em>RSA算法</em></strong> :</p>
+<h5 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h5>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckbeoa15500096rrpc59qhnhx" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckbf4rkcf000a40rp8lxk7zpa" class="article-share-link">Share</a>
       
       
     </footer>
