@@ -7,16 +7,18 @@
   
   <title>Http 权威指南 第十四章 安全HTTP 笔记 | 追求真实</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关键词 : 密码学   对称加密   非对称加密   RSA算法   数字密码   CA 数字加密入门内容 密码: 对文本进行编码，使偷窥者无法识别的算法 秘钥: 改变密码行为的数字化参数 对称秘钥加密系统: 编&#x2F;解码使用相同秘钥的算法 非对称秘钥加密系统: 编&#x2F;解码使用不同秘钥的算法 公开秘钥加密系统:  数字签名: 用来验证报文未被伪造或篡改的校验和 数字证书: 由一个可信的组织验证和签发的识">
+  <meta name="description" content="关键词 : 密码学   对称加密   非对称加密   RSA算法   数字密码   CA   OpenSSL 数字加密入门内容 密码: 对文本进行编码，使偷窥者无法识别的算法 秘钥: 改变密码行为的数字化参数 对称秘钥加密系统: 编&#x2F;解码使用相同秘钥的算法 非对称秘钥加密系统: 编&#x2F;解码使用不同秘钥的算法 公开秘钥加密系统:  数字签名: 用来验证报文未被伪造或篡改的校验和 数字证书: 由一个可信">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Http 权威指南 第十四章 安全HTTP 笔记">
 <meta property="og:url" content="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="追求真实">
-<meta property="og:description" content="关键词 : 密码学   对称加密   非对称加密   RSA算法   数字密码   CA 数字加密入门内容 密码: 对文本进行编码，使偷窥者无法识别的算法 秘钥: 改变密码行为的数字化参数 对称秘钥加密系统: 编&#x2F;解码使用相同秘钥的算法 非对称秘钥加密系统: 编&#x2F;解码使用不同秘钥的算法 公开秘钥加密系统:  数字签名: 用来验证报文未被伪造或篡改的校验和 数字证书: 由一个可信的组织验证和签发的识">
+<meta property="og:description" content="关键词 : 密码学   对称加密   非对称加密   RSA算法   数字密码   CA   OpenSSL 数字加密入门内容 密码: 对文本进行编码，使偷窥者无法识别的算法 秘钥: 改变密码行为的数字化参数 对称秘钥加密系统: 编&#x2F;解码使用相同秘钥的算法 非对称秘钥加密系统: 编&#x2F;解码使用不同秘钥的算法 公开秘钥加密系统:  数字签名: 用来验证报文未被伪造或篡改的校验和 数字证书: 由一个可信">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://fuqiao2017.github.io/images/HTTPS%E5%AE%89%E5%85%A8%E5%B1%82.jpeg">
+<meta property="og:image" content="https://fuqiao2017.github.io/images/SSL%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B.jpg">
+<meta property="og:image" content="https://fuqiao2017.github.io/images/ssl-handshake-rsa.png">
 <meta property="article:published_time" content="2020-06-12T06:32:10.000Z">
-<meta property="article:modified_time" content="2020-06-14T13:54:34.394Z">
+<meta property="article:modified_time" content="2020-06-15T04:02:09.486Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://fuqiao2017.github.io/images/HTTPS%E5%AE%89%E5%85%A8%E5%B1%82.jpeg">
@@ -94,7 +96,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong><em>关键词</em></strong> : 密码学   对称加密   非对称加密   RSA算法   数字密码   CA</p>
+        <p><strong><em>关键词</em></strong> : 密码学   对称加密   非对称加密   RSA算法   数字密码   CA   OpenSSL</p>
 <h4 id="数字加密入门内容"><a href="#数字加密入门内容" class="headerlink" title="数字加密入门内容"></a>数字加密入门内容</h4><ul>
 <li>密码: 对文本进行编码，使偷窥者无法识别的算法</li>
 <li>秘钥: 改变密码行为的数字化参数</li>
@@ -142,11 +144,27 @@
 <li>确认公钥的发布者 <strong><em>认证</em></strong> :</li>
 </ol>
 <p><strong><em>RSA算法</em></strong> :</p>
-<h5 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h5>
+<h5 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h5><p>证书的本质就是对公钥施加数字签名<br><strong><em>站点证书的有效性</em></strong> :</p>
+<ul>
+<li>验证证书有效期(起止时间)</li>
+<li>验证证书域名(与浏览器地址栏中域名是否匹配)</li>
+<li>验证证书吊销状态(CRL+OCSP)</li>
+<li>验证证书颁发机构, 如果颁发机构是中间证书, 在验证中间证书的有效期/颁发机构/吊销状态. 一直验证到最后一层证书, 如果最后一层证书是在操作系统或浏览器内置, 那么就是可信的, 否则就是自签名</li>
+</ul>
+<h4 id="SSL-握手"><a href="#SSL-握手" class="headerlink" title="SSL 握手"></a>SSL 握手</h4><ul>
+<li>SSL 是一个二进制协议，流量端口是 443</li>
+<li>如果 SSL 流量和 HTTP 流量都从端口 80 到达，大部分 Web服务器 会将二进制 SSL 流量理解为错误的 HTTP 并关闭连接</li>
+<li>将安全服务进一步整合到 HTTP 层中去就无需使用多个目的端口了<br><img src="/images/SSL%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B.jpg" alt=""><br><img src="/images/ssl-handshake-rsa.png" alt=""></li>
+</ul>
+<h5 id="SSL-握手优化"><a href="#SSL-握手优化" class="headerlink" title="SSL 握手优化"></a>SSL 握手优化</h5><ul>
+<li>session id 复用</li>
+<li>同步的吊销检查可能耗时</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckbf4rkcf000a40rp8lxk7zpa" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckbfz2enr000aanrp1aau9s1x" class="article-share-link">Share</a>
       
       
     </footer>
