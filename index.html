@@ -70,6 +70,90 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-计算机网络-第四章-网络层-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-16T05:59:34.000Z" itemprop="datePublished">2020-06-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第四章 网络层 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>关键词</em></strong> : 唯一前缀   Trie树   PING</p>
+<h5 id="ICMP-的应用举例"><a href="#ICMP-的应用举例" class="headerlink" title="ICMP 的应用举例"></a>ICMP 的应用举例</h5><p><strong><em>PING</em></strong> : 分组网间探测(Packet InterNet Groper) 是 ICMP 的一个重要应用，用来测试两台主机之间的连通性。PING 使用了 ICMP 回送请求与回送回答报文。PING 是应用层直接使用网络层 ICMP 的一个栗子🌰，它没有通过传输层的 TCP 或 UDP。(ping <a href="http://www.xx.com" target="_blank" rel="noopener">www.xx.com</a>)</p>
+<pre class="mermaid">graph LR
+A[方形] -->B(圆角)
+    B --> C{条件a}
+    C -->|a=1| D[结果1]
+    C -->|a=2| E[结果2]
+    F[横向流程图]</pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm22000j02rp8nh588ly" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Promise-实现一个promise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/" class="article-date">
+  <time datetime="2020-06-15T09:24:44.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/">Promise 实现一个promise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Promise-A-规范概要"><a href="#Promise-A-规范概要" class="headerlink" title="Promise/A+ 规范概要"></a>Promise/A+ 规范概要</h4><ol>
+<li>三个状态: pending, fulfilled, rejected</li>
+<li>状态一旦由 pending 改变，就不在变化</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// es5 实现</span></span><br><span class="line"><span class="keyword">const</span> PENDING = <span class="string">'pending'</span></span><br><span class="line"><span class="keyword">const</span> FULFILLED = <span class="string">'fulfilled'</span></span><br><span class="line"><span class="keyword">const</span> REJECTED = <span class="string">'rejected'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyPromise</span>(<span class="params">executor</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span></span><br><span class="line">  <span class="comment">// 状态</span></span><br><span class="line">  self.status = PENDING</span><br><span class="line">  <span class="comment">// value 成功状态的值，js 合法值，包括 undefined, thenable, promise</span></span><br><span class="line">  self.value = <span class="literal">undefined</span></span><br><span class="line">  <span class="comment">// reason 异常状态的原因短语</span></span><br><span class="line">  self.reason = <span class="literal">undefined</span></span><br><span class="line">  <span class="comment">// 两个数组分别保存 then 方法中注册的回调函数</span></span><br><span class="line">  self.onFulfilledCbs = []</span><br><span class="line">  self.onRejectedCbs = []</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">_resolve</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (self.status === PENDING) &#123;</span><br><span class="line">      self.status = FULFILLED</span><br><span class="line">      self.value = value</span><br><span class="line">      <span class="comment">// 依次执行 注册的 onfulfilled 回调函数</span></span><br><span class="line">      <span class="comment">// 如果某个 fulfilled 函数里返回一个 rejected promise 呢？</span></span><br><span class="line">      self.onFulfilledCbs.forEach(<span class="function"><span class="params">callback</span> =&gt;</span> &#123;</span><br><span class="line">        callback(self.value)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">_reject</span>(<span class="params">reason</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (self.status === PENDING) &#123;</span><br><span class="line">      self.status = REJECTED</span><br><span class="line">      self.reason = reason</span><br><span class="line">      <span class="comment">// 依次执行 注册的 onrejected 回调函数</span></span><br><span class="line">      self.onRejectedCbs.forEach(<span class="function"><span class="params">callback</span> =&gt;</span> &#123;</span><br><span class="line">        callback(self.reason)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    executor(_resolve, _reject)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    _reject(err)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MyPromise.prototype = &#123;</span><br><span class="line">  <span class="keyword">constructor</span>: MyPromise,</span><br><span class="line">  // then 方法参数期望函数，如果不是，则 ignore 参数并接受上一步 promise 的值</span><br><span class="line">  then: function (onFulfilled, onRejected) &#123;</span><br><span class="line">    <span class="keyword">var</span> realOnFulfilled = onFulfilled</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> realOnFulfilled !== <span class="string">'function'</span>) &#123;</span><br><span class="line">      realOnFulfilled = <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> realOnRejected = onRejected</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> realOnRejected !== <span class="string">'function'</span>) &#123;</span><br><span class="line">      realOnRejected = <span class="function"><span class="keyword">function</span> (<span class="params">reaon</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> reason</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果状态不是 pending，执行对应状态的回调</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.status === FULFILLED) &#123;</span><br><span class="line">      realOnFulfilled(<span class="keyword">this</span>.value)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.status === REJECTED) &#123;</span><br><span class="line">      realOnRejected(<span class="keyword">this</span>.reason)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.status === PENDING) &#123;</span><br><span class="line">      <span class="keyword">this</span>.onFulfilledCbs.push(realOnFulfilled)</span><br><span class="line">      <span class="keyword">this</span>.onRejectedCbs.push(realOnRejected)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/" data-id="ckbk8jm20000f02rp00ub98pg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Promise-抽象异步处理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" class="article-date">
@@ -123,16 +207,18 @@
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 题目二</span></span><br><span class="line"><span class="keyword">const</span> promise = <span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// .then 或 .catch 返回的值不能是 promise 本身，否则会造成死循环</span></span><br><span class="line">    <span class="keyword">return</span> promise</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">// TypeError: Chaining cycle detected for promise #&lt;Promise&gt;</span></span><br><span class="line">promise.catch(<span class="built_in">console</span>.error)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 题目三</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line">  .then(<span class="number">2</span>)</span><br><span class="line">  .then(<span class="built_in">Promise</span>.resolve(<span class="number">3</span>))</span><br><span class="line">  .then(<span class="built_in">console</span>.log)</span><br><span class="line">  <span class="comment">// .then 或者 .catch 的参数期望是函数，传入非函数则会发生值穿透</span></span><br><span class="line">  <span class="comment">// 结果 1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 题目三</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line">  .then(<span class="number">2</span>)</span><br><span class="line">  .then(<span class="built_in">Promise</span>.resolve(<span class="number">3</span>)) <span class="comment">// 这里如果是 Promise.reject('errored')，因为不是函数，依然会被忽略，但是会产生一个不能被捕获的error</span></span><br><span class="line">  .then(<span class="built_in">console</span>.log)</span><br><span class="line">  <span class="comment">// .then 或者 .catch 的参数期望是函数，传入非函数则会发生值穿透</span></span><br><span class="line">  <span class="comment">// If onFulfilled is not a function and promise1 is fulfilled, promise2 must be fulfilled with the same value as promise1</span></span><br><span class="line">  <span class="comment">// 结果 1</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 题目四</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> <span class="title">success</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>)</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> <span class="title">fail1</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'fail1: '</span>, e)</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span> <span class="title">fail2</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'fail2: '</span>, e)</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> <span class="title">success1</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>)</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> <span class="title">fail1</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'fail1: '</span>, e)</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> <span class="title">success2</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> <span class="title">fail2</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'fail2: '</span>, e)</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="comment">// 执行结果都是 fail2: Error</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 题目五</span></span><br><span class="line">process.nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'nextTick'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'then'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">setImmediate(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'setImmediate'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'end'</span>)</span><br><span class="line"><span class="comment">// 结果 主线程宏任务 -&gt; 微任务(优先执行 process.nextTick) -&gt; 下一个宏任务(优先执行 setImmediate)</span></span><br><span class="line"><span class="comment">// end</span></span><br><span class="line"><span class="comment">// nextTick</span></span><br><span class="line"><span class="comment">// then</span></span><br><span class="line"><span class="comment">// setImmediate</span></span><br></pre></td></tr></table></figure>
 
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// rejected 状态如果通过 catch 方法捕获后(或者接着 then 方法的第二个参数)，状态会变为 resolved</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="string">'errored'</span>)</span><br><span class="line">&#125;) <span class="comment">// 一个 promise rejected: errored</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="string">'errored'</span>)</span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;) <span class="comment">// 一个 promise resolved: undefined</span></span><br><span class="line"><span class="comment">// 等价</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="string">'errored'</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;) <span class="comment">// 一个 promise resolved: undefined</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckbga0zhz000fc0rp5i488mcf" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckbk8jm20000g02rp7v0pguw1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,7 +269,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" data-id="ckbga0zhh0000c0rpbm9aet6q" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" data-id="ckbk8jm1g000002rp0tfsgccv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -218,11 +304,12 @@
         <p><strong><em>本篇搜集前端学习相关的关键词，每学习一个点就在这里增加一个关键词</em></strong></p>
 <hr>
 <h4 id="No-1-EventLoop-并发模型与事件循环"><a href="#No-1-EventLoop-并发模型与事件循环" class="headerlink" title="No.1  EventLoop - 并发模型与事件循环"></a>No.1  EventLoop - 并发模型与事件循环</h4><h4 id="No-2-Promise-抽象异步处理"><a href="#No-2-Promise-抽象异步处理" class="headerlink" title="No.2  Promise - 抽象异步处理"></a>No.2  Promise - 抽象异步处理</h4><p>Dom 渲染原理及渲染速度性能优化</p>
+<p>// 模板层、样式层、交互层、业务逻辑层</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/" data-id="ckbga0zi1000hc0rp9zxbhn5k" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/" data-id="ckbk8jm21000i02rp3evx4rt6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -322,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zhw000cc0rp1e8d28bf" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1w000c02rpahcz6ux5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -374,7 +461,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zhu000ac0rp993ug5jw" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1t000a02rp0ltnhbge" class="article-share-link">Share</a>
       
       
     </footer>
@@ -421,7 +508,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zhv000bc0rpb0bcby1b" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1u000b02rp77vdf8xl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -499,7 +586,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zhu0009c0rp0oas2grl" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1r000802rp6wds3yad" class="article-share-link">Share</a>
       
       
     </footer>
@@ -536,120 +623,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zhx000dc0rpel5l4msj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Http-权威指南-第九章-Web机器人-笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-04T09:27:40.000Z" itemprop="datePublished">2020-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/">Http 权威指南 第九章 Web机器人 笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong><em>关键词</em></strong> : 爬虫  根集  环路  URL别名  机器人规范  搜索引擎</p>
-<p><strong><em>根集(root set)</em></strong> : 爬虫开始访问的 URL 初始集合<br><strong><em>环路(cycle)</em></strong> : 爬虫陷入一种循环中<br>类型: 链接指向形成的环路、文件系统连接环路、动态虚拟Web空间<br><strong><em>避免循环和重复的技术</em></strong> :</p>
-<ol>
-<li>规范化URL</li>
-<li>广度优先的爬行</li>
-<li>节流: 限制重复页面总数和对同一服务器访问的总数</li>
-<li>限制 URL 的大小: 拒绝爬行超过一定长度的URL</li>
-<li>URL/站点黑名单: 有导致爬虫环路和陷阱的站点</li>
-<li>模式检测</li>
-<li>内容指纹</li>
-<li>人工监视: 诊断和日志功能</li>
-</ol>
-<h4 id="爬虫管理-URL-的技术"><a href="#爬虫管理-URL-的技术" class="headerlink" title="爬虫管理 URL 的技术"></a>爬虫管理 URL 的技术</h4><ol>
-<li>数和散列表: 采用加速 URL 查找的数据结构</li>
-<li>有损的存在位图: 有损数据结构，对存在位置位</li>
-<li>检查点: 将已访问的 URL 保存到备份到硬盘上</li>
-<li>分类: 爬虫集群，协调工作</li>
-</ol>
-<h4 id="URL-别名"><a href="#URL-别名" class="headerlink" title="URL 别名"></a>URL 别名</h4><p>看起来不一样的URL，实际指向同一资源</p>
-<ul>
-<li>消除别名:<ol>
-<li>规范化 URL</li>
-<li>通过了解 Web 服务器的部分配置（服务器是否大小写无关、当前目录下的索引页面配置、主机名和IP地址、虚拟主机）</li>
-</ol>
-</li>
-</ul>
-<h4 id="机器人的-HTTP"><a href="#机器人的-HTTP" class="headerlink" title="机器人的 HTTP"></a>机器人的 HTTP</h4><p><strong><em>识别请求首部</em></strong> :<br>User-Agent: 发起请求的爬虫名字<br>From: 爬虫管理者的 Email 地址<br>Accept: 告诉服务器爬虫想获取的内容<br>Referer: 提供了当前 URL 的 URL<br>因为要支持虚拟主机，所以爬虫要支持 Host 首部</p>
-<h4 id="拒绝爬虫访问"><a href="#拒绝爬虫访问" class="headerlink" title="拒绝爬虫访问"></a>拒绝爬虫访问</h4><p>每个 docroot 都有一个 robots.txt 描述爬虫访问规则文件<br><strong><em>robots 文件格式</em></strong><br>User-Agent:<br>Disallow:<br>Allow:<br><strong><em>HTML 的 robot-control 元标签</em></strong><br>&lt; meta name=”robots” content=”index,follow”&gt;<br>content: noindex, nofollow, index, follow, noarchive, all, none  </p>
-<p><strong><em>搜索引擎的 meta 标签</em></strong><br>&lt; meta name=”description” content=””&gt;<br>&lt; meta name=”keywords” content=””&gt;<br>&lt; meta name=”revisit-after” content=””&gt;</p>
-<h4 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a>搜索引擎</h4><p><strong><em>全文索引</em></strong> :<br>全文索引就是一个数据库<br><strong><em>对结果排序，并提供查询结果</em></strong><br>相关性排名</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zhr0005c0rp1gyicu95" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Http-权威指南-第八章-集成点-笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-04T06:42:24.000Z" itemprop="datePublished">2020-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/">Http 权威指南 第八章 集成点 笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="集成点-网关、隧道及中继"><a href="#集成点-网关、隧道及中继" class="headerlink" title="集成点: 网关、隧道及中继"></a>集成点: 网关、隧道及中继</h3><p><strong><em>概要</em></strong> :</p>
-<ul>
-<li>在 HTTP 和其他协议及应用程序之间起到接口作用的 <strong><em>网关</em></strong></li>
-<li>允许不同类型的 Web 应用程序互相通信的 <strong><em>应用程序接口</em></strong></li>
-<li>允许用户在 HTTP 连接上发送非 HTTP 流量的 <strong><em>隧道</em></strong></li>
-<li>作为一种简化的 HTTP 代理，一次将数据转发一跳的 <strong><em>中继</em></strong>  </li>
-</ul>
-<h3 id="网关-gateway"><a href="#网关-gateway" class="headerlink" title="网关 (gateway)"></a>网关 (gateway)</h3><p>网关的出现是为了解决在 Web 上发布更复杂资源的需求；网关抽象出了一种能够到达资源的方法<br><strong><em>网关的描述</em></strong> : &lt;客户端协议&gt;/&lt;服务器端协议&gt;<br><strong><em>服务器端网关</em></strong> : HTTP/*<br><strong><em>客户端网关</em></strong> : */HTTP</p>
-<p><strong><em>CGI</em></strong> : cgi 大概是最古老的一种动态网页技术，本身是一种协议，可以由多种语言实现（CGI程序）</p>
-<h3 id="隧道-Web-tunnel"><a href="#隧道-Web-tunnel" class="headerlink" title="隧道 (Web tunnel)"></a>隧道 (Web tunnel)</h3><p>Web 隧道允许用户通过 HTTP 连接发送非 HTTP 流量，这样可以在 HTTP 上捎带其他协议数据<br><strong><em>SSL 隧道</em></strong></p>
-<h3 id="中继-relay"><a href="#中继-relay" class="headerlink" title="中继 (relay)"></a>中继 (relay)</h3><p>HTTP 中继是没有完全遵循 HTTP 规范的简单 HTTP 代理，中继负责处理 HTTP 中建立连接的部分，然后对字节进行盲转发<br>一些简单盲中继无法正确处理 Connectino 首部，会导致 Keep-alive 连接挂起</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zhs0007c0rpd3sy4p4n" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1y000d02rp0wx7g6qy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -695,6 +669,14 @@
       <ul>
         
           <li>
+            <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第四章 网络层 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/">Promise 实现一个promise</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/">Promise 抽象异步处理</a>
           </li>
         
@@ -704,14 +686,6 @@
         
           <li>
             <a href="/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/">前端学习关键词及简介</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十四章 安全HTTP 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十三章 摘要认证 笔记</a>
           </li>
         
       </ul>
@@ -756,6 +730,14 @@
 <script src="/js/script.js"></script>
 
 
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
 
   </div>

@@ -70,6 +70,119 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Http-权威指南-第九章-Web机器人-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-04T09:27:40.000Z" itemprop="datePublished">2020-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/">Http 权威指南 第九章 Web机器人 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>关键词</em></strong> : 爬虫  根集  环路  URL别名  机器人规范  搜索引擎</p>
+<p><strong><em>根集(root set)</em></strong> : 爬虫开始访问的 URL 初始集合<br><strong><em>环路(cycle)</em></strong> : 爬虫陷入一种循环中<br>类型: 链接指向形成的环路、文件系统连接环路、动态虚拟Web空间<br><strong><em>避免循环和重复的技术</em></strong> :</p>
+<ol>
+<li>规范化URL</li>
+<li>广度优先的爬行</li>
+<li>节流: 限制重复页面总数和对同一服务器访问的总数</li>
+<li>限制 URL 的大小: 拒绝爬行超过一定长度的URL</li>
+<li>URL/站点黑名单: 有导致爬虫环路和陷阱的站点</li>
+<li>模式检测</li>
+<li>内容指纹</li>
+<li>人工监视: 诊断和日志功能</li>
+</ol>
+<h4 id="爬虫管理-URL-的技术"><a href="#爬虫管理-URL-的技术" class="headerlink" title="爬虫管理 URL 的技术"></a>爬虫管理 URL 的技术</h4><ol>
+<li>数和散列表: 采用加速 URL 查找的数据结构</li>
+<li>有损的存在位图: 有损数据结构，对存在位置位</li>
+<li>检查点: 将已访问的 URL 保存到备份到硬盘上</li>
+<li>分类: 爬虫集群，协调工作</li>
+</ol>
+<h4 id="URL-别名"><a href="#URL-别名" class="headerlink" title="URL 别名"></a>URL 别名</h4><p>看起来不一样的URL，实际指向同一资源</p>
+<ul>
+<li>消除别名:<ol>
+<li>规范化 URL</li>
+<li>通过了解 Web 服务器的部分配置（服务器是否大小写无关、当前目录下的索引页面配置、主机名和IP地址、虚拟主机）</li>
+</ol>
+</li>
+</ul>
+<h4 id="机器人的-HTTP"><a href="#机器人的-HTTP" class="headerlink" title="机器人的 HTTP"></a>机器人的 HTTP</h4><p><strong><em>识别请求首部</em></strong> :<br>User-Agent: 发起请求的爬虫名字<br>From: 爬虫管理者的 Email 地址<br>Accept: 告诉服务器爬虫想获取的内容<br>Referer: 提供了当前 URL 的 URL<br>因为要支持虚拟主机，所以爬虫要支持 Host 首部</p>
+<h4 id="拒绝爬虫访问"><a href="#拒绝爬虫访问" class="headerlink" title="拒绝爬虫访问"></a>拒绝爬虫访问</h4><p>每个 docroot 都有一个 robots.txt 描述爬虫访问规则文件<br><strong><em>robots 文件格式</em></strong><br>User-Agent:<br>Disallow:<br>Allow:<br><strong><em>HTML 的 robot-control 元标签</em></strong><br>&lt; meta name=”robots” content=”index,follow”&gt;<br>content: noindex, nofollow, index, follow, noarchive, all, none  </p>
+<p><strong><em>搜索引擎的 meta 标签</em></strong><br>&lt; meta name=”description” content=””&gt;<br>&lt; meta name=”keywords” content=””&gt;<br>&lt; meta name=”revisit-after” content=””&gt;</p>
+<h4 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a>搜索引擎</h4><p><strong><em>全文索引</em></strong> :<br>全文索引就是一个数据库<br><strong><em>对结果排序，并提供查询结果</em></strong><br>相关性排名</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1o000402rp57pzaqkk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Http-权威指南-第八章-集成点-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-04T06:42:24.000Z" itemprop="datePublished">2020-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/">Http 权威指南 第八章 集成点 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="集成点-网关、隧道及中继"><a href="#集成点-网关、隧道及中继" class="headerlink" title="集成点: 网关、隧道及中继"></a>集成点: 网关、隧道及中继</h3><p><strong><em>概要</em></strong> :</p>
+<ul>
+<li>在 HTTP 和其他协议及应用程序之间起到接口作用的 <strong><em>网关</em></strong></li>
+<li>允许不同类型的 Web 应用程序互相通信的 <strong><em>应用程序接口</em></strong></li>
+<li>允许用户在 HTTP 连接上发送非 HTTP 流量的 <strong><em>隧道</em></strong></li>
+<li>作为一种简化的 HTTP 代理，一次将数据转发一跳的 <strong><em>中继</em></strong>  </li>
+</ul>
+<h3 id="网关-gateway"><a href="#网关-gateway" class="headerlink" title="网关 (gateway)"></a>网关 (gateway)</h3><p>网关的出现是为了解决在 Web 上发布更复杂资源的需求；网关抽象出了一种能够到达资源的方法<br><strong><em>网关的描述</em></strong> : &lt;客户端协议&gt;/&lt;服务器端协议&gt;<br><strong><em>服务器端网关</em></strong> : HTTP/*<br><strong><em>客户端网关</em></strong> : */HTTP</p>
+<p><strong><em>CGI</em></strong> : cgi 大概是最古老的一种动态网页技术，本身是一种协议，可以由多种语言实现（CGI程序）</p>
+<h3 id="隧道-Web-tunnel"><a href="#隧道-Web-tunnel" class="headerlink" title="隧道 (Web tunnel)"></a>隧道 (Web tunnel)</h3><p>Web 隧道允许用户通过 HTTP 连接发送非 HTTP 流量，这样可以在 HTTP 上捎带其他协议数据<br><strong><em>SSL 隧道</em></strong></p>
+<h3 id="中继-relay"><a href="#中继-relay" class="headerlink" title="中继 (relay)"></a>中继 (relay)</h3><p>HTTP 中继是没有完全遵循 HTTP 规范的简单 HTTP 代理，中继负责处理 HTTP 中建立连接的部分，然后对字节进行盲转发<br>一些简单盲中继无法正确处理 Connectino 首部，会导致 Keep-alive 连接挂起</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1r000702rphwi8985k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Http-权威指南-第七章-缓存-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -132,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zhp0002c0rpb1v8hj8e" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1m000202rp670l7893" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zht0008c0rp4yezd4ax" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1s000902rpbs4b8xy1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -259,7 +372,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zhs0006c0rphpyp8pkm" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1q000602rphjgo1ulg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -309,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zhy000ec0rp7f7x0ku0" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1z000e02rp2gsy9oe8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -360,7 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zhq0003c0rphn84977f" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1n000302rpalc2cmtb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -409,7 +522,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zhq0004c0rp6vgw6sfa" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1p000502rp4tglhvbp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -462,7 +575,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/" data-id="ckbga0zhn0001c0rpax210i6v" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/" data-id="ckbk8jm1l000102rpcb23amyz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -499,7 +612,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/01/%E5%A6%82%E5%9B%BE/" data-id="ckbga0zi0000gc0rp3ejw0wkf" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/01/%E5%A6%82%E5%9B%BE/" data-id="ckbk8jm21000h02rp461yd3xb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -545,6 +658,14 @@
       <ul>
         
           <li>
+            <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第四章 网络层 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/">Promise 实现一个promise</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/">Promise 抽象异步处理</a>
           </li>
         
@@ -554,14 +675,6 @@
         
           <li>
             <a href="/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/">前端学习关键词及简介</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十四章 安全HTTP 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十三章 摘要认证 笔记</a>
           </li>
         
       </ul>
@@ -606,6 +719,14 @@
 <script src="/js/script.js"></script>
 
 
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
 
   </div>

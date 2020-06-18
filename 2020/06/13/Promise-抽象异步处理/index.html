@@ -15,7 +15,7 @@
 <meta property="og:description" content="三个状态 : 状态不可逆pending: 初始状态fulfilled: 成功状态rejected: 失败状态 相关的问题:  了解 Promise 吗？Promise 是异步编程的一种解决方案，比传统的异步解决方案 回调函数 和 事件 更合理、更强大。现已被 ES6 纳入进规范中。 Promise 解决的痛点是什么？123456789step1(function (value1) &amp;#123;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-13T01:28:09.000Z">
-<meta property="article:modified_time" content="2020-06-15T07:50:21.825Z">
+<meta property="article:modified_time" content="2020-06-16T09:53:29.514Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
   
@@ -123,16 +123,18 @@
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 题目二</span></span><br><span class="line"><span class="keyword">const</span> promise = <span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// .then 或 .catch 返回的值不能是 promise 本身，否则会造成死循环</span></span><br><span class="line">    <span class="keyword">return</span> promise</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">// TypeError: Chaining cycle detected for promise #&lt;Promise&gt;</span></span><br><span class="line">promise.catch(<span class="built_in">console</span>.error)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 题目三</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line">  .then(<span class="number">2</span>)</span><br><span class="line">  .then(<span class="built_in">Promise</span>.resolve(<span class="number">3</span>))</span><br><span class="line">  .then(<span class="built_in">console</span>.log)</span><br><span class="line">  <span class="comment">// .then 或者 .catch 的参数期望是函数，传入非函数则会发生值穿透</span></span><br><span class="line">  <span class="comment">// 结果 1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 题目三</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line">  .then(<span class="number">2</span>)</span><br><span class="line">  .then(<span class="built_in">Promise</span>.resolve(<span class="number">3</span>)) <span class="comment">// 这里如果是 Promise.reject('errored')，因为不是函数，依然会被忽略，但是会产生一个不能被捕获的error</span></span><br><span class="line">  .then(<span class="built_in">console</span>.log)</span><br><span class="line">  <span class="comment">// .then 或者 .catch 的参数期望是函数，传入非函数则会发生值穿透</span></span><br><span class="line">  <span class="comment">// If onFulfilled is not a function and promise1 is fulfilled, promise2 must be fulfilled with the same value as promise1</span></span><br><span class="line">  <span class="comment">// 结果 1</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 题目四</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> <span class="title">success</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>)</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> <span class="title">fail1</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'fail1: '</span>, e)</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span> <span class="title">fail2</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'fail2: '</span>, e)</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> <span class="title">success1</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>)</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> <span class="title">fail1</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'fail1: '</span>, e)</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> <span class="title">success2</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> <span class="title">fail2</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'fail2: '</span>, e)</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="comment">// 执行结果都是 fail2: Error</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 题目五</span></span><br><span class="line">process.nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'nextTick'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'then'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">setImmediate(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'setImmediate'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'end'</span>)</span><br><span class="line"><span class="comment">// 结果 主线程宏任务 -&gt; 微任务(优先执行 process.nextTick) -&gt; 下一个宏任务(优先执行 setImmediate)</span></span><br><span class="line"><span class="comment">// end</span></span><br><span class="line"><span class="comment">// nextTick</span></span><br><span class="line"><span class="comment">// then</span></span><br><span class="line"><span class="comment">// setImmediate</span></span><br></pre></td></tr></table></figure>
 
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// rejected 状态如果通过 catch 方法捕获后(或者接着 then 方法的第二个参数)，状态会变为 resolved</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="string">'errored'</span>)</span><br><span class="line">&#125;) <span class="comment">// 一个 promise rejected: errored</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="string">'errored'</span>)</span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;) <span class="comment">// 一个 promise resolved: undefined</span></span><br><span class="line"><span class="comment">// 等价</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="string">'errored'</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;) <span class="comment">// 一个 promise resolved: undefined</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckbga0zhz000fc0rp5i488mcf" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckbk8jm20000g02rp7v0pguw1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -140,6 +142,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Promise 实现一个promise
+        
+      </div>
+    </a>
   
   
     <a href="/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" id="article-nav-older" class="article-nav-link-wrap">
@@ -181,6 +192,14 @@
       <ul>
         
           <li>
+            <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第四章 网络层 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/">Promise 实现一个promise</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/">Promise 抽象异步处理</a>
           </li>
         
@@ -190,14 +209,6 @@
         
           <li>
             <a href="/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/">前端学习关键词及简介</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十四章 安全HTTP 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十三章 摘要认证 笔记</a>
           </li>
         
       </ul>
@@ -242,6 +253,14 @@
 <script src="/js/script.js"></script>
 
 
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
 
   </div>
