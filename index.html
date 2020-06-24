@@ -70,6 +70,79 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-计算机网络-第五章-运输层-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-22T09:04:36.000Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第五章 运输层 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>关键词</em></strong> : </p>
+<h5 id="重要概念"><a href="#重要概念" class="headerlink" title="重要概念"></a>重要概念</h5><ol>
+<li>运输层为相互通信的应用进程提供逻辑通信</li>
+<li>端口和套接字的意义</li>
+<li><strong><em>无连接的 UDP</em></strong> 的特点</li>
+<li><strong><em>面向连接的 TCP</em></strong> 的特点</li>
+<li>在不可靠的网络上实现可靠传输的工作原理，停止等待协议和 ARQ 协议</li>
+<li>TCP 的滑动窗口、流量控制、拥塞控制和连接管理</li>
+</ol>
+<h4 id="运输层协议概述"><a href="#运输层协议概述" class="headerlink" title="运输层协议概述"></a>运输层协议概述</h4><p><strong><em>复用(multiplexing)</em></strong> : 不同应用进程可以使用同一个运输层协议传送数据<br><strong><em>分用(demultiplexing)</em></strong> : 运输层可以把数据正确交付不同应用进程<br><strong><em>逻辑通信</em></strong> : 运输层到运输层的逻辑平行传送数据<br><strong><em>屏蔽</em></strong> : 屏蔽了下面网络的核心细节<br><strong><em>差错检查</em></strong> : 运输层对收到的整个报文进行差错检测<br><strong><em>运输协议数据单元(TPDU)</em></strong> : Transport Protocol Data Unit 两个对等运输实体在通信时传送的数据单位，在 TCP/IP 体系中，分别称为 <strong><em>TCP 报文段(segment)</em></strong> 和 <strong><em>UDP 用户数据报</em></strong></p>
+<h5 id="运输层端口"><a href="#运输层端口" class="headerlink" title="运输层端口"></a>运输层端口</h5><p><strong><em>协议端口号(protocol port number)</em></strong> : 在协议栈层间的抽象的协议端口，是应用层的各种协议进程与运输实体进程间交互的一种地址</p>
+<ol>
+<li>TCP/IP 的运输层用一个 <strong><em>16位</em></strong> 端口号来标志一个端口</li>
+<li>端口号只具有本地意义</li>
+</ol>
+<p><strong><em>熟知端口号</em></strong> : 也称 <strong><em>系统端口号</em></strong>，数值 0<del>1023<br><img src="/images/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%86%9F%E7%9F%A5%E7%AB%AF%E5%8F%A3%E5%8F%B7.jpeg" alt=""><br><strong><em>登记端口号</em></strong> : 数值 1024</del>49151<br><strong><em>短暂端口号</em></strong> : 数值 49152~65535</p>
+<h4 id="UDP-用户数据报协议"><a href="#UDP-用户数据报协议" class="headerlink" title="UDP 用户数据报协议"></a>UDP 用户数据报协议</h4><p>UDP : User Datagram Protocol<br><strong><em>特点</em></strong> :</p>
+<ol>
+<li>无连接，传送数据之前不需要建立连接，收到数据不需要给出确认</li>
+<li>不提供可靠交付(只尽最大努力交付)，某些情况下是一种有效的工作方式</li>
+<li>UDP 是面向报文的(即不合并也不拆分)</li>
+<li>UDP 没有拥塞控制: 源主机以恒定的速率发送数据，允许丢失数据，但不允许有太大的时延，如 IP 电话、实时视频会议</li>
+<li>UDP 支持一对一、一对多、多对一、多对多的交互通信</li>
+<li>UDP 的首部只有 8 个字节</li>
+</ol>
+<ul>
+<li>UDP 首部<br><img src="/images/UDP%E9%A6%96%E9%83%A8%E5%92%8C%E4%BC%AA%E9%A6%96%E9%83%A8.jpeg" alt=""></li>
+</ul>
+<p><strong>UDP 伪首部</strong> 是临时添加用于计算校验和的，即不向下传送也不向上提交<br><img src="/images/%E8%AE%A1%E7%AE%97UDP%E6%A0%A1%E9%AA%8C%E5%92%8C%E6%A0%97%E5%AD%90.jpeg" alt=""></p>
+<h4 id="TCP-传输控制协议"><a href="#TCP-传输控制协议" class="headerlink" title="TCP 传输控制协议"></a>TCP 传输控制协议</h4><p>TCP : Transmission Control Protocol<br><strong><em>特点</em></strong> :</p>
+<ol>
+<li>TCP 提供面向连接的服务，传送数据之前先建立连接，传送结束后释放连接<br>连接是 <strong>虚连接</strong> <strong>逻辑连接</strong></li>
+<li>TCP 不提供广播或多播服务</li>
+<li>TCP 提供可靠的、面向连接的服务，因此会增加开销</li>
+</ol>
+<p><img src="/images/%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE%E4%BD%BF%E7%94%A8%E7%9A%84%E8%BF%90%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%AF%B9%E7%85%A7.jpeg" alt=""></p>
+<p>运输层协议特点<br>进程间的通信<br>端口<br>TCP UDP<br>可靠传输的工作原理<br>TCP 的三个重要问题: 滑动窗口、流量控制、拥塞控制机制</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckbsp7aye000g66rphzcf6jj4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-计算机网络-第四章-网络层-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -119,7 +192,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckbq9vx2p000hcfrp5ker5mvm" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckbsp7ayf000i66rp738v6n34" class="article-share-link">Share</a>
       
       
     </footer>
@@ -160,7 +233,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/" data-id="ckbq9vx2m000ecfrp2jqo2gcx" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/" data-id="ckbsp7ayc000d66rp8rdh3rj5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -239,7 +312,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckbq9vx2l000ccfrp301cc75i" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckbsp7ayx000j66rpb3q1ayjm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +363,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" data-id="ckbq9vx3c000jcfrp7qa74z76" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" data-id="ckbsp7ayf000h66rp2sbt1li9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -330,7 +403,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/" data-id="ckbq9vx2l000dcfrpeczr3od9" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/" data-id="ckbsp7ayd000e66rp0odt7voo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -430,7 +503,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckbq9vx3c000icfrpd042fees" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckbsp7ayx000k66rp82ex988a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -482,7 +555,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/" data-id="ckbq9vx2i0009cfrp8y5263fq" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/" data-id="ckbsp7aya000a66rp1cd5hztq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -529,7 +602,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbq9vx2j000acfrp432l077g" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbsp7ay8000866rph4tc21m1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -607,44 +680,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbq9vx2i0008cfrp1n70hrv7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Http-权威指南-第十章-Http-NG-笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-09T09:04:00.000Z" itemprop="datePublished">2020-06-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十章 Http-NG 笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong><em>关键词</em></strong> : 分布式对象  二进制连接协议</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" data-id="ckbq9vx2k000bcfrp1k9zge8c" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbsp7ay9000966rpc50xg946" class="article-share-link">Share</a>
       
       
     </footer>
@@ -658,7 +694,7 @@ A[方形] -->B(圆角)
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页 &amp;raquo;</a>
   </nav>
 
 </section>
@@ -690,6 +726,10 @@ A[方形] -->B(圆角)
       <ul>
         
           <li>
+            <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第五章 运输层 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第四章 网络层 笔记</a>
           </li>
         
@@ -703,10 +743,6 @@ A[方形] -->B(圆角)
         
           <li>
             <a href="/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">EventLoop 并发模型与事件循环</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/">前端学习关键词及简介</a>
           </li>
         
       </ul>
