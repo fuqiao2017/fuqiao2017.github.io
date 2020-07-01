@@ -5,15 +5,17 @@
   
 
   
-  <title>归档: 2020 | 追求真实</title>
+  <title>Vue 学习笔记 | 追求真实</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录点点滴滴">
-<meta property="og:type" content="website">
-<meta property="og:title" content="追求真实">
-<meta property="og:url" content="https://fuqiao2017.github.io/archives/2020/page/3/index.html">
+  <meta name="description" content="要求 :   Vue\Vue CLI 官方文档 要求精读一遍，多查资料多扩展 尽量以代码的形式解决不懂的地方   如果你想给一个Vue组件添加生命周期函数有3个办法： 在Vue选项中添加在模板中通过@hooks:created这种形式vm.$on(‘hooks:created’, cb)或者vm.$once(‘hooks:created’, cb) 我们可以把组件区分为两类：一类是偏视图表现的 (">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue 学习笔记">
+<meta property="og:url" content="https://fuqiao2017.github.io/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="追求真实">
-<meta property="og:description" content="记录点点滴滴">
+<meta property="og:description" content="要求 :   Vue\Vue CLI 官方文档 要求精读一遍，多查资料多扩展 尽量以代码的形式解决不懂的地方   如果你想给一个Vue组件添加生命周期函数有3个办法： 在Vue选项中添加在模板中通过@hooks:created这种形式vm.$on(‘hooks:created’, cb)或者vm.$once(‘hooks:created’, cb) 我们可以把组件区分为两类：一类是偏视图表现的 (">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-01T01:52:20.000Z">
+<meta property="article:modified_time" content="2020-07-01T07:46:25.586Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
   
@@ -68,102 +70,60 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  <time datetime="2020-06-02T07:21:42.000Z" itemprop="datePublished">6月 2</time>
+        <section id="main"><article id="post-Vue-学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-07-01T01:52:20.000Z" itemprop="datePublished">2020-07-01</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/">Http 权威指南 第三章 HTTP报文 笔记</a>
+    <h1 class="article-title" itemprop="name">
+      Vue 学习笔记
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  <time datetime="2020-06-02T06:09:10.000Z" itemprop="datePublished">6月 2</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/">Http 权威指南 第二章 URL与资源 笔记</a>
-    </h1>
-  
+        <p><strong>要求</strong> : </p>
+<ol>
+<li>Vue\Vue CLI 官方文档 要求精读一遍，多查资料多扩展</li>
+<li>尽量以代码的形式解决不懂的地方</li>
+</ol>
+<hr>
+<p>如果你想给一个Vue组件添加生命周期函数有3个办法：</p>
+<p>在Vue选项中添加<br>在模板中通过@hooks:created这种形式<br>vm.$on(‘hooks:created’, cb)或者vm.$once(‘hooks:created’, cb)</p>
+<p>我们可以把组件区分为两类：一类是偏视图表现的 (presentational)，一类则是偏逻辑的 (logical)。我们推荐在前者中使用模板，在后者中使用 JSX 或渲染函数。</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  <time datetime="2020-06-02T01:59:15.000Z" itemprop="datePublished">6月 2</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/">Http 权威指南 第一章 笔记</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/06/01/%E5%A6%82%E5%9B%BE/" class="archive-article-date">
-  <time datetime="2020-06-01T07:40:52.254Z" itemprop="datePublished">6月 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckc32phd8000e46rp2kbohuuu" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/01/%E5%A6%82%E5%9B%BE/">如图</a>
-    </h1>
-  
-
-    </header>
+      
+    </footer>
   </div>
-</article>
   
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/2020/page/2/">&amp;laquo; 上一页</a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS 中的 this</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         

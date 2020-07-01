@@ -17,9 +17,13 @@
 <meta property="og:image" content="https://fuqiao2017.github.io/images/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%86%9F%E7%9F%A5%E7%AB%AF%E5%8F%A3%E5%8F%B7.jpeg">
 <meta property="og:image" content="https://fuqiao2017.github.io/images/UDP%E9%A6%96%E9%83%A8%E5%92%8C%E4%BC%AA%E9%A6%96%E9%83%A8.jpeg">
 <meta property="og:image" content="https://fuqiao2017.github.io/images/%E8%AE%A1%E7%AE%97UDP%E6%A0%A1%E9%AA%8C%E5%92%8C%E6%A0%97%E5%AD%90.jpeg">
+<meta property="og:image" content="https://fuqiao2017.github.io/images/TCP%E9%9D%A2%E5%90%91%E5%AD%97%E8%8A%82%E6%B5%81.jpeg">
+<meta property="og:image" content="https://fuqiao2017.github.io/images/%E4%B8%89%E6%8A%A5%E6%96%87%E6%8F%A1%E6%89%8B.jpeg">
+<meta property="og:image" content="https://fuqiao2017.github.io/images/TCP%E8%BF%9E%E6%8E%A5%E9%87%8A%E6%94%BE.jpeg">
+<meta property="og:image" content="https://fuqiao2017.github.io/images/TCP%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA.jpeg">
 <meta property="og:image" content="https://fuqiao2017.github.io/images/%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE%E4%BD%BF%E7%94%A8%E7%9A%84%E8%BF%90%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%AF%B9%E7%85%A7.jpeg">
 <meta property="article:published_time" content="2020-06-22T09:04:36.000Z">
-<meta property="article:modified_time" content="2020-06-24T01:47:23.840Z">
+<meta property="article:modified_time" content="2020-07-01T06:53:22.252Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://fuqiao2017.github.io/images/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%86%9F%E7%9F%A5%E7%AB%AF%E5%8F%A3%E5%8F%B7.jpeg">
@@ -117,7 +121,7 @@
 <ol>
 <li>无连接，传送数据之前不需要建立连接，收到数据不需要给出确认</li>
 <li>不提供可靠交付(只尽最大努力交付)，某些情况下是一种有效的工作方式</li>
-<li>UDP 是面向报文的(即不合并也不拆分)</li>
+<li>UDP 是面向报文的。UDP 对应用层交下来的报文即不合并也不拆分，使用 UDP 协议时，应用程序必须选择合适大小的报文，以免影响 IP 层的效率</li>
 <li>UDP 没有拥塞控制: 源主机以恒定的速率发送数据，允许丢失数据，但不允许有太大的时延，如 IP 电话、实时视频会议</li>
 <li>UDP 支持一对一、一对多、多对一、多对多的交互通信</li>
 <li>UDP 的首部只有 8 个字节</li>
@@ -126,19 +130,47 @@
 <li>UDP 首部<br><img src="/images/UDP%E9%A6%96%E9%83%A8%E5%92%8C%E4%BC%AA%E9%A6%96%E9%83%A8.jpeg" alt=""></li>
 </ul>
 <p><strong>UDP 伪首部</strong> 是临时添加用于计算校验和的，即不向下传送也不向上提交<br><img src="/images/%E8%AE%A1%E7%AE%97UDP%E6%A0%A1%E9%AA%8C%E5%92%8C%E6%A0%97%E5%AD%90.jpeg" alt=""></p>
-<h4 id="TCP-传输控制协议"><a href="#TCP-传输控制协议" class="headerlink" title="TCP 传输控制协议"></a>TCP 传输控制协议</h4><p>TCP : Transmission Control Protocol<br><strong><em>特点</em></strong> :</p>
+<h4 id="TCP-传输控制协议"><a href="#TCP-传输控制协议" class="headerlink" title="TCP 传输控制协议"></a>TCP 传输控制协议</h4><hr>
+<p>TCP : Transmission Control Protocol<br><strong><em>特点</em></strong> :</p>
 <ol>
 <li>TCP 提供面向连接的服务，传送数据之前先建立连接，传送结束后释放连接<br>连接是 <strong>虚连接</strong> <strong>逻辑连接</strong></li>
 <li>TCP 不提供广播或多播服务</li>
-<li>TCP 提供可靠的、面向连接的服务，因此会增加开销</li>
+<li>TCP 提供可靠的、面向连接的服务，因此会增加开销<br>TCP 数据 无差错、不丢失、不重复、并且按序到达</li>
+<li>每一条 TCP 连接只能有两个 <strong>端点(endpoint)</strong>，即 TCP 连接 是 <strong>点对点</strong> 的</li>
+<li>TCP 提供 <strong>全双工通信</strong>。即两端都有相同的收发数据的功能<br><strong><em>单工通信</em></strong> 就是只能从A到B,如[广播]<br><strong><em>半双工通信</em></strong> 是A到B,B到A都行,但不能同时进行.如[对讲机]<br><strong><em>全双工通信</em></strong> 是A到B,B到A都行,且可以同时进行.如[电话]</li>
+<li>TCP 面向字节流。TCP 把应用程序交下来的数据看成是一连串的 <strong>无结构的字节序列</strong><br><img src="/images/TCP%E9%9D%A2%E5%90%91%E5%AD%97%E8%8A%82%E6%B5%81.jpeg" alt=""></li>
+<li>TCP 不关心应用进程的报文长度，而是根据对方给出的窗口值和当前网络拥塞的程度来决定一个 segment 应包含多少字节。根据情况进行分块或者等待积累</li>
 </ol>
+<p><strong><em>TCP 的连接</em></strong> : 抽象的连接<br>TCP 连接的端点称为 <strong>套接字(socket)</strong> 或插口<br>套接字定义 : 端口号拼接到 IP 地址 – socket = (IP 地址：端口号)<br>每一条 TCP 连接唯一地被通信两端的两个端点(即两个套接字)所确定 :<br><strong>TCP 连接 ::= {socket1, socket2} = {(IP1：port1), (IP2：port2)}</strong></p>
+<h4 id="可靠传输的工作原理"><a href="#可靠传输的工作原理" class="headerlink" title="可靠传输的工作原理"></a>可靠传输的工作原理</h4><p>IP 层只提供尽最大努力服务；传输信道不可靠<br>使用可靠传输协议 :<br><strong><em>自动重传请求 ARQ (Automatic Repeat reQuest)</em></strong> : 可靠传输协议常称为 ARQ，意思是重传的请求是自动进行的，接受方不需要请求发送方重传某个出错的分组</p>
+<ol>
+<li>停止等待协议<br>信道利用率低<br>发送、确认、出现差错、超时重传、确认丢失、确认迟到、丢弃差错分组、丢弃重复分组</li>
+<li>连续 ARQ 协议 和 滑动窗口协议<br>滑动窗口协议是 TCP 协议的精髓、<strong>发送窗口</strong>连续发送分组、<br>累计确认: 对按序到达的最后一个分组发送确认（如果5个分组的第3个丢失了，则后面三个全部要重传）</li>
+</ol>
+<h4 id="TCP-的流量控制"><a href="#TCP-的流量控制" class="headerlink" title="TCP 的流量控制"></a>TCP 的流量控制</h4><ul>
+<li>利用滑动窗口实现流量控制<br>流量控制: 让发送方的发送速率不要太快，让接收方来得及接受；<br>互相等待的死锁局面: 接收方B发送的接受窗口值报文丢失了，导致发送方A一直等待这个报文，接收方B一直等待数据; 解决办法是 <strong>持续计时器</strong></li>
+<li>TCP 的传输效率<br>发送方让数据到达发送窗口的一半或者已达到报文段的最大长度时，就发送一个报文段<br>接受方等待接收缓存足够容纳一个最长的报文段，或者等到接收缓存已有一半的空闲空间，就发出确认报文</li>
+</ul>
+<h4 id="TCP-的拥塞控制"><a href="#TCP-的拥塞控制" class="headerlink" title="TCP 的拥塞控制"></a>TCP 的拥塞控制</h4><p><strong><em>拥塞</em></strong> : 在计算机中的链路容量（即带宽）、交换节点中的缓存和处理机等，都是网络的资源。在某段时间，对网络中某一资源的需求超过了该资源所能提供的可用部分，网络的性能就要变坏。这种情况就叫做拥塞。</p>
+<h4 id="TCP-的运输连接管理"><a href="#TCP-的运输连接管理" class="headerlink" title="TCP 的运输连接管理"></a>TCP 的运输连接管理</h4><p><strong>*握手</strong> : TCP 连接建立的过程<br><strong><em>三报文握手</em></strong> : 在一次握手过程中交换了三个报文<br><img src="/images/%E4%B8%89%E6%8A%A5%E6%96%87%E6%8F%A1%E6%89%8B.jpeg" alt=""></p>
+<ul>
+<li>连接过程<br>TCP 规定，SYN 报文段（SYN = 1 的报文段）不能携带数据，但要消耗一个序号<br>四报文握手 : 上图中 B 发送给 A 的报文段，也可拆成两个报文段。可以先发送一个确认报文段(ACK = 1, ack = x + 1)，然后再发送一个同步报文段(SYN = 1, seq = y)。这样的过程就变成了 <strong>四报文握手</strong>。</li>
+</ul>
+<p><strong><em>为什么A最后还要发送一次确认？</em></strong> :<br>主要是为了防止 <strong>已失效的连接请求报文段</strong> 突然又传送到了 B (A 发送的第一个连接请求报文段在某个结点长时间滞留了(然后 A 重发了一次建立了连接)，延误到连接释放之后才到达 B，B 误以为 A 又发出一次连接请求，返回一个确认报文段，这时需要 A 给与一个确认，才可以建立连接，不然 B 就一直等待A发送数据)</p>
+<ul>
+<li>TCP 的连接释放 :<br><img src="/images/TCP%E8%BF%9E%E6%8E%A5%E9%87%8A%E6%94%BE.jpeg" alt=""><br>半关闭状态 : 客户端已经没有数据发送了，但如果服务器端发送数据，客户端仍然要接受<br>时间等待计时器 : TIME-WAIT timer, 2MSL<br>时间 MSL : 最长报文段寿命，一般小于 2 分钟<br>客户端发送最后一个确认报文段时，会重启 时间等待计时器</li>
+</ul>
+<p><strong><em>保活计时器</em></strong> : keepalive timer, TCP 连接建立后，服务器每收到一次客户端的数据，就重置保活计时器，时间通常是 2 小时。超过两小时没有收到客户端的数据，服务器就发送一个探测报文段，每隔 75秒 发送一次，若连续 10个 探测报文段都得不到客户端的响应，服务器就会关闭连接</p>
+<ul>
+<li>TCP 的有限状态机<br>粗实线箭头表示对客户进程的正常变迁<br>粗虚线箭头表示对服务器进程的正常变迁<br>细线箭头表示异常变迁<br><img src="/images/TCP%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA.jpeg" alt=""></li>
+</ul>
 <p><img src="/images/%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE%E4%BD%BF%E7%94%A8%E7%9A%84%E8%BF%90%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%AF%B9%E7%85%A7.jpeg" alt=""></p>
 <p>运输层协议特点<br>进程间的通信<br>端口<br>TCP UDP<br>可靠传输的工作原理<br>TCP 的三个重要问题: 滑动窗口、流量控制、拥塞控制机制</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckbsp7aye000g66rphzcf6jj4" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckc32phdd000j46rp24yk1ejr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,6 +178,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          算法 第一章 基础 笔记
+        
+      </div>
+    </a>
   
   
     <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
@@ -174,7 +215,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li></ul>
     </div>
   </div>
 
@@ -187,23 +228,23 @@
       <ul>
         
           <li>
+            <a href="/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Vue 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/">JS 中的 this</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/">算法 第一章 基础 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第五章 运输层 笔记</a>
           </li>
         
           <li>
             <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第四章 网络层 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/">Promise 实现一个promise</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/">Promise 抽象异步处理</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">EventLoop 并发模型与事件循环</a>
           </li>
         
       </ul>

@@ -70,6 +70,129 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Vue-学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-07-01T01:52:20.000Z" itemprop="datePublished">2020-07-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Vue 学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>要求</strong> : </p>
+<ol>
+<li>Vue\Vue CLI 官方文档 要求精读一遍，多查资料多扩展</li>
+<li>尽量以代码的形式解决不懂的地方</li>
+</ol>
+<hr>
+<p>如果你想给一个Vue组件添加生命周期函数有3个办法：</p>
+<p>在Vue选项中添加<br>在模板中通过@hooks:created这种形式<br>vm.$on(‘hooks:created’, cb)或者vm.$once(‘hooks:created’, cb)</p>
+<p>我们可以把组件区分为两类：一类是偏视图表现的 (presentational)，一类则是偏逻辑的 (logical)。我们推荐在前者中使用模板，在后者中使用 JSX 或渲染函数。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckc32phd8000e46rp2kbohuuu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS-中的-this" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/" class="article-date">
+  <time datetime="2020-06-28T02:10:40.000Z" itemprop="datePublished">2020-06-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/">JS 中的 this</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>关键词</em></strong> : 词法作用域   this   箭头函数<br>bind可以修正SetTimeout和SetInterval的回调函数的this指向</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// setTimeout setInterval 回调函数 this 的指向</span></span><br><span class="line"><span class="comment">// 1. this 值分配给封闭变量</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> that = <span class="keyword">this</span></span><br><span class="line">  that.age = <span class="number">1</span></span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// that 指向的是实例对象</span></span><br><span class="line">    that.age++</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person()</span><br><span class="line"><span class="comment">// 2. 使用 绑定函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age = <span class="number">1</span></span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// that 指向的是实例对象</span></span><br><span class="line">    <span class="keyword">this</span>.age++</span><br><span class="line">  &#125;.bind(<span class="keyword">this</span>), <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person()</span><br><span class="line"><span class="comment">// 3. 使用 箭头函数：箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age = <span class="number">1</span></span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// that 指向的是实例对象</span></span><br><span class="line">    <span class="keyword">this</span>.age++</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person()</span><br></pre></td></tr></table></figure>
+<p><strong>箭头函数的 this 指向当前所在的 function scope (不包括箭头函数)</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// this 其实是在函数域里的值</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="string">'this = '</span>, <span class="keyword">this</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于 箭头函数没有自己的this指针，通过 call() 或 apply() 方法调用一个函数时，只能传递参数(不能绑定this），他们的第一个参数会被忽略。（这种现象对于bind方法同样成立）<br>箭头函数不绑定Arguments 对象</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/" data-id="ckc32phd6000b46rp4cci0rw6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-算法-第一章-基础-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-24T06:48:58.000Z" itemprop="datePublished">2020-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/">算法 第一章 基础 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>% java RandomSeq 100 100.0 200.0 &gt; data.txt 指明标准输出流到 data.txt 文件<br>% java Average &lt; data.txt 读取文件 data.txt 作为输入流<br>% java RandomSeq 1000 100.0 200.0 | java Average 将 RandomSeq 的标准输出和 Average 的标准输入指定为同一个流，这种方式叫做 <strong>管道</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/" data-id="ckc32phdc000i46rp5pk9atc3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-计算机网络-第五章-运输层-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -112,7 +235,7 @@
 <ol>
 <li>无连接，传送数据之前不需要建立连接，收到数据不需要给出确认</li>
 <li>不提供可靠交付(只尽最大努力交付)，某些情况下是一种有效的工作方式</li>
-<li>UDP 是面向报文的(即不合并也不拆分)</li>
+<li>UDP 是面向报文的。UDP 对应用层交下来的报文即不合并也不拆分，使用 UDP 协议时，应用程序必须选择合适大小的报文，以免影响 IP 层的效率</li>
 <li>UDP 没有拥塞控制: 源主机以恒定的速率发送数据，允许丢失数据，但不允许有太大的时延，如 IP 电话、实时视频会议</li>
 <li>UDP 支持一对一、一对多、多对一、多对多的交互通信</li>
 <li>UDP 的首部只有 8 个字节</li>
@@ -121,19 +244,47 @@
 <li>UDP 首部<br><img src="/images/UDP%E9%A6%96%E9%83%A8%E5%92%8C%E4%BC%AA%E9%A6%96%E9%83%A8.jpeg" alt=""></li>
 </ul>
 <p><strong>UDP 伪首部</strong> 是临时添加用于计算校验和的，即不向下传送也不向上提交<br><img src="/images/%E8%AE%A1%E7%AE%97UDP%E6%A0%A1%E9%AA%8C%E5%92%8C%E6%A0%97%E5%AD%90.jpeg" alt=""></p>
-<h4 id="TCP-传输控制协议"><a href="#TCP-传输控制协议" class="headerlink" title="TCP 传输控制协议"></a>TCP 传输控制协议</h4><p>TCP : Transmission Control Protocol<br><strong><em>特点</em></strong> :</p>
+<h4 id="TCP-传输控制协议"><a href="#TCP-传输控制协议" class="headerlink" title="TCP 传输控制协议"></a>TCP 传输控制协议</h4><hr>
+<p>TCP : Transmission Control Protocol<br><strong><em>特点</em></strong> :</p>
 <ol>
 <li>TCP 提供面向连接的服务，传送数据之前先建立连接，传送结束后释放连接<br>连接是 <strong>虚连接</strong> <strong>逻辑连接</strong></li>
 <li>TCP 不提供广播或多播服务</li>
-<li>TCP 提供可靠的、面向连接的服务，因此会增加开销</li>
+<li>TCP 提供可靠的、面向连接的服务，因此会增加开销<br>TCP 数据 无差错、不丢失、不重复、并且按序到达</li>
+<li>每一条 TCP 连接只能有两个 <strong>端点(endpoint)</strong>，即 TCP 连接 是 <strong>点对点</strong> 的</li>
+<li>TCP 提供 <strong>全双工通信</strong>。即两端都有相同的收发数据的功能<br><strong><em>单工通信</em></strong> 就是只能从A到B,如[广播]<br><strong><em>半双工通信</em></strong> 是A到B,B到A都行,但不能同时进行.如[对讲机]<br><strong><em>全双工通信</em></strong> 是A到B,B到A都行,且可以同时进行.如[电话]</li>
+<li>TCP 面向字节流。TCP 把应用程序交下来的数据看成是一连串的 <strong>无结构的字节序列</strong><br><img src="/images/TCP%E9%9D%A2%E5%90%91%E5%AD%97%E8%8A%82%E6%B5%81.jpeg" alt=""></li>
+<li>TCP 不关心应用进程的报文长度，而是根据对方给出的窗口值和当前网络拥塞的程度来决定一个 segment 应包含多少字节。根据情况进行分块或者等待积累</li>
 </ol>
+<p><strong><em>TCP 的连接</em></strong> : 抽象的连接<br>TCP 连接的端点称为 <strong>套接字(socket)</strong> 或插口<br>套接字定义 : 端口号拼接到 IP 地址 – socket = (IP 地址：端口号)<br>每一条 TCP 连接唯一地被通信两端的两个端点(即两个套接字)所确定 :<br><strong>TCP 连接 ::= {socket1, socket2} = {(IP1：port1), (IP2：port2)}</strong></p>
+<h4 id="可靠传输的工作原理"><a href="#可靠传输的工作原理" class="headerlink" title="可靠传输的工作原理"></a>可靠传输的工作原理</h4><p>IP 层只提供尽最大努力服务；传输信道不可靠<br>使用可靠传输协议 :<br><strong><em>自动重传请求 ARQ (Automatic Repeat reQuest)</em></strong> : 可靠传输协议常称为 ARQ，意思是重传的请求是自动进行的，接受方不需要请求发送方重传某个出错的分组</p>
+<ol>
+<li>停止等待协议<br>信道利用率低<br>发送、确认、出现差错、超时重传、确认丢失、确认迟到、丢弃差错分组、丢弃重复分组</li>
+<li>连续 ARQ 协议 和 滑动窗口协议<br>滑动窗口协议是 TCP 协议的精髓、<strong>发送窗口</strong>连续发送分组、<br>累计确认: 对按序到达的最后一个分组发送确认（如果5个分组的第3个丢失了，则后面三个全部要重传）</li>
+</ol>
+<h4 id="TCP-的流量控制"><a href="#TCP-的流量控制" class="headerlink" title="TCP 的流量控制"></a>TCP 的流量控制</h4><ul>
+<li>利用滑动窗口实现流量控制<br>流量控制: 让发送方的发送速率不要太快，让接收方来得及接受；<br>互相等待的死锁局面: 接收方B发送的接受窗口值报文丢失了，导致发送方A一直等待这个报文，接收方B一直等待数据; 解决办法是 <strong>持续计时器</strong></li>
+<li>TCP 的传输效率<br>发送方让数据到达发送窗口的一半或者已达到报文段的最大长度时，就发送一个报文段<br>接受方等待接收缓存足够容纳一个最长的报文段，或者等到接收缓存已有一半的空闲空间，就发出确认报文</li>
+</ul>
+<h4 id="TCP-的拥塞控制"><a href="#TCP-的拥塞控制" class="headerlink" title="TCP 的拥塞控制"></a>TCP 的拥塞控制</h4><p><strong><em>拥塞</em></strong> : 在计算机中的链路容量（即带宽）、交换节点中的缓存和处理机等，都是网络的资源。在某段时间，对网络中某一资源的需求超过了该资源所能提供的可用部分，网络的性能就要变坏。这种情况就叫做拥塞。</p>
+<h4 id="TCP-的运输连接管理"><a href="#TCP-的运输连接管理" class="headerlink" title="TCP 的运输连接管理"></a>TCP 的运输连接管理</h4><p><strong>*握手</strong> : TCP 连接建立的过程<br><strong><em>三报文握手</em></strong> : 在一次握手过程中交换了三个报文<br><img src="/images/%E4%B8%89%E6%8A%A5%E6%96%87%E6%8F%A1%E6%89%8B.jpeg" alt=""></p>
+<ul>
+<li>连接过程<br>TCP 规定，SYN 报文段（SYN = 1 的报文段）不能携带数据，但要消耗一个序号<br>四报文握手 : 上图中 B 发送给 A 的报文段，也可拆成两个报文段。可以先发送一个确认报文段(ACK = 1, ack = x + 1)，然后再发送一个同步报文段(SYN = 1, seq = y)。这样的过程就变成了 <strong>四报文握手</strong>。</li>
+</ul>
+<p><strong><em>为什么A最后还要发送一次确认？</em></strong> :<br>主要是为了防止 <strong>已失效的连接请求报文段</strong> 突然又传送到了 B (A 发送的第一个连接请求报文段在某个结点长时间滞留了(然后 A 重发了一次建立了连接)，延误到连接释放之后才到达 B，B 误以为 A 又发出一次连接请求，返回一个确认报文段，这时需要 A 给与一个确认，才可以建立连接，不然 B 就一直等待A发送数据)</p>
+<ul>
+<li>TCP 的连接释放 :<br><img src="/images/TCP%E8%BF%9E%E6%8E%A5%E9%87%8A%E6%94%BE.jpeg" alt=""><br>半关闭状态 : 客户端已经没有数据发送了，但如果服务器端发送数据，客户端仍然要接受<br>时间等待计时器 : TIME-WAIT timer, 2MSL<br>时间 MSL : 最长报文段寿命，一般小于 2 分钟<br>客户端发送最后一个确认报文段时，会重启 时间等待计时器</li>
+</ul>
+<p><strong><em>保活计时器</em></strong> : keepalive timer, TCP 连接建立后，服务器每收到一次客户端的数据，就重置保活计时器，时间通常是 2 小时。超过两小时没有收到客户端的数据，服务器就发送一个探测报文段，每隔 75秒 发送一次，若连续 10个 探测报文段都得不到客户端的响应，服务器就会关闭连接</p>
+<ul>
+<li>TCP 的有限状态机<br>粗实线箭头表示对客户进程的正常变迁<br>粗虚线箭头表示对服务器进程的正常变迁<br>细线箭头表示异常变迁<br><img src="/images/TCP%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA.jpeg" alt=""></li>
+</ul>
 <p><img src="/images/%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE%E4%BD%BF%E7%94%A8%E7%9A%84%E8%BF%90%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%AF%B9%E7%85%A7.jpeg" alt=""></p>
 <p>运输层协议特点<br>进程间的通信<br>端口<br>TCP UDP<br>可靠传输的工作原理<br>TCP 的三个重要问题: 滑动窗口、流量控制、拥塞控制机制</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckbsp7aye000g66rphzcf6jj4" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckc32phdd000j46rp24yk1ejr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,7 +343,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckbsp7ayf000i66rp738v6n34" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckc32phe2000n46rp3078d8b2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -233,7 +384,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/" data-id="ckbsp7ayc000d66rp8rdh3rj5" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/" data-id="ckc32phd9000f46rp2iqw4osv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -312,7 +463,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckbsp7ayx000j66rpb3q1ayjm" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckc32phdm000l46rp8ijn9qqv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -363,7 +514,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" data-id="ckbsp7ayf000h66rp2sbt1li9" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" data-id="ckc32phdd000k46rpett255bc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -403,7 +554,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/" data-id="ckbsp7ayd000e66rp0odt7voo" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/" data-id="ckc32phda000g46rpb3onf67a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -503,184 +654,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckbsp7ayx000k66rp82ex988a" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Http-权威指南-第十三章-摘要认证-笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-11T07:51:02.000Z" itemprop="datePublished">2020-06-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十三章 摘要认证 笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong><em>关键词</em></strong> : 摘要函数   MD5   随机数令牌</p>
-<h5 id="用摘要保护密码"><a href="#用摘要保护密码" class="headerlink" title="用摘要保护密码"></a>用摘要保护密码</h5><p>只发送密码的摘要，两端匹配密码的摘要即可(摘要是单向的)</p>
-<p><strong><em>摘要函数</em></strong> : 摘要是对信息主体的浓缩; 摘要是一种 <strong><em>单向函数</em></strong>，用户将无限的输入值转换为有限的浓缩输出值<br><strong><em>单向函数</em></strong> : 单向函数指的是正向操作非常简单，而逆向操作非常困难的函数，比如大整数乘法。这种函数往往提供一种难解或怀疑难解的数学问题。目前,公钥密码领域具备实用性的三个怀疑难解问题为：质数分解，离散对数和椭圆曲线问题</p>
-<ul>
-<li>摘要认证首部:<br>WWW-Authenticate: Digest<br>realm=”安全域”<br>qop=”算法列表”<br>nonce=”服务器随机串令牌66c5e…”<br>Authorization: Digest<br>username=”用户名”<br>realm=”安全域”<br>qop=”选择的算法”<br>uri=””<br>nonce=”服务器随机串令牌66c5e…”<br>cnonce=”客户端随机令牌7fg62…”<br>response=”e483c9…”<br>Authentication-Info: nextnonce=”下个随机数串”<br><img src="/images/%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81%E9%A6%96%E9%83%A8.jpeg" alt=""></li>
-</ul>
-<p><strong><em>MD5 消息摘要算法</em></strong> : 一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），显示为32个十六进制的字符，每个字符四位</p>
-<h5 id="MD5算法无法防止碰撞攻击，因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途"><a href="#MD5算法无法防止碰撞攻击，因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途" class="headerlink" title="MD5算法无法防止碰撞攻击，因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途"></a>MD5算法无法防止碰撞攻击，因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途</h5><p><strong><em>SHA</em></strong> : Secure Hash Algorithm 安全散列算法<br>目前广泛使用的是 SHA-2 系列算法，2015 年发布 SHA-3</p>
-<h4 id="用随机数防止重放攻击"><a href="#用随机数防止重放攻击" class="headerlink" title="用随机数防止重放攻击"></a>用随机数防止重放攻击</h4><h5 id="摘要认证握手机制"><a href="#摘要认证握手机制" class="headerlink" title="摘要认证握手机制"></a>摘要认证握手机制</h5><p><img src="/images/%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81%E6%8F%A1%E6%89%8B%E6%9C%BA%E5%88%B6.jpeg" alt=""></p>
-<h4 id="预授权"><a href="#预授权" class="headerlink" title="预授权"></a>预授权</h4><ol>
-<li>预先生成下一个随机数<br>Authentication-Info: nextnonce=”下个随机数串”</li>
-<li>受限的随机数重用机制<br>服务器允许随机数重用多少次或多少秒</li>
-<li>同步生成随机数<br>客户端和服务器端根据相同的秘钥(种子)生成相同的随机数序列，(大概就是首部中不包含随机数了，随机数由客户端、服务器端自己生成)</li>
-</ol>
-<h5 id="词典攻击"><a href="#词典攻击" class="headerlink" title="词典攻击"></a>词典攻击</h5><p>对某个事务进行窃听，并对 随机数/响应 对 使用标准的密码猜测程序<br>使用预先制作好的清单</p>
-<p><strong><em>真正安全的事务只有通过 SSL 才能实现</em></strong></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/" data-id="ckbsp7aya000a66rp1cd5hztq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Http-权威指南-第十二章-基本认证机制-笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-11T07:22:53.000Z" itemprop="datePublished">2020-06-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十二章 基本认证机制 笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong><em>关键词</em></strong> : 基本认证(Basic)    质询/响应    重放攻击</p>
-<ul>
-<li>Http 认证形式:</li>
-</ul>
-<p><strong><em>基本认证</em></strong> : basic authentication<br><strong><em>摘要认证</em></strong> : digest authentication<br><strong><em>质询/响应</em></strong> : challenge/response<br>请求 -&gt; 质询 -&gt; (用户名:密码)再次请求 -&gt; 响应<br>状态码: 401<br>WWW-Authenticate: Basic realm 指定一个安全域<br>Authorization: Basic base-64-username:password</p>
-<p><strong><em>Base-64 编码</em></strong> : 将一个8位字节序列划分为一些6位的块，用每个6位的块在一个特殊的由64个字符组成的字母表中选择一个字符</p>
-<p><strong><em>代理认证</em></strong> : proxy authentication 通过代理服务器提供对某组织内部资源的统一访问控制<br>状态码: 407<br>Proxy-Authenticate、Proxy-Authorization、Proxy-Authentication-Info</p>
-<h5 id="基本认证的安全缺陷"><a href="#基本认证的安全缺陷" class="headerlink" title="基本认证的安全缺陷"></a>基本认证的安全缺陷</h5><ol>
-<li>用户名密码属于“明文”传送</li>
-<li>加密后的信息可以被捕获和利用(重放攻击)<br>安全使用基本认证的唯一方式: 将基本认证与加密数据传输(比如 SSL)配合使用</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbsp7ay8000866rph4tc21m1" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Http-权威指南-第十一章-客户端识别与Cookie机制-笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-10T02:02:23.000Z" itemprop="datePublished">2020-06-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十一章 客户端识别与Cookie机制 笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="不可靠的识别，一般爬虫可能使用"><a href="#不可靠的识别，一般爬虫可能使用" class="headerlink" title="不可靠的识别，一般爬虫可能使用:"></a>不可靠的识别，一般爬虫可能使用:</h5><p>Http 首部: From、User-Agent、Referer</p>
-<h5 id="客户端IP地址"><a href="#客户端IP地址" class="headerlink" title="客户端IP地址:"></a>客户端IP地址:</h5><ol>
-<li>IP 地址会变化</li>
-<li>通过网络地址转换(Network Address Transition NAT)可以隐藏真实的 IP 地址</li>
-<li>经过代理或网关转发的新连接，导致服务器只看到代理的IP地址 (有些代理会添加扩展的         Client-IP\X-Forwarded-For 首部)</li>
-</ol>
-<h5 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h5><p>Http 内建机制: 通过 WWW-Authenticate 首部和 Authorization 首部向 Web 站点传送用户相关信息(服务器回送 401 Login Required 状态码)<br>缺点: 繁琐，体验极差</p>
-<h5 id="胖URL"><a href="#胖URL" class="headerlink" title="胖URL"></a>胖URL</h5><h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><p>实现持久会话的最好方式</p>
-<ul>
-<li>分类:</li>
-</ul>
-<p><strong><em>会话cookie</em></strong> : 用户退出浏览器即删除<br><strong><em>持久cookie</em></strong> : 存储在硬盘上<br>两者唯一的区别就是过期时间，如果设置了 Discard 参数，或者没有设置 Expires 或 Max-Age 参数来说明扩展的过期时间，这个 cookie 就是一个会话 cookie</p>
-<h4 id="cookie-基本思想"><a href="#cookie-基本思想" class="headerlink" title="cookie 基本思想:"></a>cookie 基本思想:</h4><p>让浏览器积累一组服务器特有的信息，每次访问服务器时都将这些信息提供给它。<br>因为浏览器要负责存储 cookie 信息，所以此系统被称为 <strong><em>客户端侧状态(client-side state)</em></strong></p>
-<h4 id="cookie-规范正式名称-HTTP-状态管理机制-HTTP-state-management-mechanism"><a href="#cookie-规范正式名称-HTTP-状态管理机制-HTTP-state-management-mechanism" class="headerlink" title="cookie 规范正式名称: HTTP 状态管理机制(HTTP state management mechanism)"></a>cookie 规范正式名称: HTTP 状态管理机制(HTTP state management mechanism)</h4><h4 id="cookie-版本"><a href="#cookie-版本" class="headerlink" title="cookie 版本"></a>cookie 版本</h4><ul>
-<li>版本0:<br>Set-Cookie 首部:<br>Cookie 首部: 将所有与 域、路径和安全过滤器匹配的未过期 cookie 都发送，且所有 cookie 都被组合到一个 Cookie 首部中</li>
-<li>版本1:<br>Set-Cookie2 首部: 多了一些可用属性，比如 Discard(说明为会话cookie)、Max-Age(相对秒数)、Port<br>Cookie2 首部: 携带更多的信息</li>
-</ul>
-<h4 id="cookie-与会话跟踪"><a href="#cookie-与会话跟踪" class="headerlink" title="cookie 与会话跟踪"></a>cookie 与会话跟踪</h4><p>第三方网站引导发出的 Cookie，就称为第三方 Cookie。它除了用于 CSRF 攻击，还可以用于用户追踪。</p>
-<h4 id="cookie-与缓存"><a href="#cookie-与缓存" class="headerlink" title="cookie 与缓存"></a>cookie 与缓存</h4><p>私有的内容不可缓存</p>
-<h4 id="cookie-安全问题"><a href="#cookie-安全问题" class="headerlink" title="cookie 安全问题"></a>cookie 安全问题</h4><ul>
-<li><p>cookie 相关特性: http 请求会自动携带请求所在域名的 cookie</p>
-</li>
-<li><p>CSRF (XSRF) (Cross-site request forgery) 跨站请求伪造<br>也被称为 <strong><em>one-click attack</em></strong><br>栗子: 小明刚刚在360浏览器登陆过中国银行网站，登录状态还有效，这时小明在逛一个有趣的论坛，小明在浏览一个有趣的帖子，帖子里有个人回复了留言和一个外链(<a href="http://www.chinabank.com/transfer?from=xiaoming&amount=10000&to=heike" target="_blank" rel="noopener">点我看美女</a>)，那么小明点击，浏览器就会发出一个携带 <a href="http://www.chinabank.com" target="_blank" rel="noopener">www.chinabank.com</a> 域名下的 cookie 的请求，Refer 可能是当前这个论坛的域，所以小明损失一万块<br>或者: 一个钓鱼网站有向中国银行转账接口提交的表单，诱发用户点击按钮，就会携带 cookie 提交表单</p>
-</li>
-</ul>
-<p><strong><em>防御措施</em></strong> :</p>
-<ol>
-<li>检查 Referer 字段<br>此方法完全依赖客户端浏览器发送正确的值</li>
-<li>添加校验 token<br>登录后服务器返回一个 token，前端把这个 token 添加到 http 请求的首部，攻击者无从事先得知这个 token 的值</li>
-<li>SameSite 属性<br>Set-Cookie: CookieName=CookieValue; SameSite=Strict;<br>Strict: 只有当前网页的 URL 与请求目标一致，才会带上 Cookie<br>Lax: (默认) 大多数情况也是不发送第三方 Cookie，但是导航到目标网址的 Get 请求除外 (导航到目标网址的 GET 请求，只包括三种情况：链接，预加载请求，GET 表单)<br>None: 值为 None 时，必须同时设置 Secure 属性，表示 cookie 只能通过 HTTPS 发送，Set-Cookie: widget_session=abc123; SameSite=None; Secure</li>
-<li>表单嵌入同步令牌（一个随机唯一的 token）</li>
-</ol>
-<ul>
-<li>XSS (Cross-site scripting  XSS) 跨站脚本<br>跨站脚本是代码注入的一种<br><strong><em>攻击手段和目的</em></strong> : 获取 cookie，获取本地存储的用户敏感信息，其他操作<br><strong><em>防御措施</em></strong> :<ol>
-<li>过滤特殊字符<br>客户端和服务器端都对增加正则校验，没有通过校验则客户端不允许提交，服务器端不允许入库</li>
-<li>数据转义<br>前端把需要展示到页面的数据转义，比如直接 replace script 标签，遇到 “&lt;” 或 “&gt;” 添加 “\” 转义处理</li>
-<li>设置 http-only 属性<br>cookie 有一个 http-only 属性，表示 cookie 只能被 http 请求携带，不能通过 document.cookie 获取</li>
-</ol>
-</li>
-</ul>
-<p><strong><em>cookie 会导致频繁发送 首部体积庞大 的请求</em></strong></p>
-<p>构建用户跟踪: 将持久 cookie 与 IP 地址、Referer 结合可以构建相当精确的用户档案和浏览模式信息</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckbsp7ay9000966rpc50xg946" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckc32phe1000m46rp3etgg2qw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -713,7 +687,7 @@ A[方形] -->B(圆角)
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li></ul>
     </div>
   </div>
 
@@ -726,23 +700,23 @@ A[方形] -->B(圆角)
       <ul>
         
           <li>
+            <a href="/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Vue 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/">JS 中的 this</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/">算法 第一章 基础 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第五章 运输层 笔记</a>
           </li>
         
           <li>
             <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第四章 网络层 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/">Promise 实现一个promise</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/">Promise 抽象异步处理</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">EventLoop 并发模型与事件循环</a>
           </li>
         
       </ul>
