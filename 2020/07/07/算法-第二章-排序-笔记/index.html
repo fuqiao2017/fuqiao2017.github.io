@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>算法 第二章 排序 笔记 | 追求真实</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="排序算法的额外内存开销和运行时间是同等重要的  排序算法可以分为两类:   除了函数调用所需的栈和固定数目的实例变量之外无需额外内存的 原地排序算法 需要额外内存空间来存储另一份数组副本的其他排序算法  初级排序算法 : 选择排序、插入排序、希尔排序选择排序找到剩余元素的最小值，分别和第一个元素、第二个元素…调换位置，不断地选择剩余元素之中的最小者 1234567891011function se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法 第二章 排序 笔记">
+<meta property="og:url" content="https://fuqiao2017.github.io/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="追求真实">
+<meta property="og:description" content="排序算法的额外内存开销和运行时间是同等重要的  排序算法可以分为两类:   除了函数调用所需的栈和固定数目的实例变量之外无需额外内存的 原地排序算法 需要额外内存空间来存储另一份数组副本的其他排序算法  初级排序算法 : 选择排序、插入排序、希尔排序选择排序找到剩余元素的最小值，分别和第一个元素、第二个元素…调换位置，不断地选择剩余元素之中的最小者 1234567891011function se">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-07T01:40:45.000Z">
+<meta property="article:modified_time" content="2020-07-08T05:33:49.572Z">
+<meta property="article:author" content="Zhang qijie">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="追求真实" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">追求真实</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">翻滚吧！卷毛</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://fuqiao2017.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-算法-第二章-排序-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-07-07T01:40:45.000Z" itemprop="datePublished">2020-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      算法 第二章 排序 笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>排序算法的额外内存开销和运行时间是同等重要的</p>
+<ul>
+<li>排序算法可以分为两类:</li>
+</ul>
+<ol>
+<li>除了函数调用所需的栈和固定数目的实例变量之外无需额外内存的 <strong>原地排序算法</strong></li>
+<li>需要额外内存空间来存储另一份数组副本的其他排序算法</li>
+</ol>
+<h3 id="初级排序算法-选择排序、插入排序、希尔排序"><a href="#初级排序算法-选择排序、插入排序、希尔排序" class="headerlink" title="初级排序算法 : 选择排序、插入排序、希尔排序"></a>初级排序算法 : 选择排序、插入排序、希尔排序</h3><h5 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h5><p>找到剩余元素的最小值，分别和第一个元素、第二个元素…调换位置，不断地选择剩余元素之中的最小者</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">select_sort</span>(<span class="params">arr: array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> len = arr.length</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> min = i</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i+<span class="number">1</span>; j &lt; len; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (less(arr[j], arr[min]))</span><br><span class="line">        min = j</span><br><span class="line">    &#125;</span><br><span class="line">    swap(arr, i, min)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>排序轨迹</strong> : N x N 的表格</p>
+<h5 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h5><p>左边是有序的，arr[i] 如果大于等于 arr[i-1] 就 i++，如果 小于 则将 a[i] 与 a[0] 到 a[i-1] 中比它小的所有元素依次有序地交换</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种 交换的插入排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insert_sort_swap</span> (<span class="params">arr: array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> len = arr.length</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="comment">// 如果 arr[j] &gt;= arr[j-1] 内循环就不会进行下去</span></span><br><span class="line">    <span class="comment">// 否则会进行下去，直到 arr[j] &gt;= arr[j-1]</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i; j &gt; <span class="number">0</span> &amp;&amp; less(arr[j], arr[j<span class="number">-1</span>]); j--)</span><br><span class="line">      swap(arr, j, j<span class="number">-1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 第二种 不需要交换的插入排序 : arr[i] 和 a[0] 到 a[i-1] 的元素比较，比 arr[i] 大的都右移一位，直到 小于 arr[i] 时，内循环结束，arr[i] 赋值给结束时的索引</span></span><br><span class="line"><span class="comment">// 可以使访问数组的次数减半，提高排序速度</span></span><br><span class="line"><span class="comment">// 5 9 4</span></span><br><span class="line"><span class="comment">// 5 9 9</span></span><br><span class="line"><span class="comment">// 5 5 9</span></span><br><span class="line"><span class="comment">// 4 5 9</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insert_sort_bigright</span> (<span class="params">arr: array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> len = arr.length</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> temp = arr[i]</span><br><span class="line">    <span class="keyword">for</span> (j = i<span class="number">-1</span>; j &gt;= <span class="number">0</span> &amp;&amp; less(temp, arr[j]); j--) &#123;</span><br><span class="line">      arr[j+<span class="number">1</span>] = arr[j]</span><br><span class="line">    &#125;</span><br><span class="line">    arr[j+<span class="number">1</span>] = temp</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h5><p>一种基于插入排序的快速排序算法，速度进一步提升<br>希尔排序的思想是使数组中任意间隔为 h 的元素都是有序的<br><strong>h 有序数组</strong> : 一个 h有序数组 就是 h 个互相独立的有序数组编织在一起组成的一个数组<br><strong>常用的 h 递增序列</strong> : (3^k - 1)/2, 即 1、4、13…</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shell_sort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> len = arr.length,</span><br><span class="line">      h = <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> (h &lt; len/<span class="number">3</span>) h = h * <span class="number">3</span> + <span class="number">1</span> <span class="comment">// 1、4、13...</span></span><br><span class="line">  <span class="keyword">while</span> (h &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = h; i &lt; len; i++) &#123;</span><br><span class="line">      <span class="comment">// 将 a[i] 插入到 a[i-h]、a[i-2*h]...中</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> j = h; j &gt;= h &amp;&amp; less(arr[j], arr[j-h]); j -= h) &#123;</span><br><span class="line">        swap(arr, j, j-h)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    h = h/<span class="number">3</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>归并(merge)排序算法依赖归并操作</p>
+<ol>
+<li>递归法(自顶向下 top-down)<br>a. 申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列<br>b. 设定两个指针，最初位置分别为两个已经排序序列的起始位置<br>c. 比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置<br>d. 重复步骤3直到某一指针到达序列尾<br>e. 将另一序列剩下的所有元素直接复制到合并序列尾<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 合并两个已排序子数组</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params">left, right</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> result = []</span><br><span class="line">  <span class="keyword">while</span> (left.length &gt; <span class="number">0</span> &amp;&amp; right.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (left[<span class="number">0</span>] &lt; right[<span class="number">0</span>]) &#123;</span><br><span class="line">      result.push(left.shift())</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      result.push(right.shift())</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result.concat(left, right)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 递归拆分数组</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge_sort_recursive</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (arr.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> arr</span><br><span class="line">  <span class="keyword">var</span> mid = <span class="built_in">Math</span>.floor(arr.length/<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">var</span> left = arr.slice(<span class="number">0</span>, mid) <span class="comment">// 这里不是 mid+1 !!!</span></span><br><span class="line">  <span class="keyword">var</span> right = arr.slice(mid) <span class="comment">// 这里不是 mid+1 !!! 主要是这里一定不能是 mid+1</span></span><br><span class="line">  <span class="keyword">var</span> lt = merge_sort_recursive(left)</span><br><span class="line">  <span class="keyword">var</span> rt = merge_sort_recursive(right)</span><br><span class="line">  <span class="keyword">return</span> merge(lt, rt)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>迭代法(自底向上 bottom-top)<br>假设某个序列共有 n 个元素<br>a. 将序列每相邻两个数字进行归并操作，形成 ceil(n/2) 个序列，排序后每个序列包含两/一个元素<br>b. 若此时序列数不是1个则将上述序列再次归并，形成 ceil(n/4) 个序列，每个序列包含四/三个元素<br>c. 重复步骤2，直到所有元素排序完毕，即序列数为1<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params">arr, lo, mid, hi</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> left = arr.slice(lo, mid+<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">var</span> right = arr.slice(mid+<span class="number">1</span>, hi+<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">while</span> (left.length &gt; <span class="number">0</span> &amp;&amp; right.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (left[<span class="number">0</span>] &lt; right[<span class="number">0</span>]) &#123;</span><br><span class="line">      arr[lo++] = left.shift()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      arr[lo++] = right.shift()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> result = [].concat(left, right)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; result.length; i++) &#123;</span><br><span class="line">    arr[lo++] = result[i]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge_sort_iterate</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> len = arr.length</span><br><span class="line">  <span class="comment">// size 子数组大小</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> size = <span class="number">1</span>; size &lt; len; size = <span class="number">2</span>*size) &#123;</span><br><span class="line">    <span class="comment">// lo 子数组索引</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> lo = <span class="number">0</span>; lo &lt; len-size; lo += <span class="number">2</span>*size) &#123;</span><br><span class="line">      <span class="comment">// merge 相邻的两个子数组</span></span><br><span class="line">      <span class="keyword">var</span> mid = lo+size<span class="number">-1</span></span><br><span class="line">      <span class="keyword">var</span> hi = <span class="built_in">Math</span>.min(lo+size+size<span class="number">-1</span>, len<span class="number">-1</span>)</span><br><span class="line">      merge(arr, lo, mid, hi)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/" data-id="ckccxgz9s000lqprp94l158xh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%BA%94%E7%94%A8%E5%B1%82-%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">计算机网络 第六章 应用层 笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/">算法 第二章 排序 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%BA%94%E7%94%A8%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第六章 应用层 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Vue 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/">JS 中的 this</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/">算法 第一章 基础 笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Zhang qijie<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+  </div>
+</body>
+</html>
