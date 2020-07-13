@@ -70,6 +70,83 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Http-权威指南-第六章-代理-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-03T07:26:51.000Z" itemprop="datePublished">2020-06-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/">Http 权威指南 第六章 代理 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Web 代理(proxy)服务器 是网络的中间实体</span><br></pre></td></tr></table></figure>
+<p><strong><em>关键词</em></strong> :  Via首部  TRACE方法  代理认证</p>
+<p><img src="/images/%E4%BB%A3%E7%90%86%E5%92%8C%E7%BD%91%E5%85%B3%E7%9A%84%E5%8C%BA%E5%88%AB.jpeg" alt=""></p>
+<ul>
+<li>为什么使用代理？<br>可以改善安全性，提高性能，节省费用；<br>可以监视流过的HTTP流量，并对其进行修改</li>
+<li>部分代理实例:<ol>
+<li>儿童过滤器</li>
+<li>文档访问控制</li>
+<li>安全防火墙</li>
+<li>Web 缓存</li>
+<li>反向代理</li>
+<li>内容路由器</li>
+<li>转码器</li>
+<li>匿名者  </li>
+</ol>
+</li>
+</ul>
+<p><strong><em>TRACE方法</em></strong> : 通过 HTTP/1.1 的 TRACE 方法，观察请求报文经过了哪些代理，以及这些代理是如何修改报文的<br><strong><em>Max-Forwards</em></strong> : 剩余最大转发次数，限制 TRACE 和 OPTIONS 请求所经过的跳数<br><strong><em>OPTIONS</em></strong> : Allow 首部(服务器或指定资源支持的功能或方法)</p>
+<h4 id="代理服务器的部署"><a href="#代理服务器的部署" class="headerlink" title="代理服务器的部署"></a>代理服务器的部署</h4><ul>
+<li>部署代理服务器的几种方式:<ol>
+<li>出口代理</li>
+<li>访问(入口)代理</li>
+<li>反向代理</li>
+<li>网络交换代理<h4 id="代理是如何获取流量的？"><a href="#代理是如何获取流量的？" class="headerlink" title="代理是如何获取流量的？"></a>代理是如何获取流量的？</h4></li>
+</ol>
+</li>
+<li>四种常见方式可以使客户端流量流向代理:<ol>
+<li>修改客户端: 浏览器手工和自动的代理配置</li>
+<li>修改网络: 网络基础设施对流量进行拦截并导入代理</li>
+<li>修改 DNS 的命名空间: 替代物假扮Web服务器的名字和IP地址</li>
+<li>修改 Web服务器: 让 Web服务器 返回一条 Http重定向 命令(状态码 305)，将客户端请求重定向到一个代理上去<h4 id="客户端的代理设置"><a href="#客户端的代理设置" class="headerlink" title="客户端的代理设置"></a>客户端的代理设置</h4></li>
+</ol>
+</li>
+<li>Web浏览器都允许用户对代理的使用进行配置，包括以下几种方式:<ol>
+<li>手工配置</li>
+<li>预先配置浏览器</li>
+<li>代理的自动配置(Proxy Auto-Configuration, PAC)</li>
+<li>WPAD(Web 代理自动发现协议 Web Proxy Autodiscovery Protocol) 的代理发现</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgk0007g1rp6sr82qgk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Http-权威指南-第五章-Web服务器-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -110,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckccxgz9d0005qprp3yx24wld" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgj0005g1rp4pd32xoy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -160,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckccxgz9l000bqprp1jgrek59" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgo000cg1rpcmxnhvkl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckccxgz990001qprp59ojb38e" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgh0003g1rp1ikvfima" class="article-share-link">Share</a>
       
       
     </footer>
@@ -260,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" data-id="ckccxgz9c0004qprpe0qr48li" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgi0004g1rpet6i3u4e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -313,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/" data-id="ckccxgz9a0002qprp47vz74zq" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzge0001g1rp8aha0jbx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -350,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/01/%E5%A6%82%E5%9B%BE/" data-id="ckccxgz9q000hqprpbklsh8pt" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/01/%E5%A6%82%E5%9B%BE/" data-id="ckcjtwzgt000ig1rphtjrd99w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -396,6 +473,10 @@
       <ul>
         
           <li>
+            <a href="/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/">React 学习 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/">算法 第二章 排序 笔记</a>
           </li>
         
@@ -409,10 +490,6 @@
         
           <li>
             <a href="/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/">JS 中的 this</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/">算法 第一章 基础 笔记</a>
           </li>
         
       </ul>

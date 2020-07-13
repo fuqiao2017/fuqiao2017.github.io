@@ -70,6 +70,70 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-React-学习-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-07-09T09:45:19.000Z" itemprop="datePublished">2020-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/">React 学习 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>react 解决复用方式 :<br>render props / 高阶组件 (需要重新组织组件结构)<br>hooks<br>context<br>memoized</p>
+<h3 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h3><p><strong>简介</strong>:</p>
+<ol>
+<li>Hook 使你在无需修改组件结构的情况下复用状态逻辑</li>
+<li>Hook 使你在不编写 class 的情况下可以使用 state 以及更多的 React 特性</li>
+<li>在新的代码中同时使用 Hook 和 class</li>
+<li>Hook 使用了 js 的闭包机制</li>
+</ol>
+<p><strong>概览</strong>:</p>
+<ol>
+<li>State Hook<br>内置的 Hook: useState…<br>useState: 更新 state 是直接替换而不是合并<br>useState 可以传入一个函数，React 只会在首次渲染时调用这个函数<br>创建自己的 Hook: 复用不同组件之间的状态逻辑</li>
+<li>Effect Hook<br>Effect 副作用、作用，告诉 React 函数组件需要在渲染后执行某些操作<br>useEffect: 注册一个副作用函数，可以执行副作用操作或者取消副作用(取消订阅)<br>effect 可选清除机制<br>useEffect 副作用函数可以通过返回一个清除函数来指定如何清除副作用<br>React 会在组件卸载的时候执行清除操作<br>useEffect 可在组件中多次使用<br>React 等待浏览器完成渲染之后再延迟调用 useEffect</li>
+</ol>
+<p><strong>Hook 使用规则</strong>:</p>
+<ol>
+<li>只能在函数最外层使用</li>
+<li>只能在 React 的函数组件中使用</li>
+</ol>
+<p><strong>自定义 Hook</strong>:</p>
+<ol>
+<li>如果函数的名字以 use 开头并调用其他 Hook，就称为自定义 Hook，useSomething</li>
+<li>通过自定义 Hook，可以将组件逻辑提取到可重用的函数中</li>
+</ol>
+<p><strong>其他 Hook</strong>:</p>
+<ol>
+<li>useContext 订阅 React 的 Context<br>const locale = useContext(LocaleContext)<br>接收一个 context 对象（React.createContext 的返回值）并返回该 context 的当前值。当前的 context 值由上层组件中距离当前组件最近的 &lt;MyContext.Provider&gt; 的 value prop 决定</li>
+<li>useReducer 通过 Reducer 来管理组件本地的复杂 state<br>const [todos, dispatch] = useReducer(todosReducer)</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgr000fg1rpbmocgujm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-算法-第二章-排序-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -118,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/" data-id="ckccxgz9s000lqprp94l158xh" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgu000jg1rp7zsiaizm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -196,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/07/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%BA%94%E7%94%A8%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckccxgz9r000kqprpcbpvcn0s" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/07/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%BA%94%E7%94%A8%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgv000mg1rphr9z1rm4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -241,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckccxgz9r000jqprp2xfvh46a" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgs000gg1rp38uhcefd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -282,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/" data-id="ckccxgz9n000dqprpfdau5tsp" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/" data-id="ckcjtwzgq000eg1rp7tln53dz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -319,7 +383,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/" data-id="ckccxgz9q000iqprp0e323ynq" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgu000kg1rp9yzk1276" class="article-share-link">Share</a>
       
       
     </footer>
@@ -420,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckccxgz9t000nqprpfawcd26m" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgz000pg1rpd84ifoyl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -479,7 +543,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckccxgz9t000mqprpc5rhb7ht" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgy000og1rp7bhgewo0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -520,7 +584,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/" data-id="ckccxgz9o000eqprpf6bz3vy6" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/" data-id="ckcjtwzgp000dg1rp77qscs8m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -599,58 +663,7 @@ A[方形] -->B(圆角)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckccxgz9w000oqprp8t4a73hu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-EventLoop-并发模型与事件循环" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" class="article-date">
-  <time datetime="2020-06-12T07:06:51.000Z" itemprop="datePublished">2020-06-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">EventLoop 并发模型与事件循环</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="JS-有一个基于事件循环的并发模型，事件循环负责执行代码、搜集和处理事件以及执行队列中的子任务"><a href="#JS-有一个基于事件循环的并发模型，事件循环负责执行代码、搜集和处理事件以及执行队列中的子任务" class="headerlink" title="JS 有一个基于事件循环的并发模型，事件循环负责执行代码、搜集和处理事件以及执行队列中的子任务"></a>JS 有一个基于<strong><em>事件循环</em></strong>的并发模型，事件循环负责执行代码、搜集和处理事件以及执行队列中的子任务</h5><p><strong>* JS 是单线程语言 *</strong><br><img src="/images/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8F%8F%E8%BF%B0.jpeg" alt=""></p>
-<p><strong><em>可能的缺陷</em></strong> : 每一个消息完整地执行后，其它消息才会被执行; 所以当一个消息需要太长时间才能处理完毕时，Web应用程序就无法处理与用户的交互，例如点击或滚动</p>
-<p><strong><em>事件和回调函数</em></strong> :<br>  事件: 用户点击、页面滚动、ajax onload、IO 事件等等<br>  回调函数: 被挂起等待对应事件触发然后进栈执行的代码</p>
-<p><strong><em>setTimeout</em></strong> : 第二个参数为 <strong><em>最小等待时间</em></strong></p>
-<h5 id="多个运行时互相通信"><a href="#多个运行时互相通信" class="headerlink" title="多个运行时互相通信"></a>多个运行时互相通信</h5><p>一个 web worker 或者一个跨域的 iframe 都有自己的栈、堆和消息队列。两个不同的运行时只能通过 postMessage 方法进行通信。如果另一个运行时侦听 message 事件，则此方法会向该运行时添加消息</p>
-<h5 id="永不阻塞"><a href="#永不阻塞" class="headerlink" title="永不阻塞"></a>永不阻塞</h5><p>JavaScript的事件循环模型与许多其他语言不同的一个非常有趣的特性是，它永不阻塞。 处理 I/O 通常通过事件和回调来执行，所以当一个应用正等待一个 IndexedDB 查询返回或者一个 XHR 请求返回时，它仍然可以处理其它事情，比如用户输入</p>
-<h5 id="同步任务与异步任务、宏任务与微任务"><a href="#同步任务与异步任务、宏任务与微任务" class="headerlink" title="同步任务与异步任务、宏任务与微任务"></a>同步任务与异步任务、宏任务与微任务</h5><p><img src="/images/%E5%90%8C%E6%AD%A5%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1.jpeg" alt=""><br>步骤:</p>
-<ol>
-<li>同步和异步任务分别进入不同的执行”场所”，同步的进入主线程，异步的进入 <strong><em>Event Table</em></strong> 并注册函数</li>
-<li>当指定的事情触发时，Event Table会将这个函数移入 <strong><em>Event Queue</em></strong><br><strong><em>注意细节</em></strong> : Event Queue 中是已经被触发的回调函数，一旦主线程空闲，队列中的第一个就会进栈执行；而 Event Table 是一个用于存储暂未触发的异步事件列表，比如还没有到达最小等待时间的 setTimeout 和 还没有成功的 ajax onload，一旦 超过最小等待时间，setTimeout 的第一个参数会被推进 Event Queue 中排队等待执行，一旦 ajax 成功，则 Onload 回调会被推进 Event Queue 中排队等待执行</li>
-<li>主线程内的任务执行完毕为空，会去Event Queue读取对应的函数，进入主线程执行</li>
-<li>上述过程会不断重复</li>
-</ol>
-<hr>
-<p><img src="/images/%E5%AE%8F%E4%BB%BB%E5%8A%A1.jpeg" alt=""><br><img src="/images/%E5%BE%AE%E4%BB%BB%E5%8A%A1.jpeg" alt=""><br><img src="/images/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%BE%AE%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F.jpeg" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" data-id="ckccxgz9p000fqprp7k937ruu" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckcjtwzh0000qg1rpeisf6cqe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -696,6 +709,10 @@ A[方形] -->B(圆角)
       <ul>
         
           <li>
+            <a href="/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/">React 学习 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/">算法 第二章 排序 笔记</a>
           </li>
         
@@ -709,10 +726,6 @@ A[方形] -->B(圆角)
         
           <li>
             <a href="/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/">JS 中的 this</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/24/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/">算法 第一章 基础 笔记</a>
           </li>
         
       </ul>

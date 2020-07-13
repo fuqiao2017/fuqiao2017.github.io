@@ -5,17 +5,17 @@
   
 
   
-  <title>Http 权威指南 第二章 URL与资源 笔记 | 追求真实</title>
+  <title>React 学习 笔记 | 追求真实</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="URL与资源绝对URL 与 相对URL 相对URL转换为绝对URL算法 浏览器自动扩展URL: 主机名扩展taobao -&gt; www.taobao.com 历史扩展匹配历史记录      URL字符集特点: 完整性、可移植性通过转义表示法来表示不安全的字符以及扩展URL字符集 方案的世界 HTTPS: https 使用了网景的 SSL (Secure Sockets Layer 安全套接字协">
+  <meta name="description" content="react 解决复用方式 :render props &#x2F; 高阶组件 (需要重新组织组件结构)hookscontextmemoized Hook简介:  Hook 使你在无需修改组件结构的情况下复用状态逻辑 Hook 使你在不编写 class 的情况下可以使用 state 以及更多的 React 特性 在新的代码中同时使用 Hook 和 class Hook 使用了 js 的闭包机制  概览:  S">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Http 权威指南 第二章 URL与资源 笔记">
-<meta property="og:url" content="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="React 学习 笔记">
+<meta property="og:url" content="https://fuqiao2017.github.io/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="追求真实">
-<meta property="og:description" content="URL与资源绝对URL 与 相对URL 相对URL转换为绝对URL算法 浏览器自动扩展URL: 主机名扩展taobao -&gt; www.taobao.com 历史扩展匹配历史记录      URL字符集特点: 完整性、可移植性通过转义表示法来表示不安全的字符以及扩展URL字符集 方案的世界 HTTPS: https 使用了网景的 SSL (Secure Sockets Layer 安全套接字协">
+<meta property="og:description" content="react 解决复用方式 :render props &#x2F; 高阶组件 (需要重新组织组件结构)hookscontextmemoized Hook简介:  Hook 使你在无需修改组件结构的情况下复用状态逻辑 Hook 使你在不编写 class 的情况下可以使用 state 以及更多的 React 特性 在新的代码中同时使用 Hook 和 class Hook 使用了 js 的闭包机制  概览:  S">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-02T06:09:10.000Z">
-<meta property="article:modified_time" content="2020-06-02T09:49:27.281Z">
+<meta property="article:published_time" content="2020-07-09T09:45:19.000Z">
+<meta property="article:modified_time" content="2020-07-12T06:19:15.246Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
   
@@ -70,10 +70,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Http-权威指南-第二章-URL与资源-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-React-学习-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-02T06:09:10.000Z" itemprop="datePublished">2020-06-02</time>
+    <a href="/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-07-09T09:45:19.000Z" itemprop="datePublished">2020-07-09</time>
 </a>
     
   </div>
@@ -84,7 +84,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Http 权威指南 第二章 URL与资源 笔记
+      React 学习 笔记
     </h1>
   
 
@@ -92,24 +92,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="URL与资源"><a href="#URL与资源" class="headerlink" title="URL与资源"></a>URL与资源</h2><h4 id="绝对URL-与-相对URL"><a href="#绝对URL-与-相对URL" class="headerlink" title="绝对URL 与 相对URL"></a>绝对URL 与 相对URL</h4><ol>
-<li>相对URL转换为绝对URL算法</li>
-<li>浏览器自动扩展URL:<ul>
-<li>主机名扩展<br>taobao -&gt; <a href="http://www.taobao.com" target="_blank" rel="noopener">www.taobao.com</a></li>
-<li>历史扩展<br>匹配历史记录  </li>
-</ul>
-</li>
+        <p>react 解决复用方式 :<br>render props / 高阶组件 (需要重新组织组件结构)<br>hooks<br>context<br>memoized</p>
+<h3 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h3><p><strong>简介</strong>:</p>
+<ol>
+<li>Hook 使你在无需修改组件结构的情况下复用状态逻辑</li>
+<li>Hook 使你在不编写 class 的情况下可以使用 state 以及更多的 React 特性</li>
+<li>在新的代码中同时使用 Hook 和 class</li>
+<li>Hook 使用了 js 的闭包机制</li>
 </ol>
-<h4 id="URL字符集"><a href="#URL字符集" class="headerlink" title="URL字符集"></a>URL字符集</h4><p>特点: 完整性、可移植性<br>通过转义表示法来表示不安全的字符以及扩展URL字符集</p>
-<h4 id="方案的世界"><a href="#方案的世界" class="headerlink" title="方案的世界"></a>方案的世界</h4><ol>
-<li>HTTPS: https 使用了网景的 SSL (Secure Sockets Layer 安全套接字协议: 为 Http 的连接提供了端到端的加密机制，默认端口 443) 或 TLS (Transport Layer Security 传输层安全协议)</li>
-<li>RTSP, RTSPU: RTSP URL 是可以通过 实时流传输协议 (Real Time Streaming Protocol) 解析的音视频媒体资源的标识符<br>RTSPU 中的 U 表示使用 UDP 协议获取资源</li>
+<p><strong>概览</strong>:</p>
+<ol>
+<li>State Hook<br>内置的 Hook: useState…<br>useState: 更新 state 是直接替换而不是合并<br>useState 可以传入一个函数，React 只会在首次渲染时调用这个函数<br>创建自己的 Hook: 复用不同组件之间的状态逻辑</li>
+<li>Effect Hook<br>Effect 副作用、作用，告诉 React 函数组件需要在渲染后执行某些操作<br>useEffect: 注册一个副作用函数，可以执行副作用操作或者取消副作用(取消订阅)<br>effect 可选清除机制<br>useEffect 副作用函数可以通过返回一个清除函数来指定如何清除副作用<br>React 会在组件卸载的时候执行清除操作<br>useEffect 可在组件中多次使用<br>React 等待浏览器完成渲染之后再延迟调用 useEffect</li>
+</ol>
+<p><strong>Hook 使用规则</strong>:</p>
+<ol>
+<li>只能在函数最外层使用</li>
+<li>只能在 React 的函数组件中使用</li>
+</ol>
+<p><strong>自定义 Hook</strong>:</p>
+<ol>
+<li>如果函数的名字以 use 开头并调用其他 Hook，就称为自定义 Hook，useSomething</li>
+<li>通过自定义 Hook，可以将组件逻辑提取到可重用的函数中</li>
+</ol>
+<p><strong>其他 Hook</strong>:</p>
+<ol>
+<li>useContext 订阅 React 的 Context<br>const locale = useContext(LocaleContext)<br>接收一个 context 对象（React.createContext 的返回值）并返回该 context 的当前值。当前的 context 值由上层组件中距离当前组件最近的 &lt;MyContext.Provider&gt; 的 value prop 决定</li>
+<li>useReducer 通过 Reducer 来管理组件本地的复杂 state<br>const [todos, dispatch] = useReducer(todosReducer)</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgi0004g1rpet6i3u4e" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/" data-id="ckcjtwzgr000fg1rpbmocgujm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -118,19 +133,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Http 权威指南 第三章 HTTP报文 笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Http 权威指南 第一章 笔记</div>
+      <div class="article-nav-title">算法 第二章 排序 笔记</div>
     </a>
   
 </nav>
