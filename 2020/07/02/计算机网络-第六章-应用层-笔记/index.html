@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://fuqiao2017.github.io/images/CGI%E5%8A%A8%E6%80%81%E6%96%87%E6%A1%A3.jpeg">
 <meta property="og:image" content="https://fuqiao2017.github.io/images/DHCP%E4%B8%AD%E7%BB%A7%E5%8D%95%E6%92%AD.jpeg">
 <meta property="article:published_time" content="2020-07-02T02:57:03.000Z">
-<meta property="article:modified_time" content="2020-07-06T07:52:08.026Z">
+<meta property="article:modified_time" content="2020-07-18T02:24:58.110Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://fuqiao2017.github.io/images/%E5%9F%9F%E5%90%8D%E7%BB%93%E6%9E%84.jpeg">
@@ -110,6 +110,8 @@
 <li>P2P 文件系统</li>
 </ol>
 <h4 id="域名系统-DNS-Domain-Name-System"><a href="#域名系统-DNS-Domain-Name-System" class="headerlink" title="域名系统 DNS  Domain Name System"></a>域名系统 DNS  Domain Name System</h4><p>DNS 为互联网的各种网络应用提过了核心的服务<br><strong>域名结构</strong><br>由 <strong>标号(label)</strong> 序列组成，各标号之间用 <strong>点.</strong> 隔开<br>完整域名不超过 255 个字符<br><img src="/images/%E5%9F%9F%E5%90%8D%E7%BB%93%E6%9E%84.jpeg" alt=""><br>IPv4\IPv6 分别是 32 位 128 位，都是定长，而域名是不定长的，计算机处理起来比较麻烦<br><strong>反向域名</strong> : 域名反向解析即从IP地址到域名的映射<br><strong>分布式 DNS 系统</strong><br><strong>域名树</strong><br>为了便于记忆，人们愿意把用作邮件服务器的计算机取名为 mail, 而把用作网站服务器的计算机取名为 www<br><strong>域名服务器</strong><br><strong><em>根域名服务器</em></strong><br><strong><em>顶级域名服务器</em></strong><br><strong><em>权限域名服务器</em></strong><br><strong><em>本地域名服务器</em></strong><br>DNS 按区划分权限范围<br>每一个 <strong>区(zone)</strong> 设置相应的 <strong><em>权限域名服务器(authoritative name server)</em></strong><br><strong>高速缓存</strong><br>主机 在启动时从 本地域名服务器 下载域名和地址的全部数据库，维护存放自己最近使用的域名的 高速缓存，并且只在从缓存中找不到名字时才使用域名服务器。<br><img src="/images/DNS%E6%9F%A5%E8%AF%A2%E4%B8%BE%E4%BE%8B.jpeg" alt=""></p>
+<a id="more"></a>
+
 <h4 id="文件传送协议-FTP-File-Transfer-Protocol"><a href="#文件传送协议-FTP-File-Transfer-Protocol" class="headerlink" title="文件传送协议 FTP  File Transfer Protocol"></a>文件传送协议 FTP  File Transfer Protocol</h4><p>FTP 基于 TCP<br><strong><em>简单文件传送协议 TFTP</em></strong> 基于 UDP</p>
 <p><strong>联机访问 on-line access</strong> : 多个程序同时对一个文件存取<br><strong><em>网络文件系统 NFS</em></strong> : Network File System, 属于文件共享协议，NFS 可使本地计算机共享远地的资源；NFS 允许用户在一个文件的特定位置上读写数据<br><strong>FTP 基本工作原理</strong><br>FTP 的主要功能是减少或消除在不同操作系统下处理文件的不兼容性<br><img src="/images/FTP%E4%BD%BF%E7%94%A8%E4%B8%A4%E4%B8%AATCP%E8%BF%9E%E6%8E%A5.jpeg" alt=""><br>FTP 服务器端 <strong>主进程</strong> 负责接收新的请求，其他 <strong>从属进程</strong> 负责处理单个请求<br>FTP 控制信息是 <strong>带外(out of band)</strong> 传送<br>控制连接和数据连接使用两个不同的端口号</p>
 <h4 id="远程终端协议-TELNET-已经很少使用了"><a href="#远程终端协议-TELNET-已经很少使用了" class="headerlink" title="远程终端协议 TELNET  已经很少使用了"></a>远程终端协议 TELNET  已经很少使用了</h4><p>用户击键 -&gt; 远程主机 -&gt; 用户屏幕</p>
@@ -145,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/07/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%BA%94%E7%94%A8%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckclu36w2000mm2rp7uwc4pvz" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/07/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%BA%94%E7%94%A8%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a03n000q23rpasmj1r3k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -203,6 +205,10 @@
       <ul>
         
           <li>
+            <a href="/2020/07/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E7%AC%94%E8%AE%B0/">计算机网络 第七章 网络安全 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/">React 学习 笔记</a>
           </li>
         
@@ -216,10 +222,6 @@
         
           <li>
             <a href="/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Vue 学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/">JS 中的 this</a>
           </li>
         
       </ul>

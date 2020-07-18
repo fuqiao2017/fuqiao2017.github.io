@@ -15,7 +15,7 @@
 <meta property="og:description" content="promise 遵循的一些规范 promise 的实现内部必须 catch 注册的所有回调和 executor throw 的错误(或者其他错误，比如调用一个未定义的函数)，然后把 promise 的状态改变到 rejected，(即吃掉抛出的错误)；此时错误需要被后续的 .catch 方法注册的回调处理，或者被 .then 方法注册的 onRejected 方法处理，否则会报 uncaught">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-13T01:28:09.000Z">
-<meta property="article:modified_time" content="2020-06-18T07:12:07.347Z">
+<meta property="article:modified_time" content="2020-07-18T02:27:38.522Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
   
@@ -94,6 +94,7 @@
       
         <h4 id="promise-遵循的一些规范"><a href="#promise-遵循的一些规范" class="headerlink" title="promise 遵循的一些规范"></a>promise 遵循的一些规范</h4><ul>
 <li>promise 的实现内部必须 catch 注册的所有回调和 executor <strong><em>throw</em></strong> 的错误(或者其他错误，比如调用一个未定义的函数)，然后把 promise 的状态改变到 rejected，(即吃掉抛出的错误)；此时错误需要被后续的 .catch 方法注册的回调处理，或者被 .then 方法注册的 onRejected 方法处理，否则会报 uncaught 错误，即错误继续被抛出<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 外层 try catch 不能捕获 promise 代码里 throw 的错误</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// 内部的实现: 把 ReferenceError: aaaaa is not defined catch 后 调用 reject 方法改变 promise 的状态，后续没有处理，所以报 uncaught 错误</span></span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;aaaaa()&#125;)</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'catch nothing'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 
 </li>
 </ul>
@@ -139,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckclu36wh000qm2rp5035g94x" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckcr1a03g000h23rpepmc4acy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,6 +198,10 @@
       <ul>
         
           <li>
+            <a href="/2020/07/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E7%AC%94%E8%AE%B0/">计算机网络 第七章 网络安全 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/07/09/React-%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/">React 学习 笔记</a>
           </li>
         
@@ -210,10 +215,6 @@
         
           <li>
             <a href="/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Vue 学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/28/JS-%E4%B8%AD%E7%9A%84-this/">JS 中的 this</a>
           </li>
         
       </ul>
