@@ -70,6 +70,99 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-计算机网络-第四章-网络层-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-16T05:59:34.000Z" itemprop="datePublished">2020-06-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第四章 网络层 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>关键词</em></strong> : 唯一前缀   Trie树   PING</p>
+<p>根据路由选择协议构造和更新路由表</p>
+<h5 id="ICMP-的应用举例"><a href="#ICMP-的应用举例" class="headerlink" title="ICMP 的应用举例"></a>ICMP 的应用举例</h5><p><strong><em>PING</em></strong> : 分组网间探测(Packet InterNet Groper) 是 ICMP 的一个重要应用，用来测试两台主机之间的连通性。PING 使用了 ICMP 回送请求与回送回答报文。PING 是应用层直接使用网络层 ICMP 的一个栗子🌰，它没有通过传输层的 TCP 或 UDP。(ping <a href="http://www.xx.com" target="_blank" rel="noopener">www.xx.com</a>)<br><img src="/images/ping%E6%96%B0%E6%B5%AA.jpeg" alt=""><br><strong><em>traceroute(UNIX)/tracert(Win)</em></strong> : 用于跟踪一个分组从源点到终点的路径。</p>
+<h3 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h3><p><strong><em>分组丢失</em></strong> : 路由器中的输入输出队列产生溢出，或者设备、线路出故障</p>
+<h5 id="路由选择协议"><a href="#路由选择协议" class="headerlink" title="路由选择协议"></a>路由选择协议</h5><p>自治系统内部和自治系统之间</p>
+<pre class="mermaid">graph LR
+A[路由选择协议] -->B(分类)
+    B --> C[内部网关协议]
+    B --> D[外部网关协议]
+    F[横向流程图]</pre>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%AC%94%E8%AE%B0/" data-id="ckcx17qai000r01rpdkui7wvb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Promise-实现一个promise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/" class="article-date">
+  <time datetime="2020-06-15T09:24:44.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/">Promise 实现一个promise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Promise-A-规范概要"><a href="#Promise-A-规范概要" class="headerlink" title="Promise/A+ 规范概要"></a>Promise/A+ 规范概要</h4><ol>
+<li>三个状态: pending, fulfilled, rejected</li>
+<li>状态一旦由 pending 改变，就不在变化
+        
+          <p class="article-more-link">
+            <a href="/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/15/Promise-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise/" data-id="ckcx17qac000j01rpdpyz4unu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Promise-抽象异步处理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" class="article-date">
@@ -102,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckcr1a03g000h23rpepmc4acy" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/13/Promise-%E6%8A%BD%E8%B1%A1%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" data-id="ckcx17qad000k01rpbkgq6c86" class="article-share-link">Share</a>
       
       
     </footer>
@@ -147,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" data-id="ckcr1a02z000023rpcl1fa67d" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/EventLoop-%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" data-id="ckcx17q9z000101rp71kab24b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/" data-id="ckcr1a03i000k23rpch3k36qj" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%8A%E7%AE%80%E4%BB%8B/" data-id="ckcx17qac000i01rpaiou0aie" class="article-share-link">Share</a>
       
       
     </footer>
@@ -246,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a03d000c23rp0kqxb478" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/12/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E5%AE%89%E5%85%A8HTTP-%E7%AC%94%E8%AE%B0/" data-id="ckcx17qa8000c01rp0ib7cq00" class="article-share-link">Share</a>
       
       
     </footer>
@@ -291,7 +384,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a03b000a23rp3e78764s" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/" data-id="ckcx17qa8000b01rphjqxcn9j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -338,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a03d000b23rp2pe2c3j8" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckcx17qab000h01rp6hic9w5o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -386,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a03b000923rp8iuze8r3" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckcx17qa6000901rpavkravl8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -423,111 +516,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a03e000d23rp8rl21uu7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Http-权威指南-第九章-Web机器人-笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-04T09:27:40.000Z" itemprop="datePublished">2020-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/">Http 权威指南 第九章 Web机器人 笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong><em>关键词</em></strong> : 爬虫  根集  环路  URL别名  机器人规范  搜索引擎</p>
-<p><strong><em>根集(root set)</em></strong> : 爬虫开始访问的 URL 初始集合<br><strong><em>环路(cycle)</em></strong> : 爬虫陷入一种循环中<br>类型: 链接指向形成的环路、文件系统连接环路、动态虚拟Web空间<br><strong><em>避免循环和重复的技术</em></strong> :</p>
-<ol>
-<li>规范化URL</li>
-<li>广度优先的爬行</li>
-<li>节流: 限制重复页面总数和对同一服务器访问的总数</li>
-<li>限制 URL 的大小: 拒绝爬行超过一定长度的URL</li>
-<li>URL/站点黑名单: 有导致爬虫环路和陷阱的站点</li>
-<li>模式检测</li>
-<li>内容指纹</li>
-<li>人工监视: 诊断和日志功能</li>
-</ol>
-<h4 id="爬虫管理-URL-的技术"><a href="#爬虫管理-URL-的技术" class="headerlink" title="爬虫管理 URL 的技术"></a>爬虫管理 URL 的技术</h4><ol>
-<li>数和散列表: 采用加速 URL 查找的数据结构</li>
-<li>有损的存在位图: 有损数据结构，对存在位置位</li>
-<li>检查点: 将已访问的 URL 保存到备份到硬盘上</li>
-<li>分类: 爬虫集群，协调工作
-        
-          <p class="article-more-link">
-            <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a037000423rp73sj3x60" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Http-权威指南-第八章-集成点-笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-04T06:42:24.000Z" itemprop="datePublished">2020-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/">Http 权威指南 第八章 集成点 笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="集成点-网关、隧道及中继"><a href="#集成点-网关、隧道及中继" class="headerlink" title="集成点: 网关、隧道及中继"></a>集成点: 网关、隧道及中继</h3><p><strong><em>概要</em></strong> :</p>
-<ul>
-<li>在 HTTP 和其他协议及应用程序之间起到接口作用的 <strong><em>网关</em></strong></li>
-<li>允许不同类型的 Web 应用程序互相通信的 <strong><em>应用程序接口</em></strong></li>
-<li>允许用户在 HTTP 连接上发送非 HTTP 流量的 <strong><em>隧道</em></strong></li>
-<li>作为一种简化的 HTTP 代理，一次将数据转发一跳的 <strong><em>中继</em></strong>  </li>
-</ul>
-<h3 id="网关-gateway"><a href="#网关-gateway" class="headerlink" title="网关 (gateway)"></a>网关 (gateway)</h3><p>网关的出现是为了解决在 Web 上发布更复杂资源的需求；网关抽象出了一种能够到达资源的方法<br><strong><em>网关的描述</em></strong> : &lt;客户端协议&gt;/&lt;服务器端协议&gt;<br><strong><em>服务器端网关</em></strong> : HTTP/*<br><strong><em>客户端网关</em></strong> : */HTTP</p>
-<p><strong><em>CGI</em></strong> : cgi 大概是最古老的一种动态网页技术，本身是一种协议，可以由多种语言实现（CGI程序）</p>
-<h3 id="隧道-Web-tunnel"><a href="#隧道-Web-tunnel" class="headerlink" title="隧道 (Web tunnel)"></a>隧道 (Web tunnel)</h3><p>Web 隧道允许用户通过 HTTP 连接发送非 HTTP 流量，这样可以在 HTTP 上捎带其他协议数据<br><strong><em>SSL 隧道</em></strong></p>
-<h3 id="中继-relay"><a href="#中继-relay" class="headerlink" title="中继 (relay)"></a>中继 (relay)</h3><p>HTTP 中继是没有完全遵循 HTTP 规范的简单 HTTP 代理，中继负责处理 HTTP 中建立连接的部分，然后对字节进行盲转发<br>一些简单盲中继无法正确处理 Connectino 首部，会导致 Keep-alive 连接挂起</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckcr1a039000723rp8gu34tfo" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" data-id="ckcx17qa9000d01rp97za1irp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -573,6 +562,14 @@
       <ul>
         
           <li>
+            <a href="/2020/07/21/Android-%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0/">Android 开发学习 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8A%E7%9A%84%E9%9F%B3%E8%A7%86%E9%A2%91%E6%9C%8D%E5%8A%A1-%E7%AC%94%E8%AE%B0/">计算机网络 第八章 互联网上的音视频服务 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/07/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E7%AC%94%E8%AE%B0/">计算机网络 第七章 网络安全 笔记</a>
           </li>
         
@@ -582,14 +579,6 @@
         
           <li>
             <a href="/2020/07/07/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F-%E7%AC%94%E8%AE%B0/">算法 第二章 排序 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/07/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%BA%94%E7%94%A8%E5%B1%82-%E7%AC%94%E8%AE%B0/">计算机网络 第六章 应用层 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/07/01/Vue-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Vue 学习笔记</a>
           </li>
         
       </ul>
