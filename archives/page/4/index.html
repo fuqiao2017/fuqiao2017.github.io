@@ -5,17 +5,15 @@
   
 
   
-  <title>Http 权威指南 第十二章 基本认证机制 笔记 | 追求真实</title>
+  <title>归档 | 追求真实</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关键词 : 基本认证(Basic)    质询&#x2F;响应    重放攻击  Http 认证形式:  基本认证 : basic authentication摘要认证 : digest authentication质询&#x2F;响应 : challenge&#x2F;response请求 -&gt; 质询 -&gt; (用户名:密码)再次请求 -&gt; 响应状态码: 401WWW-Authenticate: Basic">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Http 权威指南 第十二章 基本认证机制 笔记">
-<meta property="og:url" content="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/index.html">
+  <meta name="description" content="记录点点滴滴">
+<meta property="og:type" content="website">
+<meta property="og:title" content="追求真实">
+<meta property="og:url" content="https://fuqiao2017.github.io/archives/page/4/index.html">
 <meta property="og:site_name" content="追求真实">
-<meta property="og:description" content="关键词 : 基本认证(Basic)    质询&#x2F;响应    重放攻击  Http 认证形式:  基本认证 : basic authentication摘要认证 : digest authentication质询&#x2F;响应 : challenge&#x2F;response请求 -&gt; 质询 -&gt; (用户名:密码)再次请求 -&gt; 响应状态码: 401WWW-Authenticate: Basic">
+<meta property="og:description" content="记录点点滴滴">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-11T07:22:53.000Z">
-<meta property="article:modified_time" content="2020-06-11T08:59:32.450Z">
 <meta property="article:author" content="Zhang qijie">
 <meta name="twitter:card" content="summary">
   
@@ -70,71 +68,64 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Http-权威指南-第十二章-基本认证机制-笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-11T07:22:53.000Z" itemprop="datePublished">2020-06-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Http 权威指南 第十二章 基本认证机制 笔记
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  <time datetime="2020-06-02T01:59:15.000Z" itemprop="datePublished">6月 2</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AC%94%E8%AE%B0/">Http 权威指南 第一章 笔记</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong><em>关键词</em></strong> : 基本认证(Basic)    质询/响应    重放攻击</p>
-<ul>
-<li>Http 认证形式:</li>
-</ul>
-<p><strong><em>基本认证</em></strong> : basic authentication<br><strong><em>摘要认证</em></strong> : digest authentication<br><strong><em>质询/响应</em></strong> : challenge/response<br>请求 -&gt; 质询 -&gt; (用户名:密码)再次请求 -&gt; 响应<br>状态码: 401<br>WWW-Authenticate: Basic realm 指定一个安全域<br>Authorization: Basic base-64-username:password</p>
-<p><strong><em>Base-64 编码</em></strong> : 将一个8位字节序列划分为一些6位的块，用每个6位的块在一个特殊的由64个字符组成的字母表中选择一个字符</p>
-<p><strong><em>代理认证</em></strong> : proxy authentication 通过代理服务器提供对某组织内部资源的统一访问控制<br>状态码: 407<br>Proxy-Authenticate、Proxy-Authorization、Proxy-Authentication-Info</p>
-<h5 id="基本认证的安全缺陷"><a href="#基本认证的安全缺陷" class="headerlink" title="基本认证的安全缺陷"></a>基本认证的安全缺陷</h5><ol>
-<li>用户名密码属于“明文”传送</li>
-<li>加密后的信息可以被捕获和利用(重放攻击)<br>安全使用基本认证的唯一方式: 将基本认证与加密数据传输(比如 SSL)配合使用</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckczwrgef000etxrp0x2tgx80" class="article-share-link">Share</a>
-      
-      
-    </footer>
+    </header>
   </div>
+</article>
   
     
-<nav id="article-nav">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2020/06/01/%E5%A6%82%E5%9B%BE/" class="archive-article-date">
+  <time datetime="2020-06-01T07:40:52.254Z" itemprop="datePublished">6月 1</time>
+</a>
+      
   
-    <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E6%91%98%E8%A6%81%E8%AE%A4%E8%AF%81-%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Http 权威指南 第十三章 摘要认证 笔记
-        
-      </div>
-    </a>
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/06/01/%E5%A6%82%E5%9B%BE/">如图</a>
+    </h1>
   
-  
-    <a href="/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Http 权威指南 第十一章 客户端识别与Cookie机制 笔记</div>
-    </a>
-  
-</nav>
 
-  
+    </header>
+  </div>
 </article>
+  
+  
+    </div></section>
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/archives/page/3/">&amp;laquo; 上一页</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
 
 </section>
         
