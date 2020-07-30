@@ -70,6 +70,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Http-权威指南-第十二章-基本认证机制-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-06-11T07:22:53.000Z" itemprop="datePublished">2020-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/">Http 权威指南 第十二章 基本认证机制 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>关键词</em></strong> : 基本认证(Basic)    质询/响应    重放攻击</p>
+<ul>
+<li>Http 认证形式:</li>
+</ul>
+<p><strong><em>基本认证</em></strong> : basic authentication<br><strong><em>摘要认证</em></strong> : digest authentication<br><strong><em>质询/响应</em></strong> : challenge/response<br>请求 -&gt; 质询 -&gt; (用户名:密码)再次请求 -&gt; 响应<br>状态码: 401<br>WWW-Authenticate: Basic realm 指定一个安全域<br>Authorization: Basic base-64-username:password</p>
+<p><strong><em>Base-64 编码</em></strong> : 将一个8位字节序列划分为一些6位的块，用每个6位的块在一个特殊的由64个字符组成的字母表中选择一个字符</p>
+<p><strong><em>代理认证</em></strong> : proxy authentication 通过代理服务器提供对某组织内部资源的统一访问控制<br>状态码: 407<br>Proxy-Authenticate、Proxy-Authorization、Proxy-Authentication-Info</p>
+<h5 id="基本认证的安全缺陷"><a href="#基本认证的安全缺陷" class="headerlink" title="基本认证的安全缺陷"></a>基本认证的安全缺陷</h5><ol>
+<li>用户名密码属于“明文”传送</li>
+<li>加密后的信息可以被捕获和利用(重放攻击)<br>安全使用基本认证的唯一方式: 将基本认证与加密数据传输(比如 SSL)配合使用</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fuqiao2017.github.io/2020/06/11/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckd8h9bxn000crbrpgwbi9p3m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Http-权威指南-第十一章-客户端识别与Cookie机制-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -108,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckczwrgeb000atxrphk2v9tde" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/10/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%86%E5%88%AB%E4%B8%8ECookie%E6%9C%BA%E5%88%B6-%E7%AC%94%E8%AE%B0/" data-id="ckd8h9bxl000arbrp4lcyg5b0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -145,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" data-id="ckczwrgeh000gtxrp4p6m6cou" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/09/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%8D%81%E7%AB%A0-Http-NG-%E7%AC%94%E8%AE%B0/" data-id="ckd8h9bxp000erbrp9vr0g6zi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" data-id="ckczwrge70005txrp3nfk9mhw" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B9%9D%E7%AB%A0-Web%E6%9C%BA%E5%99%A8%E4%BA%BA-%E7%AC%94%E8%AE%B0/" data-id="ckd8h9bxf0004rbrp2jaghyse" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckczwrge80006txrp862tegb0" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9B%86%E6%88%90%E7%82%B9-%E7%AC%94%E8%AE%B0/" data-id="ckd8h9bxh0006rbrp5edg3udz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -321,7 +368,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" data-id="ckczwrge30001txrp0fmtbv0l" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/04/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BC%93%E5%AD%98-%E7%AC%94%E8%AE%B0/" data-id="ckd8h9bx20000rbrpbkmn52gz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -398,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckczwrgea0008txrp7ic85lad" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%BB%A3%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckd8h9bxj0008rbrp1fe751ul" class="article-share-link">Share</a>
       
       
     </footer>
@@ -448,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckczwrge90007txrp41e08q25" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/03/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%94%E7%AB%A0-Web%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0/" data-id="ckd8h9bxi0007rbrp9fuh761w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -498,7 +545,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckczwrgee000ctxrpciz8b66l" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-%E7%AC%94%E8%AE%B0/" data-id="ckd8h9bxp000frbrp00oqai87" class="article-share-link">Share</a>
       
       
     </footer>
@@ -549,56 +596,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckczwrge60003txrpdpzj0et7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Http-权威指南-第二章-URL与资源-笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-06-02T06:09:10.000Z" itemprop="datePublished">2020-06-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/">Http 权威指南 第二章 URL与资源 笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="URL与资源"><a href="#URL与资源" class="headerlink" title="URL与资源"></a>URL与资源</h2><h4 id="绝对URL-与-相对URL"><a href="#绝对URL-与-相对URL" class="headerlink" title="绝对URL 与 相对URL"></a>绝对URL 与 相对URL</h4><ol>
-<li>相对URL转换为绝对URL算法</li>
-<li>浏览器自动扩展URL:<ul>
-<li>主机名扩展<br>taobao -&gt; <a href="http://www.taobao.com" target="_blank" rel="noopener">www.taobao.com</a></li>
-<li>历史扩展<br>匹配历史记录  </li>
-</ul>
-</li>
-</ol>
-<h4 id="URL字符集"><a href="#URL字符集" class="headerlink" title="URL字符集"></a>URL字符集</h4><p>特点: 完整性、可移植性<br>通过转义表示法来表示不安全的字符以及扩展URL字符集</p>
-<h4 id="方案的世界"><a href="#方案的世界" class="headerlink" title="方案的世界"></a>方案的世界</h4><ol>
-<li>HTTPS: https 使用了网景的 SSL (Secure Sockets Layer 安全套接字协议: 为 Http 的连接提供了端到端的加密机制，默认端口 443) 或 TLS (Transport Layer Security 传输层安全协议)</li>
-<li>RTSP, RTSPU: RTSP URL 是可以通过 实时流传输协议 (Real Time Streaming Protocol) 解析的音视频媒体资源的标识符<br>RTSPU 中的 U 表示使用 UDP 协议获取资源</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%BA%8C%E7%AB%A0-URL%E4%B8%8E%E8%B5%84%E6%BA%90-%E7%AC%94%E8%AE%B0/" data-id="ckczwrgeb0009txrpf9sv5aw0" class="article-share-link">Share</a>
+      <a data-url="https://fuqiao2017.github.io/2020/06/02/Http-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E4%B8%89%E7%AB%A0-HTTP%E6%8A%A5%E6%96%87-%E7%AC%94%E8%AE%B0/" data-id="ckd8h9bxe0003rbrp74ym1bqi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -644,6 +642,10 @@
       <ul>
         
           <li>
+            <a href="/2020/07/28/React-%E8%B7%AF%E7%94%B1/">React 路由</a>
+          </li>
+        
+          <li>
             <a href="/2020/07/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8/">深入理解计算机系统 第一章 计算机系统漫游</a>
           </li>
         
@@ -657,10 +659,6 @@
         
           <li>
             <a href="/2020/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8A%E7%9A%84%E9%9F%B3%E8%A7%86%E9%A2%91%E6%9C%8D%E5%8A%A1-%E7%AC%94%E8%AE%B0/">计算机网络 第八章 互联网上的音视频服务 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/07/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E7%AC%94%E8%AE%B0/">计算机网络 第七章 网络安全 笔记</a>
           </li>
         
       </ul>
